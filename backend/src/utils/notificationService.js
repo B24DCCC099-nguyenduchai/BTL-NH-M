@@ -17,7 +17,7 @@ function getEmailTransport() {
   });
 }
 
-async function sendEmail(to, subject, text) {
+async function sendEmail(to, subject, text, html = null) {
   const transport = getEmailTransport();
   if (!transport) {
     return null;
@@ -30,10 +30,10 @@ async function sendEmail(to, subject, text) {
       to,
       subject,
       text,
+      html: html || undefined,
     });
     return result;
   } catch (error) {
-    // Log email failures, but don't break the primary flow.
     console.error('Email notification failed:', error.message || error);
     return null;
   }
@@ -55,4 +55,22 @@ async function notifyUser(recipientId, type, targetId, message) {
   return notification;
 }
 
-module.exports = { notifyUser, sendEmail, getEmailTransport };
+async function sendPasswordResetEmail(email, newPassword) {
+  return sendEmail(
+    email,
+    'Mật khẩu được reset',
+    `Mật khẩu tạm thời của bạn là: ${newPassword}. Vui lòng đăng nhập và đổi mật khẩu ngay.`,
+    `
+      <h2>Mật khẩu của bạn đã được reset</h2>
+      <p>Mật khẩu tạm thời của bạn: <strong>${newPassword}</strong></p>
+      <p>Vui lòng đăng nhập và đổi mật khẩu ngay lập tức.</p>
+    `
+  );
+}
+
+module.exports = {
+  getEmailTransport,
+  sendEmail,
+  notifyUser,
+  sendPasswordResetEmail,
+};

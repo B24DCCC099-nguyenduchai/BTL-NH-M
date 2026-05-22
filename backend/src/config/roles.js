@@ -7,3 +7,4 @@ module.exports = {
   ADMIN_ONLY: ['admin'],
   STAFF: ['lecturer', 'admin'],
 };
+ 
