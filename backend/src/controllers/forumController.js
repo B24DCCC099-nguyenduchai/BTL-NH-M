@@ -49,6 +49,7 @@ async function fetchPosts(req, res, next) {
   try {
     const {
       q = '',
+      keyword = '',
       tag = '',
       category = '',
       page = 1,
@@ -56,15 +57,20 @@ async function fetchPosts(req, res, next) {
       sort = 'newest',
     } = req.query;
 
-    const offset = (Number(page) - 1) * Number(limit);
+    const searchText = String(q || keyword || '').trim();
+    const pageNumber = Math.max(parseInt(page, 10) || 1, 1);
+    const limitNumber = Math.max(parseInt(limit, 10) || 10, 1);
+    const offset = (pageNumber - 1) * limitNumber;
 
     const where = {};
-    if (q) {
+
+    if (searchText) {
       where[Op.or] = [
-        { title: { [Op.like]: `%${q}%` } },
-        { content: { [Op.like]: `%${q}%` } },
+        { title: { [Op.like]: `%${searchText}%` } },
+        { content: { [Op.like]: `%${searchText}%` } },
       ];
     }
+
     if (category) {
       where.category = category;
     }
@@ -74,32 +80,36 @@ async function fetchPosts(req, res, next) {
       as: 'tags',
       attributes: ['id', 'name', 'color', 'usageCount'],
       through: { attributes: [] },
+      required: !!tag,
     };
 
     if (tag) {
       tagInclude.where = { name: tag };
-      tagInclude.required = true;
     }
 
     const { count, rows } = await Post.findAndCountAll({
       where,
       include: [
-        { model: User, as: 'author', attributes: ['id', 'name', 'email', 'role', 'avatar'] },
+        {
+          model: User,
+          as: 'author',
+          attributes: ['id', 'name', 'email', 'role', 'avatar'],
+        },
         tagInclude,
       ],
       distinct: true,
       subQuery: false,
       order: getOrder(sort),
       offset,
-      limit: Number(limit),
+      limit: limitNumber,
     });
 
     res.json({
       data: rows,
       total: count,
-      page: Number(page),
-      limit: Number(limit),
-      totalPages: Math.ceil(count / Number(limit)),
+      page: pageNumber,
+      limit: limitNumber,
+      totalPages: Math.ceil(count / limitNumber),
     });
   } catch (error) {
     next(error);
@@ -119,20 +129,28 @@ async function getPostById(req, res, next) {
     const { id } = req.params;
 
     const postRecord = await Post.findByPk(id);
-    if (!postRecord) return res.status(404).json({ message: 'Post not found' });
+    if (!postRecord) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
 
     await postRecord.increment('views');
-
-    const post = await Post.findByPk(id, {
+    await postRecord.reload({
       include: [
-        { model: User, as: 'author', attributes: ['id', 'name', 'email', 'role', 'avatar'] },
-        { model: Tag, as: 'tags', attributes: ['id', 'name', 'color', 'usageCount'], through: { attributes: [] } },
+        {
+          model: User,
+          as: 'author',
+          attributes: ['id', 'name', 'email', 'role', 'avatar'],
+        },
+        {
+          model: Tag,
+          as: 'tags',
+          attributes: ['id', 'name', 'color', 'usageCount'],
+          through: { attributes: [] },
+        },
       ],
     });
 
-    if (!post) return res.status(404).json({ message: 'Post not found' });
-
-    res.json(post);
+    res.json(postRecord);
   } catch (error) {
     next(error);
   }
@@ -152,13 +170,18 @@ async function createPost(req, res, next) {
     const tagRecords = [];
     if (Array.isArray(tags) && tags.length > 0) {
       for (const rawTag of tags) {
-        const name = typeof rawTag === 'string' ? rawTag.trim() : String(rawTag?.name || '').trim();
+        const name =
+          typeof rawTag === 'string'
+            ? rawTag.trim()
+            : String(rawTag?.name || '').trim();
+
         if (!name) continue;
 
         const [tag, created] = await Tag.findOrCreate({
           where: { name },
           defaults: {
             name,
+            description: '',
             color: '#7B61FF',
             usageCount: 0,
           },
@@ -191,19 +214,110 @@ async function createPost(req, res, next) {
   }
 }
 
+async function updatePost(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { title, content, category, tags } = req.body;
+
+    const post = await Post.findByPk(id, {
+      include: [{ model: Tag, as: 'tags' }],
+    });
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    if (req.user.role !== 'admin' && post.authorId !== req.user.id) {
+      return res.status(403).json({
+        message: 'Forbidden: Chỉ admin hoặc tác giả mới sửa được',
+      });
+    }
+
+    const oldTags = post.tags || [];
+    const oldTagNames = new Set(oldTags.map((t) => t.name));
+
+    await post.update({
+      ...(typeof title === 'string' ? { title } : {}),
+      ...(typeof content === 'string' ? { content } : {}),
+      ...(typeof category === 'string' ? { category } : {}),
+    });
+
+    if (Array.isArray(tags)) {
+      const newTagRecords = [];
+
+      for (const rawTag of tags) {
+        const name =
+          typeof rawTag === 'string'
+            ? rawTag.trim()
+            : String(rawTag?.name || '').trim();
+
+        if (!name) continue;
+
+        const [tag, created] = await Tag.findOrCreate({
+          where: { name },
+          defaults: {
+            name,
+            description: '',
+            color: '#7B61FF',
+            usageCount: 0,
+          },
+        });
+
+        if (created) {
+          await tag.update({ usageCount: 1 });
+        } else if (!oldTagNames.has(name)) {
+          await tag.increment('usageCount');
+        }
+
+        newTagRecords.push(tag);
+      }
+
+      const newTagNames = new Set(newTagRecords.map((t) => t.name));
+
+      for (const oldTag of oldTags) {
+        if (!newTagNames.has(oldTag.name) && oldTag.usageCount > 0) {
+          await oldTag.decrement('usageCount');
+        }
+      }
+
+      await post.setTags(newTagRecords);
+    }
+
+    await post.reload({
+      include: [
+        { model: User, as: 'author', attributes: ['id', 'name', 'email', 'role', 'avatar'] },
+        {
+          model: Tag,
+          as: 'tags',
+          attributes: ['id', 'name', 'color', 'usageCount'],
+          through: { attributes: [] },
+        },
+      ],
+    });
+
+    res.json(post);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function deletePost(req, res, next) {
   try {
     const { id } = req.params;
     const post = await Post.findByPk(id);
 
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
 
     if (req.user.role !== 'admin' && post.authorId !== req.user.id) {
-      return res.status(403).json({ message: 'Forbidden: Only admin or author can delete' });
+      return res.status(403).json({
+        message: 'Forbidden: Chỉ admin hoặc tác giả mới xóa được',
+      });
     }
 
     await post.destroy();
-    res.json({ message: 'Post deleted' });
+    res.json({ message: 'Post deleted successfully' });
   } catch (error) {
     next(error);
   }
@@ -219,20 +333,23 @@ async function votePost(req, res, next) {
     }
 
     const post = await Post.findByPk(id);
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
 
     const existingVote = await PostVote.findOne({
       where: { postId: id, userId: req.user.id },
     });
 
+    const delta = direction === 'up' ? 1 : -1;
+
     if (existingVote) {
       if (existingVote.voteType === direction) {
         await existingVote.destroy();
-        post.votes += direction === 'up' ? -1 : 1;
+        post.votes -= delta;
       } else {
-        const oldValue = existingVote.voteType === 'up' ? 1 : -1;
-        const newValue = direction === 'up' ? 1 : -1;
-        post.votes = post.votes - oldValue + newValue;
+        const oldDelta = existingVote.voteType === 'up' ? 1 : -1;
+        post.votes = post.votes - oldDelta + delta;
         existingVote.voteType = direction;
         await existingVote.save();
       }
@@ -242,7 +359,7 @@ async function votePost(req, res, next) {
         userId: req.user.id,
         voteType: direction,
       });
-      post.votes += direction === 'up' ? 1 : -1;
+      post.votes += delta;
     }
 
     await post.save();
@@ -259,7 +376,11 @@ async function getComments(req, res, next) {
     const comments = await Comment.findAll({
       where: { postId: id },
       include: [
-        { model: User, as: 'author', attributes: ['id', 'name', 'email', 'role', 'avatar'] },
+        {
+          model: User,
+          as: 'author',
+          attributes: ['id', 'name', 'email', 'role', 'avatar'],
+        },
       ],
       order: [['createdAt', 'ASC']],
     });
@@ -279,7 +400,9 @@ async function createComment(req, res, next) {
       include: [{ model: User, as: 'author', attributes: ['id', 'name', 'email'] }],
     });
 
-    if (!post) return res.status(404).json({ message: 'Post not found' });
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
 
     if (parentCommentId) {
       const parentComment = await Comment.findByPk(parentCommentId);
@@ -295,7 +418,6 @@ async function createComment(req, res, next) {
       parentCommentId: parentCommentId || null,
     });
 
-    // Chỉ tăng answersCount cho comment cấp 1
     if (!parentCommentId) {
       await Post.increment('answersCount', { where: { id } });
     }
@@ -334,6 +456,61 @@ async function createComment(req, res, next) {
   }
 }
 
+async function updateComment(req, res, next) {
+  try {
+    const { id } = req.params;
+    const { content } = req.body;
+
+    const comment = await Comment.findByPk(id);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    if (req.user.role !== 'admin' && comment.authorId !== req.user.id) {
+      return res.status(403).json({
+        message: 'Forbidden: Chỉ admin hoặc tác giả mới sửa được',
+      });
+    }
+
+    await comment.update({ content });
+
+    res.json(comment);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteComment(req, res, next) {
+  try {
+    const { id } = req.params;
+
+    const comment = await Comment.findByPk(id);
+
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    if (req.user.role !== 'admin' && comment.authorId !== req.user.id) {
+      return res.status(403).json({
+        message: 'Forbidden: Chỉ admin hoặc tác giả mới xóa được',
+      });
+    }
+
+    const post = await Post.findByPk(comment.postId);
+
+    if (post && !comment.parentCommentId && post.answersCount > 0) {
+      await post.decrement('answersCount');
+    }
+
+    await comment.destroy();
+
+    res.json({ message: 'Comment deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function voteComment(req, res, next) {
   try {
     const { id } = req.params;
@@ -344,20 +521,23 @@ async function voteComment(req, res, next) {
     }
 
     const comment = await Comment.findByPk(id);
-    if (!comment) return res.status(404).json({ message: 'Comment not found' });
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
 
     const existingVote = await CommentVote.findOne({
       where: { commentId: id, userId: req.user.id },
     });
 
+    const delta = direction === 'up' ? 1 : -1;
+
     if (existingVote) {
       if (existingVote.voteType === direction) {
         await existingVote.destroy();
-        comment.votes += direction === 'up' ? -1 : 1;
+        comment.votes -= delta;
       } else {
-        const oldValue = existingVote.voteType === 'up' ? 1 : -1;
-        const newValue = direction === 'up' ? 1 : -1;
-        comment.votes = comment.votes - oldValue + newValue;
+        const oldDelta = existingVote.voteType === 'up' ? 1 : -1;
+        comment.votes = comment.votes - oldDelta + delta;
         existingVote.voteType = direction;
         await existingVote.save();
       }
@@ -367,7 +547,7 @@ async function voteComment(req, res, next) {
         userId: req.user.id,
         voteType: direction,
       });
-      comment.votes += direction === 'up' ? 1 : -1;
+      comment.votes += delta;
     }
 
     await comment.save();
@@ -390,16 +570,148 @@ async function getTags(req, res, next) {
     next(error);
   }
 }
+// ======================================
+// REPLY COMMENT
+// ======================================
+
+async function replyComment(req, res, next) {
+  try {
+
+    req.body.parentCommentId = req.params.parentCommentId;
+
+    return createComment(req, res, next);
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+// ======================================
+// GET USER VOTE
+// ======================================
+
+async function getUserVote(req, res, next) {
+  try {
+
+    const { postId } = req.params;
+
+    const vote = await PostVote.findOne({
+      where: {
+        postId,
+        userId: req.user.id,
+      },
+    });
+
+    if (!vote) {
+      return res.json({
+        voted: false,
+      });
+    }
+
+    res.json({
+      voted: true,
+      voteType: vote.voteType,
+    });
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+// ======================================
+// SAVE POST
+// ======================================
+
+async function savePost(req, res, next) {
+  try {
+
+    const { id } = req.params;
+
+    const { SavedPost } = require('../models');
+
+    const existing = await SavedPost.findOne({
+      where: {
+        userId: req.user.id,
+        postId: id,
+      },
+    });
+
+    if (existing) {
+
+      await existing.destroy();
+
+      return res.json({
+        saved: false,
+      });
+    }
+
+    await SavedPost.create({
+      userId: req.user.id,
+      postId: id,
+    });
+
+    res.json({
+      saved: true,
+    });
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+// ======================================
+// GET SAVED POSTS
+// ======================================
+
+async function getSavedPosts(req, res, next) {
+  try {
+
+    const { SavedPost } = require('../models');
+
+    const savedPosts = await SavedPost.findAll({
+
+      where: {
+        userId: req.user.id,
+      },
+
+      include: [
+        {
+          model: Post,
+          as: 'post',
+        },
+      ],
+
+      order: [['createdAt', 'DESC']],
+    });
+
+    res.json(savedPosts);
+
+  } catch (error) {
+    next(error);
+  }
+}
 
 module.exports = {
   getPosts,
   getPostById,
+
   createPost,
+  updatePost,
   deletePost,
+
   votePost,
+  getUserVote,
+
   getComments,
   createComment,
+  replyComment,
+  updateComment,
+  deleteComment,
   voteComment,
+
+  savePost,
+  getSavedPosts,
+
   searchPosts,
   getTags,
 };
