@@ -1,202 +1,122 @@
-import Footer from '@/components/Footer';
-import RightContent from '@/components/RightContent';
-import { notification } from 'antd';
-import 'moment/locale/vi';
-import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
-import { getIntl, getLocale, history } from 'umi';
-import type { RequestOptionsInit, ResponseError } from 'umi-request';
-import ErrorBoundary from './components/ErrorBoundary';
-import NotAccessible from './pages/exception/403';
-import NotFoundContent from './pages/exception/404';
-import type { IInitialState } from './services/base/typing';
-import { getProfile } from '@/services/authApi';
-import './styles/global.less';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
 
-/** loading */
-export const initialStateConfig = {
-  loading: <></>,
-};
+function App() {
+  const [count, setCount] = useState(0)
 
-export async function getInitialState(): Promise<IInitialState> {
-  const token = localStorage.getItem('token');
+  return (
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
 
-  if (!token) {
-    return {
-      currentUser: null,
-      permissionLoading: false,
-      settings: {
-        navTheme: 'light',
-        layout: 'mix',
-        contentWidth: 'Fluid',
-        fixedHeader: true,
-        fixSiderbar: true,
-      },
-      authorizedPermissions: [],
-    };
-  }
+      <div className="ticks"></div>
 
-  try {
-    const response = await getProfile();
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-    return {
-      currentUser: response.data,
-      permissionLoading: false,
-      settings: {
-        navTheme: 'light',
-        layout: 'mix',
-        contentWidth: 'Fluid',
-        fixedHeader: true,
-        fixSiderbar: true,
-      },
-      authorizedPermissions: [],
-    };
-  } catch (error) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-
-    return {
-      currentUser: null,
-      permissionLoading: false,
-      settings: {
-        navTheme: 'light',
-        layout: 'mix',
-        contentWidth: 'Fluid',
-        fixedHeader: true,
-        fixSiderbar: true,
-      },
-      authorizedPermissions: [],
-    };
-  }
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
+  )
 }
 
-const authHeaderInterceptor = (url: string, options: RequestOptionsInit) => {
-  const token = localStorage.getItem('token');
-
-  if (!token) {
-    return {
-      url,
-      options,
-    };
-  }
-
-  return {
-    url,
-    options: {
-      ...options,
-      headers: {
-        ...(options.headers || {}),
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  };
-};
-
-/**
- * @see https://beta-pro.ant.design/docs/request-cn
- */
-export const request: RequestConfig = {
-  errorHandler: (error: ResponseError) => {
-    const { messages } = getIntl(getLocale());
-    const { response } = error;
-
-    if (response && response.status) {
-      const { status, statusText, url } = response;
-      const requestErrorMessage = messages['app.request.error'];
-      const errorMessage = `${requestErrorMessage} ${status}: ${url}`;
-      const errorDescription = messages[`app.request.${status}`] || statusText;
-
-      notification.error({
-        message: errorMessage,
-        description: errorDescription,
-      });
-
-      if (status === 401) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-
-        if (!window.location.pathname.startsWith('/user')) {
-          history.push('/user/login');
-        }
-      }
-    }
-
-    if (!response) {
-      notification.error({
-        description: 'Yêu cầu gặp lỗi',
-        message: 'Bạn hãy thử lại sau',
-      });
-    }
-
-    throw error;
-  },
-  requestInterceptors: [authHeaderInterceptor],
-};
-
-export const layout: RunTimeLayoutConfig = ({ initialState }) => {
-  return {
-    unAccessible: <NotAccessible />,
-    noFound: <NotFoundContent />,
-    rightContentRender: () => <RightContent />,
-    disableContentMargin: false,
-    footerRender: () => <Footer />,
-
-    onPageChange: () => {
-      const { pathname } = history.location;
-      const token = localStorage.getItem('token');
-      const role = initialState?.currentUser?.role;
-
-      const publicPaths = [
-        '/',
-        '/user/login',
-        '/user/register',
-        '/user/forgot-password',
-        '/user/reset-password',
-        '/403',
-        '/404',
-      ];
-
-      if (!token && !publicPaths.includes(pathname)) {
-        history.replace('/user/login');
-        return;
-      }
-
-      if (token && pathname.startsWith('/user')) {
-        history.replace('/forum');
-        return;
-      }
-
-      if (token && pathname === '/') {
-        history.replace('/forum');
-        return;
-      }
-
-      if (pathname.startsWith('/admin') && role !== 'admin') {
-        history.replace('/403');
-      }
-    },
-
-    menuItemRender: (item: any, dom: any) => (
-      <a
-        className="not-underline"
-        key={item?.path}
-        href={item?.path}
-        onClick={(e) => {
-          e.preventDefault();
-          history.push(item?.path ?? '/');
-        }}
-        style={{ display: 'block' }}
-      >
-        {dom}
-      </a>
-    ),
-
-    childrenRender: (dom) => (
-      <ErrorBoundary>
-        {dom}
-      </ErrorBoundary>
-    ),
-
-    menuHeaderRender: undefined,
-    ...initialState?.settings,
-  };
-};
+export default App
