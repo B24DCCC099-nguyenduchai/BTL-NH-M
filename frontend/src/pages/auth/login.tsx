@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { useHistory } from 'umi';
 import { useAuth } from '../../hooks/useAuth';
-import { addToast } from '../../utils/toast';
 
 const LoginPage: React.FC = () => {
-  const history = useHistory();
   const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +13,9 @@ const LoginPage: React.FC = () => {
     setLoading(true); setError('');
     try {
       await login({ email, password });
-    } catch (e: any) {
-      setError(e?.response?.data?.message || 'Email hoặc mật khẩu không chính xác');
+    } catch (e) { 
+      const err = e as { response?: { data?: { message?: string } } };
+      setError(err?.response?.data?.message || 'Email hoặc mật khẩu không chính xác');
     } finally { setLoading(false); }
   };
 
@@ -58,8 +56,8 @@ const LoginPage: React.FC = () => {
         </div>
 
         <div style={{ textAlign:'center', fontSize:14, color:'var(--muted)' }}>
-          Chưa có tài khoản?{' '}
-          <span onClick={() => history.push('/auth/register')} style={{ color:'var(--pri)', fontWeight:600, cursor:'pointer' }}>Đăng ký ngay</span>
+          Chưa c
+          <span onClick={() => window.location.href = '/auth/register'} style={{ color:'var(--pri)', fontWeight:600, cursor:'pointer' }}>Đăng ký ngay</span>
         </div>
 
         <div style={{ marginTop:20, padding:14, background:'var(--bg)', borderRadius:8, fontSize:13, color:'var(--faint)' }}>

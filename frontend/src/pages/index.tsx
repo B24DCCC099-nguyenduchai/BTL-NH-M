@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'umi';
+import { history } from 'umi';
 import PostCard from '../components/forum/PostCard';
 import TagBadge from '../components/common/TagBadge';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EmptyState from '../components/common/EmptyState';
 import { forumService } from '../services/forumService';
+import { useAuth } from '../hooks/useAuth';
 import type { Post, Tag, SortOption } from '../types';
-
-interface Props { currentUser: any; }
 
 const SORT_OPTIONS: { key: SortOption; label: string }[] = [
   { key: 'newest', label: 'Mới nhất' },
@@ -16,8 +15,8 @@ const SORT_OPTIONS: { key: SortOption; label: string }[] = [
   { key: 'views', label: '👁 Xem nhiều' },
 ];
 
-const HomePage: React.FC<Props> = ({ currentUser }) => {
-  const history = useHistory();
+export default function HomePage() {
+  const { user: currentUser } = useAuth();
   const [posts, setPosts] = useState<Post[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,7 +49,7 @@ const HomePage: React.FC<Props> = ({ currentUser }) => {
 
       {/* Hero */}
       <div style={{ borderRadius: 20, background: 'linear-gradient(135deg,#1e3a5f 0%,#2d1b69 55%,#1a3a4f 100%)', padding: '52px 48px', marginBottom: 36, position: 'relative', overflow: 'hidden' }}>
-        {[{t:-60,r:-60,s:200,o:.05},{t:40,r:160,s:80,o:.07},{b:-40,l:-40,s:160,o:.04}].map((c:any,i) => (
+        {[{t:-60,r:-60,s:200,o:.05},{t:40,r:160,s:80,o:.07},{b:-40,l:-40,s:160,o:.04}].map((c:{t?:number;r?:number;b?:number;l?:number;s:number;o:number},i) => (
           <div key={i} style={{ position:'absolute', width:c.s, height:c.s, borderRadius:'50%', background:'#fff', opacity:c.o, top:c.t, bottom:c.b, left:c.l, right:c.r }} />
         ))}
         <div style={{ position:'relative' }}>
@@ -123,7 +122,7 @@ const HomePage: React.FC<Props> = ({ currentUser }) => {
             </>
           ) : (
             <EmptyState icon="📭" title="Chưa có bài viết nào" description="Hãy là người đầu tiên đặt câu hỏi!"
-              action={currentUser && <button onClick={() => history.push('/ask')} style={{ marginTop:16, padding:'10px 24px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>✏️ Đặt câu hỏi</button>} />
+              action={currentUser && <button onClick={() => navigate('/ask')} style={{ marginTop:16, padding:'10px 24px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>✏️ Đặt câu hỏi</button>} />
           )}
         </div>
 
@@ -145,8 +144,8 @@ const HomePage: React.FC<Props> = ({ currentUser }) => {
               ...(currentUser
                 ? [{label:'✏️ Đặt câu hỏi', to:'/ask'},{label:'👤 Hồ sơ', to:'/profile'}]
                 : [{label:'🔑 Đăng nhập', to:'/auth/login'},{label:'📋 Đăng ký', to:'/auth/register'}])
-            ].map((l:any,i) => (
-              <button key={i} onClick={() => history.push(l.to)}
+            ].map((l:{label:string;to:string},i) => (
+              <button key={i} onClick={() => navigate(l.to)}
                 style={{ display:'block', width:'100%', padding:'9px 12px', fontSize:14, textAlign:'left', background:'transparent', border:'none', cursor:'pointer', color:'var(--text)', borderRadius:8, transition:'background .15s', fontFamily:'inherit', marginBottom:2 }}
                 onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')}
                 onMouseLeave={e => (e.currentTarget.style.background='transparent')}>
@@ -158,6 +157,4 @@ const HomePage: React.FC<Props> = ({ currentUser }) => {
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

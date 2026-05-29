@@ -2,28 +2,28 @@ import React from 'react';
 
 interface Props {
   votes: number;
-  userVote: 0 | 1 | -1;
-  onVote: (v: 1 | -1) => void;
+  userVote: 'up' | 'down' | null;
+  onVote: (direction: 'up' | 'down') => void;
   disabled?: boolean;
 }
 
 const VoteButton: React.FC<Props> = ({ votes, userVote, onVote, disabled }) => {
-  const btnStyle = (v: 1 | -1): React.CSSProperties => ({
+  const btnStyle = (direction: 'up' | 'down'): React.CSSProperties => ({
     width: 38,
     height: 38,
     borderRadius: '50%',
     border: `1.5px solid ${
-      userVote === v ? (v === 1 ? 'var(--success)' : 'var(--danger)') : 'var(--border)'
+      userVote === direction ? (direction === 'up' ? 'var(--success)' : 'var(--danger)') : 'var(--border)'
     }`,
     background:
-      userVote === v
-        ? v === 1
+      userVote === direction
+        ? direction === 'up'
           ? 'rgba(34,197,94,.1)'
           : 'rgba(239,68,68,.1)'
         : 'transparent',
     color:
-      userVote === v
-        ? v === 1
+      userVote === direction
+        ? direction === 'up'
           ? 'var(--success)'
           : 'var(--danger)'
         : 'var(--muted)',
@@ -39,13 +39,13 @@ const VoteButton: React.FC<Props> = ({ votes, userVote, onVote, disabled }) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, flexShrink: 0 }}>
-      <button style={btnStyle(1)} onClick={() => !disabled && onVote(1)}>▲</button>
+      <button style={btnStyle('up')} onClick={() => !disabled && onVote('up')}>▲</button>
       <span
         style={{
           fontFamily: "'Syne', sans-serif",
           fontWeight: 800,
           fontSize: 20,
-          color: userVote === 1 ? 'var(--success)' : userVote === -1 ? 'var(--danger)' : 'var(--text)',
+          color: userVote === 'up' ? 'var(--success)' : userVote === 'down' ? 'var(--danger)' : 'var(--text)',
           lineHeight: 1,
           minWidth: 32,
           textAlign: 'center',
@@ -53,7 +53,7 @@ const VoteButton: React.FC<Props> = ({ votes, userVote, onVote, disabled }) => {
       >
         {votes}
       </span>
-      <button style={btnStyle(-1)} onClick={() => !disabled && onVote(-1)}>▼</button>
+      <button style={btnStyle('down')} onClick={() => !disabled && onVote('down')}>▼</button>
     </div>
   );
 };

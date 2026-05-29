@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'umi';
+import { useNavigate } from 'umi';
 import PostCard from '../../components/forum/PostCard';
 import TagBadge from '../../components/common/TagBadge';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import EmptyState from '../../components/common/EmptyState';
 import { forumService } from '../../services/forumService';
-import type { Post, Tag, SortOption } from '../../types';
+import type { Post, Tag, SortOption, User } from '../../types';
 
-interface Props { currentUser: any; }
+interface Props { currentUser: User | null; }
 
 const SORT_OPTIONS: { key: SortOption; label: string }[] = [
   { key: 'newest', label: 'Mới nhất' },
@@ -17,11 +17,10 @@ const SORT_OPTIONS: { key: SortOption; label: string }[] = [
 ];
 
 const ForumPage: React.FC<Props> = ({ currentUser }) => {
-  const history = useHistory();
-  const location = useLocation();
-  const params = new URLSearchParams((location as any).search);
-  const initKeyword = params.get('keyword') ?? '';
-  const initTag = params.get('tag') ?? null;
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initKeyword = searchParams.get('keyword') ?? '';
+  const initTag = searchParams.get('tag') ?? null;
 
   const [posts, setPosts] = useState<Post[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
@@ -65,7 +64,7 @@ const ForumPage: React.FC<Props> = ({ currentUser }) => {
           {total > 0 && <div style={{ fontSize:14, color:'var(--muted)' }}>{total.toLocaleString()} bài viết</div>}
         </div>
         {currentUser && (
-          <button onClick={() => history.push('/ask')} style={{ display:'inline-flex',alignItems:'center',gap:6,padding:'0 20px',height:42,borderRadius:21,fontSize:14,fontWeight:600,cursor:'pointer',border:'none',background:'linear-gradient(135deg,var(--pri),var(--sec))',color:'#fff',fontFamily:'inherit' }}>
+          <button onClick={() => navigate('/ask')} style={{ display:'inline-flex',alignItems:'center',gap:6,padding:'0 20px',height:42,borderRadius:21,fontSize:14,fontWeight:600,cursor:'pointer',border:'none',background:'linear-gradient(135deg,var(--pri),var(--sec))',color:'#fff',fontFamily:'inherit' }}>
             ✏️ Đặt câu hỏi mới
           </button>
         )}

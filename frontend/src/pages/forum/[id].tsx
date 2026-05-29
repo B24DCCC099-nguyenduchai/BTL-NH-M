@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'umi';
+import { useParams, useNavigate } from 'umi';
 import UserAvatar from '../../components/common/UserAvatar';
 import RoleBadge from '../../components/common/RoleBadge';
 import TagBadge from '../../components/common/TagBadge';
@@ -15,17 +15,16 @@ interface Props { currentUser: User | null; }
 
 const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
   const { id } = useParams<{ id: string }>();
-  const history = useHistory();
-  const postId = Number(id);
+  const navigate = useNavigate();
+  const postId = id!;
 
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [commentText, setCommentText] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [userVote, setUserVote] = useState<0 | 1 | -1>(0);
+  const [userVote, setUserVote] = useState<'up' | 'down' | null>(null);
   const [voteCount, setVoteCount] = useState(0);
-  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -36,26 +35,30 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
           forumService.getComments(postId),
         ]);
         setPost(p);
-        setVoteCount(p.votes);
-        setIsSaved(p.isSaved ?? false);
+        setVoteCount(p.votes || 0);
         setComments(c);
-      } catch { addToast('Không tìm thấy bài viết', 'error'); history.push('/forum'); }
+      } catch { addToast('Không tìm thấy bài viết', 'error'); navigate('/forum'); }
       finally { setLoading(false); }
     })();
-  }, [postId]);
+  }, [postId, navigate]);
 
-  const handleVote = async (v: 1 | -1) => {
-    if (!currentUser) { addToast('Vui lòng đăng nhập để vote', 'info'); history.push('/auth/login'); return; }
-    const newVote: any = userVote === v ? 0 : v;
-    const delta = newVote - userVote;
-    setVoteCount(c => c + delta);
+  const handleVote = async (direction: 'up' | 'down') => {
+    if (!currentUser) { addToast('Vui lòng đăng nhập để vote', 'info'); navigate('/auth/login'); return; }
+    const prevVote = userVote;
+    const newVote = userVote === direction ? null : direction;
     setUserVote(newVote);
-    try { await forumService.votePost(postId, v); }
-    catch { setVoteCount(post?.votes ?? 0); setUserVote(0); }
+    try {
+      await forumService.votePost(postId, direction);
+      const p = await forumService.getPost(postId);
+      setVoteCount(p.votes || 0);
+    } catch {
+      setUserVote(prevVote);
+      addToast('Không thể cập nhật vote', 'error');
+    }
   };
 
   const handleSave = async () => {
-    if (!currentUser) { history.push('/auth/login'); return; }
+    if (!currentUser) { navigate('/auth/login'); return; }
     try {
       const r = await forumService.savePost(postId);
       setIsSaved(r.saved);
@@ -64,20 +67,20 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
   };
 
   const handleComment = async () => {
-    if (!currentUser) { history.push('/auth/login'); return; }
+    if (!currentUser) { navigate('/auth/login'); return; }
     if (!commentText.trim()) { addToast('Vui lòng nhập nội dung', 'error'); return; }
     setSubmitting(true);
     try {
       const c = await forumService.createComment(postId, { content: commentText });
       setComments(prev => [c, ...prev]);
       setCommentText('');
-      if (post) setPost({ ...post, commentCount: post.commentCount + 1 });
+      if (post) setPost({ ...post, commentCount: (post.commentCount || 0) + 1 });
       addToast('Đã thêm bình luận!', 'success');
     } catch { addToast('Không thể gửi bình luận', 'error'); }
     finally { setSubmitting(false); }
   };
 
-  const handleDeleteComment = async (cid: number) => {
+  const handleDeleteComment = async (cid: string) => {
     if (!window.confirm('Xóa bình luận này?')) return;
     try {
       await forumService.deleteComment(cid);
@@ -95,7 +98,7 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
     try {
       await forumService.deletePost(postId);
       addToast('Đã xóa bài viết', 'success');
-      history.push('/forum');
+      navigate('/forum');
     } catch { addToast('Không thể xóa', 'error'); }
   };
 
@@ -109,7 +112,7 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
     <div style={{ maxWidth:1100, margin:'0 auto', padding:'32px 24px' }}>
       {/* Breadcrumb */}
       <div style={{ display:'flex', alignItems:'center', gap:6, fontSize:14, color:'var(--muted)', marginBottom:24, cursor:'pointer' }}
-        onClick={() => history.push('/forum')}>
+        onClick={() => navigate('/forum')}>
         ← Diễn đàn · <span style={{ color:'var(--text)', fontWeight:500, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', maxWidth:400 }}>{post.title}</span>
       </div>
 
@@ -134,7 +137,7 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
                 </button>
                 {canEdit && (
                   <>
-                    <button onClick={() => history.push(`/ask?edit=${postId}`)} style={{ padding:'6px 14px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>✏️ Sửa</button>
+                    <button onClick={() => navigate(`/ask?edit=${postId}`)} style={{ padding:'6px 14px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>✏️ Sửa</button>
                     <button onClick={handleDeletePost} style={{ padding:'6px 14px', borderRadius:20, border:'1.5px solid var(--danger)', background:'rgba(239,68,68,.06)', color:'var(--danger)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>🗑️ Xóa</button>
                   </>
                 )}
@@ -146,7 +149,7 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
 
             {/* Tags */}
             <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:20 }}>
-              {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => history.push(`/forum?tag=${t.name}`)} />)}
+              {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => navigate(`/forum?tag=${t.name}`)} />)}
             </div>
 
             {/* Content + Vote */}
@@ -180,7 +183,7 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
             ) : (
               <div style={{ textAlign:'center', padding:'20px 0' }}>
                 <p style={{ color:'var(--muted)', marginBottom:14 }}>Đăng nhập để tham gia thảo luận</p>
-                <button onClick={() => history.push('/auth/login')} style={{ padding:'10px 28px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Đăng nhập</button>
+                <button onClick={() => navigate('/auth/login')} style={{ padding:'10px 28px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Đăng nhập</button>
               </div>
             )}
           </div>
@@ -225,13 +228,13 @@ const PostDetailPage: React.FC<Props> = ({ currentUser }) => {
             <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:20 }}>
               <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:12 }}>🏷️ Tags</div>
               <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
-                {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => history.push(`/forum?tag=${t.name}`)} />)}
+                {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => navigate(`/forum?tag=${t.name}`)} />)}
               </div>
             </div>
           )}
-          <button onClick={() => history.push('/forum')} style={{ padding:'11px 0', borderRadius:'var(--radius)', border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit', transition:'all .2s' }}
-            onMouseEnter={e => { (e.currentTarget as any).style.borderColor='var(--pri)'; (e.currentTarget as any).style.color='var(--pri)'; }}
-            onMouseLeave={e => { (e.currentTarget as any).style.borderColor='var(--border)'; (e.currentTarget as any).style.color='var(--muted)'; }}>
+          <button onClick={() => navigate('/forum')} style={{ padding:'11px 0', borderRadius:'var(--radius)', border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit', transition:'all .2s' }}
+            onMouseEnter={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor='var(--pri)'; el.style.color='var(--pri)'; }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor='var(--border)'; el.style.color='var(--muted)'; }}>
             ← Về diễn đàn
           </button>
         </div>

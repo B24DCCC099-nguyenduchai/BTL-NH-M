@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'umi';
 import { useAuth } from '../../hooks/useAuth';
 import type { UserRole } from '../../types';
 
 const RegisterPage: React.FC = () => {
-  const history = useHistory();
   const { register } = useAuth();
   const [role, setRole] = useState<UserRole>('student');
   const [form, setForm] = useState({ username:'', email:'', password:'', confirm:'' });
@@ -19,13 +17,16 @@ const RegisterPage: React.FC = () => {
     if (form.password !== form.confirm) { setError('Mật khẩu xác nhận không khớp'); return; }
     setLoading(true); setError('');
     try { await register({ username: form.username, email: form.email, password: form.password, role }); }
-    catch (e: any) { setError(e?.response?.data?.message || 'Đăng ký thất bại, vui lòng thử lại'); }
+    catch (e) { 
+      const err = e as { response?: { data?: { message?: string } } };
+      setError(err?.response?.data?.message || 'Đăng ký thất bại, vui lòng thử lại'); 
+    }
     finally { setLoading(false); }
   };
 
   const inp: React.CSSProperties = { width:'100%', height:46, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:15, outline:'none', fontFamily:'inherit', transition:'all .2s' };
-  const focus = (e: any) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };
-  const blur = (e: any) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };
+  const focus = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };
+  const blur = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };
 
   const ROLES: { value: UserRole; icon: string; label: string; desc: string }[] = [
     { value:'student', icon:'🎓', label:'Sinh viên', desc:'Đặt câu hỏi, học hỏi' },
@@ -67,7 +68,7 @@ const RegisterPage: React.FC = () => {
         ].map(field => (
           <div key={field.key} style={{ marginBottom:16 }}>
             <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{field.label}</label>
-            <input type={field.type} value={(form as any)[field.key]} onChange={f(field.key as any)} placeholder={field.placeholder} style={inp} onFocus={focus} onBlur={blur} />
+            <input type={field.type} value={(form)[field.key as keyof typeof form]} onChange={f(field.key as keyof typeof form)} placeholder={field.placeholder} style={inp} onFocus={focus} onBlur={blur} />
           </div>
         ))}
 

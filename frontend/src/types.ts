@@ -2,14 +2,13 @@
 export type UserRole = 'student' | 'lecturer' | 'admin';
 
 export interface User {
-  id: number;
-  username: string;
+  id: string;
+  name: string;
   email: string;
   role: UserRole;
   avatar?: string;
   bio?: string;
-  isActive: boolean;
-  darkMode?: boolean;
+  status: 'active' | 'locked';
   createdAt: string;
 }
 
@@ -20,73 +19,60 @@ export interface LoginPayload {
 }
 
 export interface RegisterPayload {
-  username: string;
+  name: string;
   email: string;
   password: string;
-  role: UserRole;
 }
 
-export interface AuthResponse {
+export interface LoginResponse {
   token: string;
   user: User;
-  message?: string;
 }
 
 // ─── Tag Types ────────────────────────────────────────────────────────────────
 export interface Tag {
-  id: number;
+  id: string;
   name: string;
   color?: string;
   description?: string;
-  usageCount: number;
+  usageCount?: number;
 }
 
 // ─── Post Types ───────────────────────────────────────────────────────────────
 export interface PostAuthor {
-  id: number;
-  username: string;
+  id: string;
+  name: string;
+  email?: string;
   avatar?: string;
   role: UserRole;
 }
 
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   content: string;
   author: PostAuthor;
-  authorId: number;
+  authorId: string;
   tags: Tag[];
   votes: number;
-  views: number;
-  commentCount: number;
-  isSaved?: boolean;
+  views?: number;
+  commentCount?: number;
   createdAt: string;
-  updatedAt: string;
-}
-
-export interface CreatePostPayload {
-  title: string;
-  content: string;
-  tags: string[];
+  updatedAt?: string;
 }
 
 // ─── Comment Types ────────────────────────────────────────────────────────────
 export interface Comment {
-  id: number;
+  id: string;
   content: string;
   author: PostAuthor;
-  userId: number;
-  postId: number;
+  userId: string;
+  postId: string;
   votes: number;
-  parentCommentId?: number | null;
+  parentCommentId?: string | null;
   replies?: Comment[];
   createdAt: string;
-  updatedAt: string;
-}
-
-export interface CreateCommentPayload {
-  content: string;
-  parentCommentId?: number;
+  updatedAt?: string;
 }
 
 // ─── Pagination Types ─────────────────────────────────────────────────────────

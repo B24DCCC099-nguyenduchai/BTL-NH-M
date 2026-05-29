@@ -8,32 +8,32 @@ import { addToast } from '../../utils/toast';
 
 interface Props {
   comment: Comment;
-  postId: number;
+  postId: string;
   currentUser: User | null;
-  onDelete: (id: number) => void;
-  onReplyAdded: (parentId: number, reply: Comment) => void;
+  onDelete: (id: string) => void;
+  onReplyAdded: (parentId: string, reply: Comment) => void;
 }
 
 const CommentItem: React.FC<Props> = ({ comment, postId, currentUser, onDelete, onReplyAdded }) => {
   const [showReply, setShowReply] = useState(false);
   const [replyText, setReplyText] = useState('');
-  const [votes, setVotes] = useState(comment.votes);
-  const [userVote, setUserVote] = useState<0 | 1 | -1>(0);
+  const [votes, setVotes] = useState(comment.votes || 0);
+  const [userVote, setUserVote] = useState<'up' | 'down' | null>(null);
   const [sending, setSending] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   const canDelete = currentUser && (currentUser.id === comment.userId || currentUser.role === 'admin');
 
-  const handleVote = async (v: 1 | -1) => {
+  const handleVote = async (direction: 'up' | 'down') => {
     if (!currentUser) { addToast('Vui lòng đăng nhập để vote', 'info'); return; }
-    const newVote = userVote === v ? 0 : v;
-    setVotes((c) => c + (newVote - userVote));
-    setUserVote(newVote as any);
+    const prevVote = userVote;
+    const newVote = userVote === direction ? null : direction;
+    setUserVote(newVote);
     try {
-      await forumService.voteComment(comment.id, v);
+      await forumService.voteComment(comment.id, direction);
     } catch {
-      setVotes(comment.votes);
-      setUserVote(0);
+      setUserVote(prevVote);
+      addToast('Không thể cập nhật vote', 'error');
     }
   };
 
@@ -41,7 +41,7 @@ const CommentItem: React.FC<Props> = ({ comment, postId, currentUser, onDelete, 
     if (!replyText.trim()) return;
     setSending(true);
     try {
-      const reply = await forumService.replyComment(postId, comment.id, { content: replyText });
+      const reply = await forumService.createComment(postId, { content: replyText, parentCommentId: comment.id });
       onReplyAdded(comment.id, reply);
       setReplyText('');
       setShowReply(false);

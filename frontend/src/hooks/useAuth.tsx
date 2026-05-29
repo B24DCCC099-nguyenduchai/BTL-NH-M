@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
-import { history } from 'umi';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { authService } from '../services/authService';
 import type { User, LoginPayload, RegisterPayload } from '../types';
 import { addToast } from '../utils/toast';
@@ -11,7 +10,10 @@ export function useAuth() {
   // Restore session on mount
   useEffect(() => {
     const token = localStorage.getItem('forum_token');
-    if (!token) { setLoading(false); return; }
+    if (!token) { 
+      setLoading(false);
+      return;
+    }
     authService.getMe()
       .then((u) => setUser(u))
       .catch(() => localStorage.removeItem('forum_token'))
@@ -23,7 +25,7 @@ export function useAuth() {
     localStorage.setItem('forum_token', data.token);
     setUser(data.user);
     addToast('Đăng nhập thành công! 🎉', 'success');
-    history.push('/');
+    window.location.href = '/';
   }, []);
 
   const register = useCallback(async (payload: RegisterPayload) => {
@@ -31,14 +33,14 @@ export function useAuth() {
     localStorage.setItem('forum_token', data.token);
     setUser(data.user);
     addToast('Tạo tài khoản thành công! Chào mừng bạn 🎉', 'success');
-    history.push('/');
+    window.location.href = '/';
   }, []);
 
   const logout = useCallback(() => {
     authService.logout().catch(() => {});
     localStorage.removeItem('forum_token');
     setUser(null);
-    history.push('/auth/login');
+    window.location.href = '/auth/login';
   }, []);
 
   const updateUser = useCallback((updates: Partial<User>) => {

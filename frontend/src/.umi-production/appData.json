@@ -1,0 +1,2425 @@
+{
+  "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+  "pkg": {
+    "name": "btck",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "max dev",
+      "build": "max build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "@umijs/max": "^4.6.57",
+      "axios": "^1.16.1",
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1",
+      "react-router-dom": "^6.22.0"
+    },
+    "devDependencies": {
+      "@eslint/js": "^10.0.1",
+      "@types/node": "^24.12.3",
+      "@types/react": "^19.2.14",
+      "@types/react-dom": "^19.2.3",
+      "eslint": "^10.3.0",
+      "eslint-plugin-react-hooks": "^7.1.1",
+      "eslint-plugin-react-refresh": "^0.5.2",
+      "globals": "^17.6.0",
+      "typescript": "~6.0.2",
+      "typescript-eslint": "^8.59.2"
+    }
+  },
+  "pkgPath": "D:\\dien-dan-hoi-dap\\frontend\\package.json",
+  "plugins": {
+    "./node_modules/@umijs/core/dist/service/servicePlugin": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "preset",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/core/dist/service/servicePlugin.js",
+      "id": "./node_modules/@umijs/core/dist/service/servicePlugin",
+      "key": "servicePlugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "@umijs/preset-umi": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "preset",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/index.js",
+      "id": "@umijs/preset-umi",
+      "key": "umi",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 10
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/max/dist/preset": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "preset",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/max/dist/preset.js",
+      "id": "./node_modules/@umijs/max/dist/preset",
+      "key": "preset",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 29
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/registerMethods": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/registerMethods.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/registerMethods",
+      "key": "registerMethods",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 5
+      },
+      "enableBy": "register"
+    },
+    "@umijs/did-you-know": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/did-you-know/dist/plugin.js",
+      "id": "@umijs/did-you-know",
+      "key": "umijsDidYouKnow",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            4
+          ]
+        },
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/404/404": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/404/404.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/404/404",
+      "key": "404",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyRoutes": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/aiDev/aiDev",
+      "key": "aiDev",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/appData/appData": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/appData/appData.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/appData/appData",
+      "key": "appData",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            51
+          ]
+        },
+        "register": 22
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/appData/umiInfo": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/appData/umiInfo",
+      "key": "umiInfo",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/check/check": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/check/check.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/check/check",
+      "key": "check",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheckConfig": [
+            0
+          ],
+          "onCheck": [
+            1
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/check/babel722": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/check/babel722.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/check/babel722",
+      "key": "babel722",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting",
+      "key": "codeSplitting",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins",
+      "key": "configPlugins",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 15
+      },
+      "enableBy": "register"
+    },
+    "virtual: config-title": {
+      "id": "virtual: config-title",
+      "key": "title",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styles": {
+      "id": "virtual: config-styles",
+      "key": "styles",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-scripts": {
+      "id": "virtual: config-scripts",
+      "key": "scripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routes": {
+      "id": "virtual: config-routes",
+      "key": "routes",
+      "config": {
+        "onChange": "regenerateTmpFiles"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routeLoader": {
+      "id": "virtual: config-routeLoader",
+      "key": "routeLoader",
+      "config": {
+        "default": {
+          "moduleType": "esm"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-reactRouter5Compat": {
+      "id": "virtual: config-reactRouter5Compat",
+      "key": "reactRouter5Compat",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-presets": {
+      "id": "virtual: config-presets",
+      "key": "presets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-plugins": {
+      "id": "virtual: config-plugins",
+      "key": "plugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-npmClient": {
+      "id": "virtual: config-npmClient",
+      "key": "npmClient",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mountElementId": {
+      "id": "virtual: config-mountElementId",
+      "key": "mountElementId",
+      "config": {
+        "default": "root"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-metas": {
+      "id": "virtual: config-metas",
+      "key": "metas",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-links": {
+      "id": "virtual: config-links",
+      "key": "links",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-historyWithQuery": {
+      "id": "virtual: config-historyWithQuery",
+      "key": "historyWithQuery",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-history": {
+      "id": "virtual: config-history",
+      "key": "history",
+      "config": {
+        "default": {
+          "type": "browser"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-headScripts": {
+      "id": "virtual: config-headScripts",
+      "key": "headScripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esbuildMinifyIIFE": {
+      "id": "virtual: config-esbuildMinifyIIFE",
+      "key": "esbuildMinifyIIFE",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionRoutes": {
+      "id": "virtual: config-conventionRoutes",
+      "key": "conventionRoutes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionLayout": {
+      "id": "virtual: config-conventionLayout",
+      "key": "conventionLayout",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-base": {
+      "id": "virtual: config-base",
+      "key": "base",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-analyze": {
+      "id": "virtual: config-analyze",
+      "key": "analyze",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-writeToDisk": {
+      "id": "virtual: config-writeToDisk",
+      "key": "writeToDisk",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-transformRuntime": {
+      "id": "virtual: config-transformRuntime",
+      "key": "transformRuntime",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-theme": {
+      "id": "virtual: config-theme",
+      "key": "theme",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-targets": {
+      "id": "virtual: config-targets",
+      "key": "targets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgr": {
+      "id": "virtual: config-svgr",
+      "key": "svgr",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgo": {
+      "id": "virtual: config-svgo",
+      "key": "svgo",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-stylusLoader": {
+      "id": "virtual: config-stylusLoader",
+      "key": "stylusLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styleLoader": {
+      "id": "virtual: config-styleLoader",
+      "key": "styleLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspilerOptions": {
+      "id": "virtual: config-srcTranspilerOptions",
+      "key": "srcTranspilerOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspiler": {
+      "id": "virtual: config-srcTranspiler",
+      "key": "srcTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-sassLoader": {
+      "id": "virtual: config-sassLoader",
+      "key": "sassLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-runtimePublicPath": {
+      "id": "virtual: config-runtimePublicPath",
+      "key": "runtimePublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-purgeCSS": {
+      "id": "virtual: config-purgeCSS",
+      "key": "purgeCSS",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-publicPath": {
+      "id": "virtual: config-publicPath",
+      "key": "publicPath",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-proxy": {
+      "id": "virtual: config-proxy",
+      "key": "proxy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-postcssLoader": {
+      "id": "virtual: config-postcssLoader",
+      "key": "postcssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-outputPath": {
+      "id": "virtual: config-outputPath",
+      "key": "outputPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-normalCSSLoaderModules": {
+      "id": "virtual: config-normalCSSLoaderModules",
+      "key": "normalCSSLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mfsu": {
+      "id": "virtual: config-mfsu",
+      "key": "mfsu",
+      "config": {
+        "default": {
+          "strategy": "eager"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mdx": {
+      "id": "virtual: config-mdx",
+      "key": "mdx",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-manifest": {
+      "id": "virtual: config-manifest",
+      "key": "manifest",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-lessLoader": {
+      "id": "virtual: config-lessLoader",
+      "key": "lessLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifierOptions": {
+      "id": "virtual: config-jsMinifierOptions",
+      "key": "jsMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifier": {
+      "id": "virtual: config-jsMinifier",
+      "key": "jsMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-inlineLimit": {
+      "id": "virtual: config-inlineLimit",
+      "key": "inlineLimit",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-ignoreMomentLocale": {
+      "id": "virtual: config-ignoreMomentLocale",
+      "key": "ignoreMomentLocale",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-https": {
+      "id": "virtual: config-https",
+      "key": "https",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-hash": {
+      "id": "virtual: config-hash",
+      "key": "hash",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-forkTSChecker": {
+      "id": "virtual: config-forkTSChecker",
+      "key": "forkTSChecker",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-fastRefresh": {
+      "id": "virtual: config-fastRefresh",
+      "key": "fastRefresh",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraPostCSSPlugins": {
+      "id": "virtual: config-extraPostCSSPlugins",
+      "key": "extraPostCSSPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPresets": {
+      "id": "virtual: config-extraBabelPresets",
+      "key": "extraBabelPresets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPlugins": {
+      "id": "virtual: config-extraBabelPlugins",
+      "key": "extraBabelPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelIncludes": {
+      "id": "virtual: config-extraBabelIncludes",
+      "key": "extraBabelIncludes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-externals": {
+      "id": "virtual: config-externals",
+      "key": "externals",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esm": {
+      "id": "virtual: config-esm",
+      "key": "esm",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-devtool": {
+      "id": "virtual: config-devtool",
+      "key": "devtool",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-depTranspiler": {
+      "id": "virtual: config-depTranspiler",
+      "key": "depTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-define": {
+      "id": "virtual: config-define",
+      "key": "define",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-deadCode": {
+      "id": "virtual: config-deadCode",
+      "key": "deadCode",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssPublicPath": {
+      "id": "virtual: config-cssPublicPath",
+      "key": "cssPublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifierOptions": {
+      "id": "virtual: config-cssMinifierOptions",
+      "key": "cssMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifier": {
+      "id": "virtual: config-cssMinifier",
+      "key": "cssMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoaderModules": {
+      "id": "virtual: config-cssLoaderModules",
+      "key": "cssLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoader": {
+      "id": "virtual: config-cssLoader",
+      "key": "cssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-copy": {
+      "id": "virtual: config-copy",
+      "key": "copy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-checkDepCssModules": {
+      "id": "virtual: config-checkDepCssModules",
+      "key": "checkDepCssModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-chainWebpack": {
+      "id": "virtual: config-chainWebpack",
+      "key": "chainWebpack",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cacheDirectoryPath": {
+      "id": "virtual: config-cacheDirectoryPath",
+      "key": "cacheDirectoryPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-babelLoaderCustomize": {
+      "id": "virtual: config-babelLoaderCustomize",
+      "key": "babelLoaderCustomize",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoprefixer": {
+      "id": "virtual: config-autoprefixer",
+      "key": "autoprefixer",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoCSSModules": {
+      "id": "virtual: config-autoCSSModules",
+      "key": "autoCSSModules",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-alias": {
+      "id": "virtual: config-alias",
+      "key": "alias",
+      "config": {
+        "default": {
+          "umi": "@@/exports",
+          "react": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react",
+          "react-dom": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react-dom",
+          "react-router": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react-router",
+          "react-router-dom": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\@umijs\\preset-umi\\node_modules\\react-router-dom"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin",
+      "key": "crossorigin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand",
+      "key": "depsOnDemand",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/devTool/devTool": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/devTool/devTool.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/devTool/devTool",
+      "key": "devTool",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker",
+      "key": "esbuildHelperChecker",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 76
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/esmi/esmi": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/esmi/esmi.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/esmi/esmi",
+      "key": "esmi",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 36
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic",
+      "key": "exportStatic",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 44
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/favicons/favicons": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/favicons/favicons.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/favicons/favicons",
+      "key": "favicons",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/helmet/helmet": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/helmet/helmet.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/helmet/helmet",
+      "key": "helmet",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/icons/icons": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/icons/icons.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/icons/icons",
+      "key": "icons",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mock/mock": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mock/mock",
+      "key": "mock",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 47
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mpa/mpa": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/mpa/mpa.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mpa/mpa",
+      "key": "mpa",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/okam/okam": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/okam/okam",
+      "key": "okam",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/overrides/overrides": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/overrides/overrides.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/overrides/overrides",
+      "key": "overrides",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency",
+      "key": "phantomDependency",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill",
+      "key": "polyfill",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            7
+          ]
+        },
+        "register": 2
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill",
+      "key": "publicPathPolyfill",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/prepare/prepare": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/prepare/prepare.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/prepare/prepare",
+      "key": "prepare",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch",
+      "key": "routePrefetch",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/stagewise/stagewise",
+      "key": "stagewise",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/terminal/terminal": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/terminal/terminal.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/terminal/terminal",
+      "key": "terminal",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles",
+      "key": "tmpFiles",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 5
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader",
+      "key": "clientLoader",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps",
+      "key": "routeProps",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/ssr/ssr": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/ssr/ssr.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/ssr/ssr",
+      "key": "ssr",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes",
+      "key": "configTypes",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/transform/transform": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/transform/transform.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/transform/transform",
+      "key": "transform",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport",
+      "key": "lowImport",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/vite/vite": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/vite/vite.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/vite/vite",
+      "key": "vite",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute",
+      "key": "apiRoute",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 6
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/monorepo/redirect": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/monorepo/redirect",
+      "key": "monorepoRedirect",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 20
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/test/test": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/test/test.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/test/test",
+      "key": "test",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent",
+      "key": "clickToComponent",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/legacy/legacy": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/legacy/legacy.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/legacy/legacy",
+      "key": "legacy",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose",
+      "key": "classPropertiesLoose",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/webpack/webpack": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/webpack/webpack",
+      "key": "preset-umi:webpack",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/swc/swc": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/swc/swc.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/swc/swc",
+      "key": "swc",
+      "config": {},
+      "time": {
+        "hooks": {
+          "addOnDemandDeps": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/ui/ui": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/ui/ui",
+      "key": "ui",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/mako/mako": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/mako/mako.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/mako/mako",
+      "key": "mako",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/utoopack/utoopack",
+      "key": "utoopack",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian",
+      "key": "hmrGuardian",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad",
+      "key": "routePreloadOnLoad",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 26
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/forget/forget": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/forget/forget.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/forget/forget",
+      "key": "forget",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 9
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/preset-umi/dist/features/bundler/bundler": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/features/bundler/bundler.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/features/bundler/bundler",
+      "key": "preset-umi:bundler",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/build": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/build.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/build",
+      "key": "build",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 4
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/config/config": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/config/config.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/config/config",
+      "key": "config",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 36
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/dev/dev": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/dev/dev",
+      "key": "dev",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 575
+      }
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/help": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/help.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/help",
+      "key": "help",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/lint": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/lint.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/lint",
+      "key": "lint",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/setup": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/setup.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/setup",
+      "key": "setup",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/deadcode": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/deadcode.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/deadcode",
+      "key": "deadcode",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/version": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/version.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/version",
+      "key": "version",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/page": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/page.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/page",
+      "key": "generator:page",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/prettier": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/prettier.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/prettier",
+      "key": "generator:prettier",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig",
+      "key": "generator:tsconfig",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/jest": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/jest.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/jest",
+      "key": "generator:jest",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss",
+      "key": "generator:tailwindcss",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/dva": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/dva.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/dva",
+      "key": "generator:dva",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/component": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/component.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/component",
+      "key": "generator:component",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/mock": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/mock.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/mock",
+      "key": "generator:mock",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/cypress": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/cypress.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/cypress",
+      "key": "generator:cypress",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/api": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/api.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/api",
+      "key": "generator:api",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/generators/precommit": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/generators/precommit.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/generators/precommit",
+      "key": "generator:precommit",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/plugin": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/plugin.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/plugin",
+      "key": "command:plugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/verify-commit": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/verify-commit.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/verify-commit",
+      "key": "verifyCommit",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/preview": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/preview.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/preview",
+      "key": "preview",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 23
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu.js",
+      "id": "./node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu",
+      "key": "mfsu-cli",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register"
+    },
+    "@umijs/plugin-run": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugin-run/dist/index.js",
+      "id": "@umijs/plugin-run",
+      "key": "run",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/plugins/dist/access": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/access.js",
+      "id": "./node_modules/@umijs/plugins/dist/access",
+      "key": "access",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 33
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/analytics": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/analytics.js",
+      "id": "./node_modules/@umijs/plugins/dist/analytics",
+      "key": "analytics",
+      "config": {
+        "onChange": "reload"
+      },
+      "time": {
+        "hooks": {},
+        "register": 20
+      }
+    },
+    "./node_modules/@umijs/plugins/dist/antd": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/antd.js",
+      "id": "./node_modules/@umijs/plugins/dist/antd",
+      "key": "antd",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 69
+      }
+    },
+    "./node_modules/@umijs/plugins/dist/dva": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/dva.js",
+      "id": "./node_modules/@umijs/plugins/dist/dva",
+      "key": "dva",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 55
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/initial-state": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/initial-state.js",
+      "id": "./node_modules/@umijs/plugins/dist/initial-state",
+      "key": "initialState",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 17
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/layout": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/layout.js",
+      "id": "./node_modules/@umijs/plugins/dist/layout",
+      "key": "layout",
+      "config": {
+        "onChange": "regenerateTmpFiles"
+      },
+      "time": {
+        "hooks": {},
+        "register": 40
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/locale": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/locale.js",
+      "id": "./node_modules/@umijs/plugins/dist/locale",
+      "key": "locale",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 44
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/mf": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/mf.js",
+      "id": "./node_modules/@umijs/plugins/dist/mf",
+      "key": "mf",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 46
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/model": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/model.js",
+      "id": "./node_modules/@umijs/plugins/dist/model",
+      "key": "model",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 19
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/moment2dayjs": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/moment2dayjs.js",
+      "id": "./node_modules/@umijs/plugins/dist/moment2dayjs",
+      "key": "moment2dayjs",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 16
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/qiankun": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/qiankun.js",
+      "id": "./node_modules/@umijs/plugins/dist/qiankun",
+      "key": "qiankun",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 14
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/plugins/dist/qiankun/master": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/qiankun/master.js",
+      "id": "./node_modules/@umijs/plugins/dist/qiankun/master",
+      "key": "qiankun-master",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 32
+      }
+    },
+    "./node_modules/@umijs/plugins/dist/qiankun/slave": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/qiankun/slave.js",
+      "id": "./node_modules/@umijs/plugins/dist/qiankun/slave",
+      "key": "qiankun-slave",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 20
+      }
+    },
+    "./node_modules/@umijs/plugins/dist/react-query": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/react-query.js",
+      "id": "./node_modules/@umijs/plugins/dist/react-query",
+      "key": "reactQuery",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 17
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/request": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/request.js",
+      "id": "./node_modules/@umijs/plugins/dist/request",
+      "key": "request",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 17
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/styled-components": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/styled-components.js",
+      "id": "./node_modules/@umijs/plugins/dist/styled-components",
+      "key": "styledComponents",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 25
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/tailwindcss": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/tailwindcss.js",
+      "id": "./node_modules/@umijs/plugins/dist/tailwindcss",
+      "key": "tailwindcss",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 19
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/plugins/dist/valtio": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/plugins/dist/valtio.js",
+      "id": "./node_modules/@umijs/plugins/dist/valtio",
+      "key": "valtio",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 23
+      },
+      "enableBy": "config"
+    },
+    "./node_modules/@umijs/max/dist/plugins/maxAlias": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/max/dist/plugins/maxAlias.js",
+      "id": "./node_modules/@umijs/max/dist/plugins/maxAlias",
+      "key": "maxAlias",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 13
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/max/dist/plugins/maxAppData": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/max/dist/plugins/maxAppData.js",
+      "id": "./node_modules/@umijs/max/dist/plugins/maxAppData",
+      "key": "maxAppData",
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            0
+          ]
+        },
+        "register": 12
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/max/dist/plugins/maxChecker": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/max/dist/plugins/maxChecker.js",
+      "id": "./node_modules/@umijs/max/dist/plugins/maxChecker",
+      "key": "maxChecker",
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheckPkgJSON": [
+            0
+          ]
+        },
+        "register": 14
+      },
+      "enableBy": "register"
+    },
+    "./node_modules/@umijs/core/dist/service/generatePlugin": {
+      "cwd": "D:\\dien-dan-hoi-dap\\frontend",
+      "type": "plugin",
+      "path": "D:/dien-dan-hoi-dap/frontend/node_modules/@umijs/core/dist/service/generatePlugin.js",
+      "id": "./node_modules/@umijs/core/dist/service/generatePlugin",
+      "key": "generatePlugin",
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register"
+    }
+  },
+  "presets": [],
+  "name": "build",
+  "args": {
+    "_": []
+  },
+  "userConfig": {
+    "npmClient": "npm",
+    "layout": false
+  },
+  "mainConfigFile": "D:\\dien-dan-hoi-dap\\frontend\\.umirc.ts",
+  "config": {
+    "routeLoader": {
+      "moduleType": "esm"
+    },
+    "mountElementId": "root",
+    "history": {
+      "type": "browser"
+    },
+    "base": "/",
+    "svgr": {},
+    "publicPath": "/",
+    "mfsu": {
+      "strategy": "eager"
+    },
+    "ignoreMomentLocale": true,
+    "externals": {},
+    "autoCSSModules": true,
+    "alias": {
+      "umi": "@@/exports",
+      "react": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react",
+      "react-dom": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react-dom",
+      "react-router": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react-router",
+      "react-router-dom": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\@umijs\\preset-umi\\node_modules\\react-router-dom",
+      "@": "D:/dien-dan-hoi-dap/frontend/src",
+      "@@": "D:/dien-dan-hoi-dap/frontend/src/.umi-production",
+      "regenerator-runtime": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\@umijs\\preset-umi\\node_modules\\regenerator-runtime",
+      "@umijs/max": "@@/exports"
+    },
+    "npmClient": "npm",
+    "layout": false,
+    "targets": {
+      "chrome": 80
+    }
+  },
+  "routes": {
+    "auth/register": {
+      "path": "auth/register",
+      "id": "auth/register",
+      "file": "auth/register.tsx",
+      "absPath": "/auth/register",
+      "__content": "import React, { useState } from 'react';\r\nimport { useAuth } from '../../hooks/useAuth';\r\nimport type { UserRole } from '../../types';\r\n\r\nconst RegisterPage: React.FC = () => {\r\n  const { register } = useAuth();\r\n  const [role, setRole] = useState<UserRole>('student');\r\n  const [form, setForm] = useState({ username:'', email:'', password:'', confirm:'' });\r\n  const [loading, setLoading] = useState(false);\r\n  const [error, setError] = useState('');\r\n\r\n  const f = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => setForm(p => ({ ...p, [k]: e.target.value }));\r\n\r\n  const handleSubmit = async () => {\r\n    if (!form.username || !form.email || !form.password) { setError('Vui lòng nhập đầy đủ thông tin'); return; }\r\n    if (form.password.length < 6) { setError('Mật khẩu phải có ít nhất 6 ký tự'); return; }\r\n    if (form.password !== form.confirm) { setError('Mật khẩu xác nhận không khớp'); return; }\r\n    setLoading(true); setError('');\r\n    try { await register({ username: form.username, email: form.email, password: form.password, role }); }\r\n    catch (e) { \r\n      const err = e as { response?: { data?: { message?: string } } };\r\n      setError(err?.response?.data?.message || 'Đăng ký thất bại, vui lòng thử lại'); \r\n    }\r\n    finally { setLoading(false); }\r\n  };\r\n\r\n  const inp: React.CSSProperties = { width:'100%', height:46, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:15, outline:'none', fontFamily:'inherit', transition:'all .2s' };\r\n  const focus = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };\r\n  const blur = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };\r\n\r\n  const ROLES: { value: UserRole; icon: string; label: string; desc: string }[] = [\r\n    { value:'student', icon:'🎓', label:'Sinh viên', desc:'Đặt câu hỏi, học hỏi' },\r\n    { value:'lecturer', icon:'👨‍🏫', label:'Giảng viên', desc:'Chia sẻ kiến thức' },\r\n  ];\r\n\r\n  return (\r\n    <div style={{ minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', padding:24, background:'linear-gradient(135deg,rgba(79,140,255,.06),rgba(123,97,255,.06))' }}>\r\n      <div style={{ width:'100%', maxWidth:460, background:'var(--surface)', border:'1px solid var(--border)', borderRadius:20, padding:40, boxShadow:'var(--shadow-lg)' }}>\r\n        <div style={{ textAlign:'center', marginBottom:28 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:800, fontSize:26, background:'linear-gradient(135deg,var(--pri),var(--sec))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', marginBottom:8 }}>📚 Tạo tài khoản</div>\r\n          <div style={{ color:'var(--muted)', fontSize:15 }}>Tham gia cộng đồng học tập</div>\r\n        </div>\r\n\r\n        {error && (\r\n          <div style={{ background:'rgba(239,68,68,.08)', border:'1px solid rgba(239,68,68,.3)', borderRadius:8, padding:'10px 14px', fontSize:14, color:'var(--danger)', marginBottom:16 }}>⚠️ {error}</div>\r\n        )}\r\n\r\n        {/* Role picker */}\r\n        <div style={{ marginBottom:20 }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:10 }}>Bạn là</label>\r\n          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>\r\n            {ROLES.map(r => (\r\n              <div key={r.value} onClick={() => setRole(r.value)}\r\n                style={{ border:`2px solid ${role===r.value?'var(--pri)':'var(--border)'}`, borderRadius:10, padding:14, textAlign:'center', cursor:'pointer', background:role===r.value?'rgba(79,140,255,.06)':'transparent', transition:'all .2s' }}>\r\n                <div style={{ fontSize:28, marginBottom:6 }}>{r.icon}</div>\r\n                <div style={{ fontWeight:600, fontSize:14 }}>{r.label}</div>\r\n                <div style={{ fontSize:12, color:'var(--muted)', marginTop:3 }}>{r.desc}</div>\r\n              </div>\r\n            ))}\r\n          </div>\r\n        </div>\r\n\r\n        {[\r\n          { key:'username', label:'Tên đăng nhập', placeholder:'sv_tenminhban', type:'text' },\r\n          { key:'email', label:'Email', placeholder:'email@student.edu.vn', type:'email' },\r\n          { key:'password', label:'Mật khẩu', placeholder:'Ít nhất 6 ký tự', type:'password' },\r\n          { key:'confirm', label:'Xác nhận mật khẩu', placeholder:'Nhập lại mật khẩu', type:'password' },\r\n        ].map(field => (\r\n          <div key={field.key} style={{ marginBottom:16 }}>\r\n            <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{field.label}</label>\r\n            <input type={field.type} value={(form)[field.key as keyof typeof form]} onChange={f(field.key as keyof typeof form)} placeholder={field.placeholder} style={inp} onFocus={focus} onBlur={blur} />\r\n          </div>\r\n        ))}\r\n\r\n        <button onClick={handleSubmit} disabled={loading} style={{ width:'100%', height:48, borderRadius:24, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:loading?'not-allowed':'pointer', fontSize:16, fontWeight:600, fontFamily:'inherit', opacity:loading?.75:1, marginTop:8 }}>\r\n          {loading ? 'Đang tạo tài khoản...' : 'Tạo tài khoản →'}\r\n        </button>\r\n\r\n        <div style={{ textAlign:'center', fontSize:14, color:'var(--muted)', marginTop:20 }}>\r\n          Đã có tài khoản?{' '}\r\n          <span onClick={() => history.push('/auth/login')} style={{ color:'var(--pri)', fontWeight:600, cursor:'pointer' }}>Đăng nhập</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default RegisterPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/auth/register.tsx"
+    },
+    "admin/index": {
+      "path": "admin",
+      "id": "admin/index",
+      "file": "admin/index.tsx",
+      "absPath": "/admin",
+      "__content": "import React, { useEffect, useState } from 'react';\r\nimport { useNavigate } from 'umi';\r\nimport UserAvatar from '../../components/common/UserAvatar';\r\nimport RoleBadge from '../../components/common/RoleBadge';\r\nimport TagBadge from '../../components/common/TagBadge';\r\nimport LoadingSpinner from '../../components/common/LoadingSpinner';\r\nimport { adminService } from '../../services/adminService';\r\nimport { addToast } from '../../utils/toast';\r\nimport { timeAgo } from '../../utils/helpers';\r\nimport type { User, Post, Tag, AdminStats } from '../../types';\r\n\r\ninterface Props { currentUser: User; }\r\n\r\ntype MenuKey = 'dashboard' | 'users' | 'posts' | 'tags';\r\n\r\nconst MENU: { key: MenuKey; icon: string; label: string }[] = [\r\n  { key:'dashboard', icon:'📊', label:'Dashboard' },\r\n  { key:'users', icon:'👥', label:'Người dùng' },\r\n  { key:'posts', icon:'📝', label:'Bài viết' },\r\n  { key:'tags', icon:'🏷️', label:'Tags' },\r\n];\r\n\r\nconst AdminPage: React.FC<Props> = ({ currentUser }) => {\r\n  const navigate = useNavigate();\r\n  const [menu, setMenu] = useState<MenuKey>('dashboard');\r\n  const [stats, setStats] = useState<AdminStats | null>(null);\r\n  const [users, setUsers] = useState<User[]>([]);\r\n  const [posts, setPosts] = useState<Post[]>([]);\r\n  const [tags, setTags] = useState<Tag[]>([]);\r\n  const [loading, setLoading] = useState(false);\r\n  const [editUser, setEditUser] = useState<User | null>(null);\r\n  const [showAddUser, setShowAddUser] = useState(false);\r\n  const [showAddTag, setShowAddTag] = useState(false);\r\n  const [newUser, setNewUser] = useState({ name:'', email:'', role:'student', password:'' });\r\n  const [newTag, setNewTag] = useState({ name:'', color:'#4f8cff', description:'' });\r\n\r\n  if (currentUser.role !== 'admin') { navigate('/'); return null; }\r\n\r\n  useEffect(() => {\r\n    const load = async () => {\r\n      setLoading(true);\r\n      try {\r\n        const [st, us, ps] = await Promise.all([\r\n          adminService.getStats(),\r\n          adminService.getUsers(),\r\n          adminService.getPosts(),\r\n        ]);\r\n        setStats(st);\r\n        setUsers(us);\r\n        setPosts(ps);\r\n      } catch { /* use empty */ }\r\n      finally { setLoading(false); }\r\n    };\r\n    load();\r\n  }, []);\r\n\r\n  const handleToggleLock = async (id: string) => {\r\n    try { await adminService.lockUser(id); setUsers(p => p.map(u => u.id===id?{...u,status: u.status === 'active' ? 'locked' : 'active'}:u)); addToast('Đã cập nhật trạng thái!','success'); }\r\n    catch { addToast('Lỗi cập nhật','error'); }\r\n  };\r\n  const handleResetPw = async (id: string) => {\r\n    try { await adminService.resetPassword(id); addToast('Mật khẩu mới đã được gửi email','success'); }\r\n    catch { addToast('Lỗi reset mật khẩu','error'); }\r\n  };\r\n  const handleDeleteUser = async (id: string) => {\r\n    if (!window.confirm('Xóa người dùng này?')) return;\r\n    try { await adminService.deleteUser(id); setUsers(p => p.filter(u => u.id!==id)); addToast('Đã xóa người dùng','success'); }\r\n    catch { addToast('Lỗi xóa','error'); }\r\n  };\r\n  const handleDeletePost = async (id: string) => {\r\n    if (!window.confirm('Xóa bài viết này?')) return;\r\n    try { await adminService.deletePost(id); setPosts(p => p.filter(x => x.id!==id)); addToast('Đã xóa bài viết','success'); }\r\n    catch { addToast('Lỗi xóa','error'); }\r\n  };\r\n  const handleSaveUser = async () => {\r\n    if (!editUser) return;\r\n    try { await adminService.updateUser(editUser.id, editUser); setUsers(p => p.map(u => u.id===editUser.id?editUser:u)); setEditUser(null); addToast('Đã cập nhật!','success'); }\r\n    catch { addToast('Lỗi cập nhật','error'); }\r\n  };\r\n  const handleAddUser = async () => {\r\n    if (!newUser.name||!newUser.email||!newUser.password) { addToast('Vui lòng nhập đủ thông tin','error'); return; }\r\n    try {\r\n      const u = await adminService.createUser(newUser as any);\r\n      setUsers(p => [...p, u]); setShowAddUser(false); setNewUser({name:'',email:'',role:'student',password:''}); addToast('Đã thêm người dùng!','success');\r\n    } catch { addToast('Lỗi thêm người dùng','error'); }\r\n  };\r\n\r\n  const inp: React.CSSProperties = { width:'100%', height:40, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 12px', background:'var(--bg)', color:'var(--text)', fontSize:14, outline:'none', fontFamily:'inherit', transition:'all .2s' };\r\n  const focusEvt = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => { e.target.style.borderColor='var(--pri)'; };\r\n  const blurEvt = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => { e.target.style.borderColor='var(--border)'; };\r\n\r\n  const STAT_CARDS = [\r\n    { label:'Tổng bài viết', num:(stats?.totalPosts??posts.length*47).toLocaleString(), icon:'📝', color:'var(--pri)' },\r\n    { label:'Tổng người dùng', num:(stats?.totalUsers??users.length*23).toLocaleString(), icon:'👥', color:'var(--sec)' },\r\n    { label:'Bình luận', num:(stats?.totalComments??posts.reduce((a,b)=>a+b.commentCount,0)*12).toLocaleString(), icon:'💬', color:'var(--acc)' },\r\n    { label:'Hoạt động hôm nay', num:(stats?.activeUsers24h??38).toString(), icon:'🔥', color:'var(--warn)' },\r\n  ];\r\n\r\n  return (\r\n    <div style={{ display:'flex', minHeight:'100vh', background:'var(--bg)' }}>\r\n      {/* Sidebar */}\r\n      <div style={{ width:240, background:'var(--surface)', borderRight:'1px solid var(--border)', flexShrink:0, display:'flex', flexDirection:'column' }}>\r\n        <div style={{ padding:'20px 20px 10px', fontFamily:\"'Syne',sans-serif\", fontWeight:800, fontSize:18, background:'linear-gradient(135deg,var(--pri),var(--sec))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>\r\n          📚 Admin Panel\r\n        </div>\r\n        <div style={{ padding:'8px 10px', flex:1 }}>\r\n          {MENU.map(m => (\r\n            <button key={m.key} onClick={() => setMenu(m.key)}\r\n              style={{ display:'flex', alignItems:'center', gap:10, padding:'10px 12px', borderRadius:8, cursor:'pointer', fontSize:14, fontWeight:500, color:menu===m.key?'var(--pri)':'var(--muted)', background:menu===m.key?'rgba(79,140,255,.1)':'transparent', border:'none', width:'100%', textAlign:'left', fontFamily:'inherit', transition:'all .15s', marginBottom:2 }}>\r\n              <span>{m.icon}</span>{m.label}\r\n            </button>\r\n          ))}\r\n        </div>\r\n        <div style={{ padding:10, borderTop:'1px solid var(--border)' }}>\r\n          <button onClick={() => navigate('/')} style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 12px', width:'100%', borderRadius:8, border:'none', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>\r\n            ← Về diễn đàn\r\n          </button>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Main */}\r\n      <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden' }}>\r\n        {/* Header */}\r\n        <div style={{ height:64, background:'var(--surface)', borderBottom:'1px solid var(--border)', display:'flex', alignItems:'center', padding:'0 32px', gap:16 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:18 }}>\r\n            {MENU.find(m => m.key===menu)?.icon} {MENU.find(m => m.key===menu)?.label}\r\n          </div>\r\n          <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:10 }}>\r\n            <UserAvatar user={currentUser} size=\"sm\" />\r\n            <span style={{ fontSize:14, fontWeight:500 }}>{currentUser.name}</span>\r\n          </div>\r\n        </div>\r\n\r\n        <div style={{ flex:1, overflowY:'auto', padding:32 }}>\r\n\r\n          {/* DASHBOARD */}\r\n          {menu==='dashboard' && (\r\n            <>\r\n              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:18, marginBottom:28 }}>\r\n                {STAT_CARDS.map((s,i) => (\r\n                  <div key={i} style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:'20px 24px' }}>\r\n                    <div style={{ float:'right', fontSize:36, opacity:.15 }}>{s.icon}</div>\r\n                    <div style={{ fontFamily:\"'Syne',sans-serif\", fontSize:32, fontWeight:800, color:s.color }}>{s.num}</div>\r\n                    <div style={{ fontSize:14, color:'var(--muted)', marginTop:4 }}>{s.label}</div>\r\n                  </div>\r\n                ))}\r\n              </div>\r\n\r\n              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20, marginBottom:24 }}>\r\n                {/* Bar chart */}\r\n                <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n                  <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:15, marginBottom:18 }}>📈 Bài viết theo ngày (tuần này)</div>\r\n                  <div style={{ display:'flex', alignItems:'flex-end', gap:10, height:120, paddingTop:8 }}>\r\n                    {barData.map(d => (\r\n                      <div key={d.l} style={{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:4 }}>\r\n                        <div style={{ width:'100%', background:'linear-gradient(180deg,var(--pri),var(--sec))', borderRadius:'4px 4px 0 0', height:`${(d.v/maxBar)*90}px`, minHeight:4, transition:'height .4s' }} />\r\n                        <div style={{ fontSize:11, color:'var(--faint)' }}>{d.l}</div>\r\n                        <div style={{ fontSize:11, color:'var(--pri)', fontWeight:600 }}>{d.v}</div>\r\n                      </div>\r\n                    ))}\r\n                  </div>\r\n                </div>\r\n                {/* Progress bars */}\r\n                <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n                  <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:15, marginBottom:18 }}>📊 Thống kê hệ thống</div>\r\n                  {[\r\n                    { label:'Bài viết có câu trả lời', val:78 },\r\n                    { label:'Người dùng hoạt động (7 ngày)', val:65 },\r\n                    { label:'Tỷ lệ sinh viên', val:82 },\r\n                    { label:'Mức độ hài lòng', val:91 },\r\n                  ].map((s,i) => (\r\n                    <div key={i} style={{ marginBottom:14 }}>\r\n                      <div style={{ display:'flex', justifyContent:'space-between', fontSize:13, marginBottom:5 }}>\r\n                        <span style={{ color:'var(--muted)' }}>{s.label}</span>\r\n                        <span style={{ fontWeight:700, color:'var(--pri)' }}>{s.val}%</span>\r\n                      </div>\r\n                      <div style={{ height:6, borderRadius:3, background:'var(--border)', overflow:'hidden' }}>\r\n                        <div style={{ height:'100%', width:`${s.val}%`, background:'linear-gradient(90deg,var(--pri),var(--sec))', borderRadius:3, transition:'width .4s' }} />\r\n                      </div>\r\n                    </div>\r\n                  ))}\r\n                </div>\r\n              </div>\r\n\r\n              {/* Recent posts table */}\r\n              <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n                <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:15, marginBottom:18 }}>📋 Bài viết gần đây</div>\r\n                <table style={{ width:'100%', borderCollapse:'collapse' }}>\r\n                  <thead>\r\n                    <tr>{['Tiêu đề','Tác giả','Vote','Views','Ngày đăng'].map(h => (\r\n                      <th key={h} style={{ background:'var(--bg)', padding:'10px 14px', textAlign:'left', fontSize:12, fontWeight:700, color:'var(--muted)', textTransform:'uppercase', letterSpacing:'.5px', borderBottom:'1px solid var(--border)' }}>{h}</th>\r\n                    ))}</tr>\r\n                  </thead>\r\n                  <tbody>\r\n                    {posts.slice(0,5).map(p => (\r\n                      <tr key={p.id} style={{ cursor:'pointer' }} onClick={() => history.push(`/forum/${p.id}`)}>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', maxWidth:260, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontSize:14, color:'var(--pri)', fontWeight:500 }}>{p.title}</td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14 }}>\r\n                          <div style={{ display:'flex', alignItems:'center', gap:8 }}><UserAvatar user={p.author} size=\"sm\" />{p.author.name}</div>\r\n                        </td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}><span style={{ background:'rgba(79,140,255,.1)', color:'var(--pri)', borderRadius:12, padding:'2px 10px', fontSize:13, fontWeight:600 }}>▲ {p.votes}</span></td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14, color:'var(--muted)' }}>{p.views}</td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:13, color:'var(--faint)' }}>{timeAgo(p.createdAt)}</td>\r\n                      </tr>\r\n                    ))}\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </>\r\n          )}\r\n\r\n          {/* USERS */}\r\n          {menu==='users' && (\r\n            <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20 }}>\r\n                <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:17 }}>👥 Người dùng ({users.length})</div>\r\n                <button onClick={() => setShowAddUser(true)} style={{ padding:'8px 20px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:13, fontWeight:500, fontFamily:'inherit' }}>+ Thêm người dùng</button>\r\n              </div>\r\n              <div style={{ overflowX:'auto' }}>\r\n                <table style={{ width:'100%', borderCollapse:'collapse', minWidth:700 }}>\r\n                  <thead>\r\n                    <tr>{['Người dùng','Email','Vai trò','Trạng thái','Hành động'].map(h => (\r\n                      <th key={h} style={{ background:'var(--bg)', padding:'10px 14px', textAlign:'left', fontSize:12, fontWeight:700, color:'var(--muted)', textTransform:'uppercase', letterSpacing:'.5px', borderBottom:'1px solid var(--border)' }}>{h}</th>\r\n                    ))}</tr>\r\n                  </thead>\r\n                  <tbody>\r\n                    {users.map(u => (\r\n                      <tr key={u.id} onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')} onMouseLeave={e => (e.currentTarget.style.background='transparent')}>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>\r\n                          <div style={{ display:'flex', alignItems:'center', gap:10 }}><UserAvatar user={u} size=\"sm\" /><span style={{ fontWeight:500, fontSize:14 }}>{u.name}</span></div>\r\n                        </td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14, color:'var(--muted)' }}>{u.email}</td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}><RoleBadge role={u.role} /></td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>\r\n                          <span style={{ background:u.status==='active'?'rgba(34,197,94,.1)':'rgba(239,68,68,.1)', color:u.status==='active'?'var(--success)':'var(--danger)', borderRadius:12, padding:'3px 10px', fontSize:12, fontWeight:600 }}>\r\n                            {u.status === 'active' ? '✓ Hoạt động' : '✗ Đã khóa'}\r\n                          </span>\r\n                        </td>\r\n                        <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>\r\n                          <div style={{ display:'flex', gap:6 }}>\r\n                            {[\r\n                              { label:'Sửa', action:() => setEditUser(u), color:'var(--pri)' },\r\n                              { label:u.status==='active'?'🔒 Khóa':'🔓 Mở', action:() => handleToggleLock(u.id), color:'var(--warn)' },\r\n                              { label:'🔑 Reset', action:() => handleResetPw(u.id), color:'var(--muted)' },\r\n                              ...(u.role!=='admin'?[{ label:'Xóa', action:() => handleDeleteUser(u.id), color:'var(--danger)' }]:[]),\r\n                            ].map((btn,i) => (\r\n                              <button key={i} onClick={btn.action} style={{ padding:'5px 12px', borderRadius:16, border:`1px solid ${btn.color}30`, background:`${btn.color}10`, color:btn.color, cursor:'pointer', fontSize:12, fontWeight:500, fontFamily:'inherit' }}>{btn.label}</button>\r\n                            ))}\r\n                          </div>\r\n                        </td>\r\n                      </tr>\r\n                    ))}\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          )}\r\n\r\n          {/* POSTS */}\r\n          {menu==='posts' && (\r\n            <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n              <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:17, marginBottom:20 }}>📝 Bài viết ({posts.length})</div>\r\n              <div style={{ overflowX:'auto' }}>\r\n                <table style={{ width:'100%', borderCollapse:'collapse', minWidth:750 }}>\r\n                  <thead>\r\n                    <tr>{['Tiêu đề','Tác giả','Tags','Vote','Views','Ngày đăng','Hành động'].map(h => (\r\n                      <th key={h} style={{ background:'var(--bg)', padding:'10px 14px', textAlign:'left', fontSize:12, fontWeight:700, color:'var(--muted)', textTransform:'uppercase', letterSpacing:'.5px', borderBottom:'1px solid var(--border)' }}>{h}</th>\r\n                    ))}</tr>\r\n                  </thead>\r\n                  <tbody>\r\n                    {posts.map(p => (\r\n                      <tr key={p.id} onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')} onMouseLeave={e => (e.currentTarget.style.background='transparent')}>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', maxWidth:220 }}>\r\n                          <div style={{ overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontSize:14, fontWeight:500, color:'var(--pri)', cursor:'pointer' }} onClick={() => history.push(`/forum/${p.id}`)}>{p.title}</div>\r\n                        </td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', fontSize:14 }}>{p.author.name}</td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)' }}>\r\n                          <div style={{ display:'flex', gap:4, flexWrap:'wrap' }}>\r\n                            {p.tags.slice(0,2).map(t => <TagBadge key={t.id} tag={t} />)}\r\n                            {p.tags.length>2 && <span style={{ fontSize:12, color:'var(--faint)' }}>+{p.tags.length-2}</span>}\r\n                          </div>\r\n                        </td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)' }}><span style={{ background:'rgba(79,140,255,.1)', color:'var(--pri)', borderRadius:12, padding:'2px 10px', fontSize:13, fontWeight:600 }}>▲ {p.votes}</span></td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', fontSize:14, color:'var(--muted)' }}>{p.views}</td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', fontSize:13, color:'var(--faint)' }}>{timeAgo(p.createdAt)}</td>\r\n                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)' }}>\r\n                          <div style={{ display:'flex', gap:6 }}>\r\n                            <button onClick={() => history.push(`/forum/${p.id}`)} style={{ padding:'5px 12px', borderRadius:16, border:'1px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:12, fontFamily:'inherit' }}>Xem</button>\r\n                            <button onClick={() => handleDeletePost(p.id)} style={{ padding:'5px 12px', borderRadius:16, border:'1px solid var(--danger)30', background:'rgba(239,68,68,.08)', color:'var(--danger)', cursor:'pointer', fontSize:12, fontFamily:'inherit' }}>Xóa</button>\r\n                          </div>\r\n                        </td>\r\n                      </tr>\r\n                    ))}\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          )}\r\n\r\n          {/* TAGS */}\r\n          {menu==='tags' && (\r\n            <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20 }}>\r\n                <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:17 }}>🏷️ Quản lý Tags</div>\r\n                <button onClick={() => setShowAddTag(true)} style={{ padding:'8px 20px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:13, fontWeight:500, fontFamily:'inherit' }}>+ Thêm tag</button>\r\n              </div>\r\n              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(210px,1fr))', gap:14 }}>\r\n                {[\r\n                  {id:1,name:'Lập trình',color:'#4f8cff',usageCount:45},\r\n                  {id:2,name:'Thuật toán',color:'#7b61ff',usageCount:32},\r\n                  {id:3,name:'Cơ sở dữ liệu',color:'#4de2e2',usageCount:28},\r\n                  {id:4,name:'SQL',color:'#ff6b6b',usageCount:21},\r\n                  {id:5,name:'React',color:'#61dafb',usageCount:19},\r\n                  {id:6,name:'Git',color:'#f05032',usageCount:38},\r\n                ].map(t => (\r\n                  <div key={t.id} style={{ border:'1px solid var(--border)', borderRadius:10, padding:18 }}>\r\n                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:10 }}>\r\n                      <TagBadge tag={t} />\r\n                      <button onClick={async () => { if(window.confirm('Xóa tag này?')) { try { await adminService.deleteTag(t.id); addToast('Đã xóa tag','success'); } catch { addToast('Lỗi xóa','error'); } } }}\r\n                        style={{ border:'none', background:'transparent', color:'var(--faint)', cursor:'pointer', fontSize:16, padding:2 }}>✕</button>\r\n                    </div>\r\n                    <div style={{ fontSize:13, color:'var(--muted)', marginBottom:8 }}>{t.usageCount} bài viết</div>\r\n                    <div style={{ height:5, borderRadius:3, background:'var(--border)', overflow:'hidden' }}>\r\n                      <div style={{ height:'100%', width:`${Math.min(100,(t.usageCount/50)*100)}%`, background:t.color, borderRadius:3 }} />\r\n                    </div>\r\n                  </div>\r\n                ))}\r\n                <div onClick={() => setShowAddTag(true)} style={{ border:'2px dashed var(--border)', borderRadius:10, padding:18, display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:8, cursor:'pointer', color:'var(--muted)', transition:'all .2s' }}\r\n                  onMouseEnter={e => { (e.currentTarget as any).style.borderColor='var(--pri)'; (e.currentTarget as any).style.color='var(--pri)'; }}\r\n                  onMouseLeave={e => { (e.currentTarget as any).style.borderColor='var(--border)'; (e.currentTarget as any).style.color='var(--muted)'; }}>\r\n                  <span style={{ fontSize:28 }}>+</span>\r\n                  <span style={{ fontSize:13 }}>Thêm tag mới</span>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          )}\r\n        </div>\r\n      </div>\r\n\r\n      {/* ── Modals ── */}\r\n      {/* Edit User Modal */}\r\n      {editUser && (\r\n        <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,.5)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:24, backdropFilter:'blur(4px)' }} onClick={e => e.target===e.currentTarget&&setEditUser(null)}>\r\n          <div style={{ background:'var(--surface)', borderRadius:20, padding:32, width:'100%', maxWidth:440, boxShadow:'var(--shadow-xl)' }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:20, marginBottom:24 }}>✏️ Sửa người dùng: {editUser.name}</div>\r\n            <div style={{ marginBottom:16 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Vai trò</label>\r\n              <select value={editUser.role} onChange={e => setEditUser({...editUser,role:e.target.value as any})} style={{ ...inp, cursor:'pointer' }} onFocus={focusEvt} onBlur={blurEvt}>\r\n                <option value=\"student\">Sinh viên</option>\r\n                <option value=\"lecturer\">Giảng viên</option>\r\n                <option value=\"admin\">Quản trị viên</option>\r\n              </select>\r\n            </div>\r\n            <div style={{ marginBottom:20, display:'flex', alignItems:'center', gap:10 }}>\r\n              <input type=\"checkbox\" checked={editUser.status === 'active'} onChange={e => setEditUser({...editUser, status: e.target.checked ? 'active' : 'locked'})} style={{ width:18, height:18, accentColor:'var(--pri)', cursor:'pointer' }} />\r\n              <span style={{ fontSize:14 }}>Tài khoản đang hoạt động</span>\r\n            </div>\r\n            <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>\r\n              <button onClick={() => setEditUser(null)} style={{ padding:'9px 22px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>Hủy</button>\r\n              <button onClick={handleSaveUser} style={{ padding:'9px 22px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Lưu thay đổi</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      )}\r\n\r\n      {/* Add User Modal */}\r\n      {showAddUser && (\r\n        <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,.5)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:24, backdropFilter:'blur(4px)' }} onClick={e => e.target===e.currentTarget&&setShowAddUser(false)}>\r\n          <div style={{ background:'var(--surface)', borderRadius:20, padding:32, width:'100%', maxWidth:440, boxShadow:'var(--shadow-xl)' }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:20, marginBottom:24 }}>➕ Thêm người dùng mới</div>\r\n            {[{key:'name',label:'Tên người dùng',type:'text',ph:'Tên đầy đủ'},{key:'email',label:'Email',type:'email',ph:'email@student.edu.vn'},{key:'password',label:'Mật khẩu tạm',type:'password',ph:'Mật khẩu ban đầu'}].map(f => (\r\n              <div key={f.key} style={{ marginBottom:16 }}>\r\n                <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{f.label}</label>\r\n                <input type={f.type} value={(newUser as any)[f.key]} onChange={e => setNewUser(p => ({...p,[f.key]:e.target.value}))} placeholder={f.ph} style={inp} onFocus={focusEvt} onBlur={blurEvt} />\r\n              </div>\r\n            ))}\r\n            <div style={{ marginBottom:20 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Vai trò</label>\r\n              <select value={newUser.role} onChange={e => setNewUser(p => ({...p,role:e.target.value}))} style={{ ...inp, cursor:'pointer' }} onFocus={focusEvt} onBlur={blurEvt}>\r\n                <option value=\"student\">Sinh viên</option>\r\n                <option value=\"lecturer\">Giảng viên</option>\r\n                <option value=\"admin\">Quản trị viên</option>\r\n              </select>\r\n            </div>\r\n            <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>\r\n              <button onClick={() => setShowAddUser(false)} style={{ padding:'9px 22px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>Hủy</button>\r\n              <button onClick={handleAddUser} style={{ padding:'9px 22px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Thêm người dùng</button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      )}\r\n\r\n      {/* Add Tag Modal */}\r\n      {showAddTag && (\r\n        <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,.5)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:24, backdropFilter:'blur(4px)' }} onClick={e => e.target===e.currentTarget&&setShowAddTag(false)}>\r\n          <div style={{ background:'var(--surface)', borderRadius:20, padding:32, width:'100%', maxWidth:400, boxShadow:'var(--shadow-xl)' }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:20, marginBottom:24 }}>🏷️ Thêm Tag mới</div>\r\n            <div style={{ marginBottom:16 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Tên tag</label>\r\n              <input value={newTag.name} onChange={e => setNewTag(p => ({...p,name:e.target.value}))} placeholder=\"VD: Lập trình\" style={inp} onFocus={focusEvt} onBlur={blurEvt} />\r\n            </div>\r\n            <div style={{ marginBottom:16 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Màu sắc</label>\r\n              <div style={{ display:'flex', alignItems:'center', gap:12 }}>\r\n                <input type=\"color\" value={newTag.color} onChange={e => setNewTag(p => ({...p,color:e.target.value}))} style={{ width:50, height:42, border:'1.5px solid var(--border)', borderRadius:8, cursor:'pointer', background:'transparent' }} />\r\n                <TagBadge tag={{name:newTag.name||'Tag mới',color:newTag.color}} />\r\n              </div>\r\n            </div>\r\n            <div style={{ marginBottom:22 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Mô tả (tùy chọn)</label>\r\n              <input value={newTag.description} onChange={e => setNewTag(p => ({...p,description:e.target.value}))} placeholder=\"Mô tả ngắn về tag này...\" style={inp} onFocus={focusEvt} onBlur={blurEvt} />\r\n            </div>\r\n            <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>\r\n              <button onClick={() => setShowAddTag(false)} style={{ padding:'9px 22px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>Hủy</button>\r\n              <button onClick={async () => { if(!newTag.name){addToast('Nhập tên tag','error');return;} try { await adminService.createTag(newTag); setShowAddTag(false); setNewTag({name:'',color:'#4f8cff',description:''}); addToast('Đã thêm tag!','success'); } catch { addToast('Lỗi thêm tag','error'); } }} style={{ padding:'9px 22px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>\r\n                Thêm tag\r\n              </button>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AdminPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/admin/index.tsx"
+    },
+    "forum/index": {
+      "path": "forum",
+      "id": "forum/index",
+      "file": "forum/index.tsx",
+      "absPath": "/forum",
+      "__content": "import React, { useEffect, useState } from 'react';\r\nimport { useNavigate } from 'umi';\r\nimport PostCard from '../../components/forum/PostCard';\r\nimport TagBadge from '../../components/common/TagBadge';\r\nimport LoadingSpinner from '../../components/common/LoadingSpinner';\r\nimport EmptyState from '../../components/common/EmptyState';\r\nimport { forumService } from '../../services/forumService';\r\nimport type { Post, Tag, SortOption, User } from '../../types';\r\n\r\ninterface Props { currentUser: User | null; }\r\n\r\nconst SORT_OPTIONS: { key: SortOption; label: string }[] = [\r\n  { key: 'newest', label: 'Mới nhất' },\r\n  { key: 'hot', label: '🔥 Nổi bật' },\r\n  { key: 'votes', label: '▲ Vote cao' },\r\n  { key: 'views', label: '👁 Xem nhiều' },\r\n];\r\n\r\nconst ForumPage: React.FC<Props> = ({ currentUser }) => {\r\n  const navigate = useNavigate();\r\n  const [searchParams] = useSearchParams();\r\n  const initKeyword = searchParams.get('keyword') ?? '';\r\n  const initTag = searchParams.get('tag') ?? null;\r\n\r\n  const [posts, setPosts] = useState<Post[]>([]);\r\n  const [tags, setTags] = useState<Tag[]>([]);\r\n  const [loading, setLoading] = useState(true);\r\n  const [sort, setSort] = useState<SortOption>('newest');\r\n  const [keyword, setKeyword] = useState(initKeyword);\r\n  const [activeTag, setActiveTag] = useState<string | null>(initTag);\r\n  const [page, setPage] = useState(1);\r\n  const [totalPages, setTotalPages] = useState(1);\r\n  const [total, setTotal] = useState(0);\r\n\r\n  useEffect(() => {\r\n    const load = async () => {\r\n      setLoading(true);\r\n      try {\r\n        const [pr, tr] = await Promise.all([\r\n          forumService.getPosts({ page, sort, tag: activeTag ?? undefined, keyword: keyword || undefined, limit: 10 }),\r\n          forumService.getTopTags(15),\r\n        ]);\r\n        setPosts(pr.data);\r\n        setTotalPages(pr.pagination.totalPages);\r\n        setTotal(pr.pagination.total);\r\n        setTags(tr);\r\n      } catch { /* empty */ }\r\n      finally { setLoading(false); }\r\n    };\r\n    load();\r\n  }, [page, sort, activeTag, keyword]);\r\n\r\n  const inp: React.CSSProperties = {\r\n    width:'100%', height:44, border:'1.5px solid var(--border)', borderRadius:8,\r\n    padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:14,\r\n    outline:'none', fontFamily:'inherit', transition:'all .2s',\r\n  };\r\n\r\n  return (\r\n    <div style={{ maxWidth:1280, margin:'0 auto', padding:'32px 24px' }}>\r\n      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:24, flexWrap:'wrap', gap:12 }}>\r\n        <div>\r\n          <h1 style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:28, marginBottom:4 }}>📝 Diễn đàn thảo luận</h1>\r\n          {total > 0 && <div style={{ fontSize:14, color:'var(--muted)' }}>{total.toLocaleString()} bài viết</div>}\r\n        </div>\r\n        {currentUser && (\r\n          <button onClick={() => navigate('/ask')} style={{ display:'inline-flex',alignItems:'center',gap:6,padding:'0 20px',height:42,borderRadius:21,fontSize:14,fontWeight:600,cursor:'pointer',border:'none',background:'linear-gradient(135deg,var(--pri),var(--sec))',color:'#fff',fontFamily:'inherit' }}>\r\n            ✏️ Đặt câu hỏi mới\r\n          </button>\r\n        )}\r\n      </div>\r\n\r\n      <div style={{ display:'grid', gridTemplateColumns:'1fr 280px', gap:28, alignItems:'start' }}>\r\n        {/* Main */}\r\n        <div>\r\n          {/* Search & sort */}\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:16, marginBottom:20 }}>\r\n            <div style={{ position:'relative', marginBottom:14 }}>\r\n              <span style={{ position:'absolute', left:12, top:'50%', transform:'translateY(-50%)', color:'var(--faint)', fontSize:15, pointerEvents:'none' }}>🔍</span>\r\n              <input value={keyword} onChange={e => { setKeyword(e.target.value); setPage(1); }} placeholder=\"Tìm kiếm theo từ khóa...\"\r\n                style={{ ...inp, paddingLeft:38 }}\r\n                onFocus={e => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; }}\r\n                onBlur={e => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; }} />\r\n            </div>\r\n            <div style={{ display:'flex', gap:8, flexWrap:'wrap', alignItems:'center' }}>\r\n              <span style={{ fontSize:13, color:'var(--muted)', fontWeight:500 }}>Sắp xếp:</span>\r\n              {SORT_OPTIONS.map(s => (\r\n                <button key={s.key} onClick={() => { setSort(s.key); setPage(1); }}\r\n                  style={{ padding:'5px 14px', borderRadius:20, fontSize:13, fontWeight:500, cursor:'pointer', fontFamily:'inherit',\r\n                    border:`1.5px solid ${sort===s.key?'var(--pri)':'var(--border)'}`,\r\n                    background:sort===s.key?'rgba(79,140,255,.08)':'transparent',\r\n                    color:sort===s.key?'var(--pri)':'var(--muted)', transition:'all .15s' }}>\r\n                  {s.label}\r\n                </button>\r\n              ))}\r\n              {activeTag && (\r\n                <button onClick={() => { setActiveTag(null); setPage(1); }} style={{ padding:'5px 12px', borderRadius:20, fontSize:13, cursor:'pointer', border:'1.5px solid var(--danger)', color:'var(--danger)', background:'rgba(239,68,68,.06)', fontFamily:'inherit' }}>\r\n                  ✕ #{activeTag}\r\n                </button>\r\n              )}\r\n            </div>\r\n          </div>\r\n\r\n          {loading ? <LoadingSpinner /> : posts.length ? (\r\n            <>\r\n              <div style={{ display:'flex', flexDirection:'column', gap:14 }}>\r\n                {posts.map(p => <PostCard key={p.id} post={p} />)}\r\n              </div>\r\n              {totalPages > 1 && (\r\n                <div style={{ display:'flex', justifyContent:'center', gap:8, marginTop:28 }}>\r\n                  <button disabled={page===1} onClick={() => setPage(p=>p-1)} style={{ padding:'8px 16px', borderRadius:8, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:page===1?'not-allowed':'pointer', opacity:page===1?.4:1, fontFamily:'inherit', fontSize:14 }}>← Trước</button>\r\n                  {Array.from({length:Math.min(totalPages,7)},(_,i)=>i+1).map(p => (\r\n                    <button key={p} onClick={() => setPage(p)} style={{ width:36, height:36, borderRadius:8, border:`1.5px solid ${page===p?'var(--pri)':'var(--border)'}`, background:page===p?'rgba(79,140,255,.08)':'transparent', color:page===p?'var(--pri)':'var(--muted)', cursor:'pointer', fontWeight:page===p?600:400, fontFamily:'inherit', fontSize:14 }}>{p}</button>\r\n                  ))}\r\n                  <button disabled={page===totalPages} onClick={() => setPage(p=>p+1)} style={{ padding:'8px 16px', borderRadius:8, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:page===totalPages?'not-allowed':'pointer', opacity:page===totalPages?.4:1, fontFamily:'inherit', fontSize:14 }}>Sau →</button>\r\n                </div>\r\n              )}\r\n            </>\r\n          ) : (\r\n            <EmptyState icon=\"🔍\" title=\"Không tìm thấy kết quả\" description={keyword ? `Không có bài viết nào khớp với \"${keyword}\"` : 'Chưa có bài viết nào'} />\r\n          )}\r\n        </div>\r\n\r\n        {/* Sidebar */}\r\n        <div style={{ display:'flex', flexDirection:'column', gap:16, position:'sticky', top:80 }}>\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:18 }}>\r\n            <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:14 }}>🏷️ Lọc theo chủ đề</div>\r\n            <div style={{ display:'flex', flexWrap:'wrap', gap:4 }}>\r\n              {tags.map(t => (\r\n                <TagBadge key={t.id} tag={t} active={activeTag===t.name}\r\n                  onClick={() => { setActiveTag(activeTag===t.name?null:t.name); setPage(1); }} />\r\n              ))}\r\n            </div>\r\n          </div>\r\n\r\n          {currentUser && (\r\n            <div style={{ background:'linear-gradient(135deg,var(--pri),var(--sec))', borderRadius:'var(--radius)', padding:20, textAlign:'center' }}>\r\n              <div style={{ fontSize:24, marginBottom:8 }}>💡</div>\r\n              <div style={{ color:'#fff', fontWeight:600, fontSize:15, marginBottom:6 }}>Có thắc mắc?</div>\r\n              <div style={{ color:'rgba(255,255,255,.8)', fontSize:13, marginBottom:14 }}>Đặt câu hỏi và nhận câu trả lời từ cộng đồng!</div>\r\n              <button onClick={() => history.push('/ask')} style={{ padding:'9px 22px', borderRadius:20, border:'none', background:'#fff', color:'var(--pri)', fontWeight:600, cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>✏️ Đặt câu hỏi</button>\r\n            </div>\r\n          )}\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default ForumPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/forum/index.tsx"
+    },
+    "auth/login": {
+      "path": "auth/login",
+      "id": "auth/login",
+      "file": "auth/login.tsx",
+      "absPath": "/auth/login",
+      "__content": "import React, { useState } from 'react';\r\nimport { useAuth } from '../../hooks/useAuth';\r\n\r\nconst LoginPage: React.FC = () => {\r\n  const { login } = useAuth();\r\n  const [email, setEmail] = useState('');\r\n  const [password, setPassword] = useState('');\r\n  const [loading, setLoading] = useState(false);\r\n  const [error, setError] = useState('');\r\n\r\n  const handleSubmit = async () => {\r\n    if (!email.trim() || !password) { setError('Vui lòng nhập đầy đủ thông tin'); return; }\r\n    setLoading(true); setError('');\r\n    try {\r\n      await login({ email, password });\r\n    } catch (e) { \r\n      const err = e as { response?: { data?: { message?: string } } };\r\n      setError(err?.response?.data?.message || 'Email hoặc mật khẩu không chính xác');\r\n    } finally { setLoading(false); }\r\n  };\r\n\r\n  const inp: React.CSSProperties = { width:'100%', height:46, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:15, outline:'none', fontFamily:'inherit', transition:'all .2s' };\r\n\r\n  return (\r\n    <div style={{ minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', padding:24, background:'linear-gradient(135deg,rgba(79,140,255,.06),rgba(123,97,255,.06))' }}>\r\n      <div style={{ width:'100%', maxWidth:440, background:'var(--surface)', border:'1px solid var(--border)', borderRadius:20, padding:40, boxShadow:'var(--shadow-lg)' }}>\r\n        <div style={{ textAlign:'center', marginBottom:32 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:800, fontSize:26, background:'linear-gradient(135deg,var(--pri),var(--sec))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', marginBottom:8 }}>📚 Diễn Đàn SV</div>\r\n          <div style={{ color:'var(--muted)', fontSize:15 }}>Chào mừng trở lại!</div>\r\n        </div>\r\n\r\n        {error && (\r\n          <div style={{ background:'rgba(239,68,68,.08)', border:'1px solid rgba(239,68,68,.3)', borderRadius:8, padding:'10px 14px', fontSize:14, color:'var(--danger)', marginBottom:18 }}>⚠️ {error}</div>\r\n        )}\r\n\r\n        <div style={{ marginBottom:18 }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Email hoặc tên đăng nhập</label>\r\n          <input value={email} onChange={e => setEmail(e.target.value)} onKeyDown={e => e.key==='Enter'&&handleSubmit()} placeholder=\"email@student.edu.vn\" style={inp}\r\n            onFocus={e => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; }}\r\n            onBlur={e => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; }} />\r\n        </div>\r\n\r\n        <div style={{ marginBottom:24 }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Mật khẩu</label>\r\n          <input type=\"password\" value={password} onChange={e => setPassword(e.target.value)} onKeyDown={e => e.key==='Enter'&&handleSubmit()} placeholder=\"••••••••\" style={inp}\r\n            onFocus={e => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; }}\r\n            onBlur={e => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; }} />\r\n        </div>\r\n\r\n        <button onClick={handleSubmit} disabled={loading} style={{ width:'100%', height:48, borderRadius:24, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:loading?'not-allowed':'pointer', fontSize:16, fontWeight:600, fontFamily:'inherit', opacity:loading?.75:1, transition:'all .2s' }}>\r\n          {loading ? 'Đang đăng nhập...' : 'Đăng nhập →'}\r\n        </button>\r\n\r\n        <div style={{ display:'flex', alignItems:'center', gap:12, color:'var(--faint)', fontSize:13, margin:'20px 0' }}>\r\n          <div style={{ flex:1, height:1, background:'var(--border)' }} />hoặc<div style={{ flex:1, height:1, background:'var(--border)' }} />\r\n        </div>\r\n\r\n        <div style={{ textAlign:'center', fontSize:14, color:'var(--muted)' }}>\r\n          Chưa c\r\n          <span onClick={() => window.location.href = '/auth/register'} style={{ color:'var(--pri)', fontWeight:600, cursor:'pointer' }}>Đăng ký ngay</span>\r\n        </div>\r\n\r\n        <div style={{ marginTop:20, padding:14, background:'var(--bg)', borderRadius:8, fontSize:13, color:'var(--faint)' }}>\r\n          <strong>Demo:</strong> email bất kỳ / mật khẩu <code>123456</code>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default LoginPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/auth/login.tsx"
+    },
+    "forum/[id]": {
+      "path": "forum/[id]",
+      "id": "forum/[id]",
+      "file": "forum/[id].tsx",
+      "absPath": "/forum/[id]",
+      "__content": "import React, { useEffect, useState } from 'react';\r\nimport { useParams, useNavigate } from 'umi';\r\nimport UserAvatar from '../../components/common/UserAvatar';\r\nimport RoleBadge from '../../components/common/RoleBadge';\r\nimport TagBadge from '../../components/common/TagBadge';\r\nimport VoteButton from '../../components/forum/VoteButton';\r\nimport CommentItem from '../../components/forum/CommentItem';\r\nimport LoadingSpinner from '../../components/common/LoadingSpinner';\r\nimport { forumService } from '../../services/forumService';\r\nimport { addToast } from '../../utils/toast';\r\nimport { timeAgo } from '../../utils/helpers';\r\nimport type { Post, Comment, User } from '../../types';\r\n\r\ninterface Props { currentUser: User | null; }\r\n\r\nconst PostDetailPage: React.FC<Props> = ({ currentUser }) => {\r\n  const { id } = useParams<{ id: string }>();\r\n  const navigate = useNavigate();\r\n  const postId = id!;\r\n\r\n  const [post, setPost] = useState<Post | null>(null);\r\n  const [comments, setComments] = useState<Comment[]>([]);\r\n  const [loading, setLoading] = useState(true);\r\n  const [commentText, setCommentText] = useState('');\r\n  const [submitting, setSubmitting] = useState(false);\r\n  const [userVote, setUserVote] = useState<'up' | 'down' | null>(null);\r\n  const [voteCount, setVoteCount] = useState(0);\r\n\r\n  useEffect(() => {\r\n    (async () => {\r\n      setLoading(true);\r\n      try {\r\n        const [p, c] = await Promise.all([\r\n          forumService.getPost(postId),\r\n          forumService.getComments(postId),\r\n        ]);\r\n        setPost(p);\r\n        setVoteCount(p.votes || 0);\r\n        setComments(c);\r\n      } catch { addToast('Không tìm thấy bài viết', 'error'); navigate('/forum'); }\r\n      finally { setLoading(false); }\r\n    })();\r\n  }, [postId, navigate]);\r\n\r\n  const handleVote = async (direction: 'up' | 'down') => {\r\n    if (!currentUser) { addToast('Vui lòng đăng nhập để vote', 'info'); navigate('/auth/login'); return; }\r\n    const prevVote = userVote;\r\n    const newVote = userVote === direction ? null : direction;\r\n    setUserVote(newVote);\r\n    try {\r\n      await forumService.votePost(postId, direction);\r\n      const p = await forumService.getPost(postId);\r\n      setVoteCount(p.votes || 0);\r\n    } catch {\r\n      setUserVote(prevVote);\r\n      addToast('Không thể cập nhật vote', 'error');\r\n    }\r\n  };\r\n\r\n  const handleSave = async () => {\r\n    if (!currentUser) { navigate('/auth/login'); return; }\r\n    try {\r\n      const r = await forumService.savePost(postId);\r\n      setIsSaved(r.saved);\r\n      addToast(r.saved ? 'Đã lưu bài viết!' : 'Đã bỏ lưu!', 'success');\r\n    } catch { addToast('Lỗi thao tác', 'error'); }\r\n  };\r\n\r\n  const handleComment = async () => {\r\n    if (!currentUser) { navigate('/auth/login'); return; }\r\n    if (!commentText.trim()) { addToast('Vui lòng nhập nội dung', 'error'); return; }\r\n    setSubmitting(true);\r\n    try {\r\n      const c = await forumService.createComment(postId, { content: commentText });\r\n      setComments(prev => [c, ...prev]);\r\n      setCommentText('');\r\n      if (post) setPost({ ...post, commentCount: (post.commentCount || 0) + 1 });\r\n      addToast('Đã thêm bình luận!', 'success');\r\n    } catch { addToast('Không thể gửi bình luận', 'error'); }\r\n    finally { setSubmitting(false); }\r\n  };\r\n\r\n  const handleDeleteComment = async (cid: string) => {\r\n    if (!window.confirm('Xóa bình luận này?')) return;\r\n    try {\r\n      await forumService.deleteComment(cid);\r\n      setComments(prev => prev.filter(c => c.id !== cid));\r\n      addToast('Đã xóa bình luận', 'success');\r\n    } catch { addToast('Không thể xóa', 'error'); }\r\n  };\r\n\r\n  const handleReplyAdded = (parentId: number, reply: Comment) => {\r\n    setComments(prev => prev.map(c => c.id === parentId ? { ...c, replies: [...(c.replies ?? []), reply] } : c));\r\n  };\r\n\r\n  const handleDeletePost = async () => {\r\n    if (!window.confirm('Xóa bài viết này? Hành động không thể hoàn tác!')) return;\r\n    try {\r\n      await forumService.deletePost(postId);\r\n      addToast('Đã xóa bài viết', 'success');\r\n      navigate('/forum');\r\n    } catch { addToast('Không thể xóa', 'error'); }\r\n  };\r\n\r\n  if (loading) return <div style={{ maxWidth:960, margin:'0 auto', padding:'40px 24px' }}><LoadingSpinner /></div>;\r\n  if (!post) return null;\r\n\r\n  const canEdit = currentUser && (currentUser.id === post.authorId || currentUser.role === 'admin');\r\n  const ta: React.CSSProperties = { width:'100%', minHeight:110, border:'1.5px solid var(--border)', borderRadius:8, padding:'10px 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, fontFamily:'inherit', resize:'vertical', outline:'none', lineHeight:1.7 };\r\n\r\n  return (\r\n    <div style={{ maxWidth:1100, margin:'0 auto', padding:'32px 24px' }}>\r\n      {/* Breadcrumb */}\r\n      <div style={{ display:'flex', alignItems:'center', gap:6, fontSize:14, color:'var(--muted)', marginBottom:24, cursor:'pointer' }}\r\n        onClick={() => navigate('/forum')}>\r\n        ← Diễn đàn · <span style={{ color:'var(--text)', fontWeight:500, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', maxWidth:400 }}>{post.title}</span>\r\n      </div>\r\n\r\n      <div style={{ display:'grid', gridTemplateColumns:'1fr 280px', gap:28, alignItems:'start' }}>\r\n        {/* Main content */}\r\n        <div>\r\n          {/* Post card */}\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:32, marginBottom:20 }}>\r\n            {/* Author */}\r\n            <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20 }}>\r\n              <UserAvatar user={post.author} size=\"md\" />\r\n              <div>\r\n                <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>\r\n                  <span style={{ fontWeight:600, fontSize:15 }}>{post.author.username}</span>\r\n                  <RoleBadge role={post.author.role} />\r\n                </div>\r\n                <div style={{ fontSize:13, color:'var(--faint)', marginTop:2 }}>{timeAgo(post.createdAt)} · 👁 {post.views.toLocaleString()} lượt xem</div>\r\n              </div>\r\n              <div style={{ marginLeft:'auto', display:'flex', gap:8 }}>\r\n                <button onClick={handleSave} title={isSaved?'Bỏ lưu':'Lưu bài'} style={{ padding:'6px 14px', borderRadius:20, border:`1.5px solid ${isSaved?'var(--warn)':'var(--border)'}`, background:isSaved?'rgba(245,158,11,.08)':'transparent', color:isSaved?'var(--warn)':'var(--muted)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>\r\n                  {isSaved ? '🔖 Đã lưu' : '🔖 Lưu'}\r\n                </button>\r\n                {canEdit && (\r\n                  <>\r\n                    <button onClick={() => navigate(`/ask?edit=${postId}`)} style={{ padding:'6px 14px', borderRadius:20, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>✏️ Sửa</button>\r\n                    <button onClick={handleDeletePost} style={{ padding:'6px 14px', borderRadius:20, border:'1.5px solid var(--danger)', background:'rgba(239,68,68,.06)', color:'var(--danger)', cursor:'pointer', fontSize:13, fontFamily:'inherit' }}>🗑️ Xóa</button>\r\n                  </>\r\n                )}\r\n              </div>\r\n            </div>\r\n\r\n            {/* Title */}\r\n            <h1 style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:26, lineHeight:1.3, marginBottom:16 }}>{post.title}</h1>\r\n\r\n            {/* Tags */}\r\n            <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:20 }}>\r\n              {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => navigate(`/forum?tag=${t.name}`)} />)}\r\n            </div>\r\n\r\n            {/* Content + Vote */}\r\n            <div style={{ display:'flex', gap:24 }}>\r\n              <VoteButton votes={voteCount} userVote={userVote} onVote={handleVote} disabled={!currentUser} />\r\n              <div style={{ flex:1, fontSize:15, lineHeight:1.8, color:'var(--text)', whiteSpace:'pre-wrap', wordBreak:'break-word' }}>\r\n                {post.content}\r\n              </div>\r\n            </div>\r\n          </div>\r\n\r\n          {/* Comment form */}\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24, marginBottom:20 }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:17, marginBottom:16 }}>💬 Thêm bình luận</div>\r\n            {currentUser ? (\r\n              <>\r\n                <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12 }}>\r\n                  <UserAvatar user={currentUser} size=\"sm\" />\r\n                  <span style={{ fontWeight:500, fontSize:14 }}>{currentUser.username}</span>\r\n                </div>\r\n                <textarea value={commentText} onChange={e => setCommentText(e.target.value)} placeholder=\"Chia sẻ suy nghĩ hoặc giải đáp câu hỏi...\"\r\n                  style={ta}\r\n                  onFocus={e => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; }}\r\n                  onBlur={e => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; }} />\r\n                <div style={{ display:'flex', justifyContent:'flex-end', marginTop:12 }}>\r\n                  <button onClick={handleComment} disabled={submitting} style={{ padding:'9px 24px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:submitting?'not-allowed':'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit', opacity:submitting?.7:1 }}>\r\n                    {submitting ? 'Đang gửi...' : '📤 Gửi bình luận'}\r\n                  </button>\r\n                </div>\r\n              </>\r\n            ) : (\r\n              <div style={{ textAlign:'center', padding:'20px 0' }}>\r\n                <p style={{ color:'var(--muted)', marginBottom:14 }}>Đăng nhập để tham gia thảo luận</p>\r\n                <button onClick={() => navigate('/auth/login')} style={{ padding:'10px 28px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Đăng nhập</button>\r\n              </div>\r\n            )}\r\n          </div>\r\n\r\n          {/* Comments list */}\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:17, marginBottom:20 }}>\r\n              💬 {comments.length} bình luận\r\n            </div>\r\n            {comments.length ? (\r\n              comments.map(c => (\r\n                <CommentItem key={c.id} comment={c} postId={postId} currentUser={currentUser}\r\n                  onDelete={handleDeleteComment} onReplyAdded={handleReplyAdded} />\r\n              ))\r\n            ) : (\r\n              <div style={{ textAlign:'center', padding:'32px 0', color:'var(--muted)' }}>\r\n                <div style={{ fontSize:36, marginBottom:10 }}>💭</div>\r\n                <p>Chưa có bình luận nào. Hãy là người đầu tiên!</p>\r\n              </div>\r\n            )}\r\n          </div>\r\n        </div>\r\n\r\n        {/* Sidebar */}\r\n        <div style={{ display:'flex', flexDirection:'column', gap:16, position:'sticky', top:80 }}>\r\n          <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:20 }}>\r\n            <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:14 }}>📌 Thông tin bài viết</div>\r\n            {[\r\n              { label:'Tác giả', val: post.author.username },\r\n              { label:'Đăng lúc', val: timeAgo(post.createdAt) },\r\n              { label:'Lượt xem', val: `👁 ${post.views.toLocaleString()}` },\r\n              { label:'Vote', val: `▲ ${voteCount}` },\r\n              { label:'Bình luận', val: `💬 ${comments.length}` },\r\n            ].map((r,i) => (\r\n              <div key={i} style={{ marginBottom:12 }}>\r\n                <div style={{ fontSize:12, color:'var(--faint)', marginBottom:2 }}>{r.label}</div>\r\n                <div style={{ fontWeight:500, fontSize:14 }}>{r.val}</div>\r\n              </div>\r\n            ))}\r\n          </div>\r\n          {post.tags.length > 0 && (\r\n            <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:20 }}>\r\n              <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:12 }}>🏷️ Tags</div>\r\n              <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>\r\n                {post.tags.map(t => <TagBadge key={t.id} tag={t} onClick={() => navigate(`/forum?tag=${t.name}`)} />)}\r\n              </div>\r\n            </div>\r\n          )}\r\n          <button onClick={() => navigate('/forum')} style={{ padding:'11px 0', borderRadius:'var(--radius)', border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit', transition:'all .2s' }}\r\n            onMouseEnter={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor='var(--pri)'; el.style.color='var(--pri)'; }}\r\n            onMouseLeave={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor='var(--border)'; el.style.color='var(--muted)'; }}>\r\n            ← Về diễn đàn\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default PostDetailPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/forum/[id].tsx"
+    },
+    "profile": {
+      "path": "profile",
+      "id": "profile",
+      "file": "profile.tsx",
+      "absPath": "/profile",
+      "__content": "import React, { useState } from 'react';\r\nimport { useNavigate } from 'umi';\r\nimport UserAvatar from '../components/common/UserAvatar';\r\nimport RoleBadge from '../components/common/RoleBadge';\r\nimport { userService } from '../services/userService';\r\nimport { authService } from '../services/authService';\r\nimport { addToast } from '../utils/toast';\r\nimport type { User } from '../types';\r\n\r\ninterface Props { currentUser: User | null; onUpdateUser: (u: Partial<User>) => void; }\r\n\r\nconst ProfilePage: React.FC<Props> = ({ currentUser, onUpdateUser }) => {\r\n  const navigate = useNavigate();\r\n  const [tab, setTab] = useState<'posts'|'saved'|'edit'|'password'>('posts');\r\n  const [form, setForm] = useState({ username: currentUser?.username||'', bio: currentUser?.bio||'', email: currentUser?.email||'' });\r\n  const [pwForm, setPwForm] = useState({ current:'', newpw:'', confirm:'' });\r\n  const [saving, setSaving] = useState(false);\r\n\r\n  if (!currentUser) { navigate('/auth/login'); return null; }\r\n\r\n  const inp: React.CSSProperties = { width:'100%', height:44, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, outline:'none', fontFamily:'inherit', transition:'all .2s' };\r\n  const focus = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };\r\n  const blur = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };\r\n\r\n  const handleSaveProfile = async () => {\r\n    setSaving(true);\r\n    try {\r\n      const updated = await userService.updateProfile(form);\r\n      onUpdateUser(updated);\r\n      addToast('Đã cập nhật hồ sơ!', 'success');\r\n    } catch { addToast('Không thể cập nhật', 'error'); }\r\n    finally { setSaving(false); }\r\n  };\r\n\r\n  const handleChangePw = async () => {\r\n    if (!pwForm.current) { addToast('Nhập mật khẩu hiện tại', 'error'); return; }\r\n    if (pwForm.newpw.length < 6) { addToast('Mật khẩu mới ít nhất 6 ký tự', 'error'); return; }\r\n    if (pwForm.newpw !== pwForm.confirm) { addToast('Mật khẩu xác nhận không khớp', 'error'); return; }\r\n    setSaving(true);\r\n    try {\r\n      await authService.changePassword(pwForm.current, pwForm.newpw);\r\n      setPwForm({ current:'', newpw:'', confirm:'' });\r\n      addToast('Đã đổi mật khẩu thành công!', 'success');\r\n    } catch { addToast('Mật khẩu hiện tại không đúng', 'error'); }\r\n    finally { setSaving(false); }\r\n  };\r\n\r\n  const TABS = [\r\n    { key:'posts', label:'📝 Bài viết' },\r\n    { key:'saved', label:'🔖 Đã lưu' },\r\n    { key:'edit', label:'⚙️ Hồ sơ' },\r\n    { key:'password', label:'🔒 Mật khẩu' },\r\n  ];\r\n\r\n  return (\r\n    <div style={{ maxWidth:960, margin:'0 auto', padding:'32px 24px' }}>\r\n      {/* Profile header */}\r\n      <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:'28px 32px', marginBottom:24, display:'flex', alignItems:'flex-start', gap:24 }}>\r\n        <div style={{ position:'relative' }}>\r\n          <UserAvatar user={currentUser} size=\"xl\" />\r\n          <div\r\n            title=\"Thay đổi ảnh\"\r\n            style={{ position:'absolute', bottom:4, right:4, width:28, height:28, borderRadius:'50%', background:'var(--pri)', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer', fontSize:14, border:'2px solid var(--surface)' }}\r\n            onClick={async () => {\r\n              const input = document.createElement('input'); input.type='file'; input.accept='image/*';\r\n              input.onchange = async () => {\r\n                if (input.files?.[0]) {\r\n                  try { const r = await userService.uploadAvatar(input.files[0]); onUpdateUser({ avatar: r.avatar }); addToast('Đã cập nhật ảnh!', 'success'); }\r\n                  catch { addToast('Không thể upload ảnh', 'error'); }\r\n                }\r\n              };\r\n              input.click();\r\n            }}>\r\n            📷\r\n          </div>\r\n        </div>\r\n        <div style={{ flex:1 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:800, fontSize:24, marginBottom:6 }}>{currentUser.username}</div>\r\n          <div style={{ marginBottom:8 }}><RoleBadge role={currentUser.role} /></div>\r\n          <div style={{ fontSize:14, color:'var(--muted)', marginBottom:12 }}>{currentUser.email}</div>\r\n          {currentUser.bio && <div style={{ fontSize:14, color:'var(--text)', lineHeight:1.6 }}>{currentUser.bio}</div>}\r\n          <div style={{ display:'flex', gap:28, marginTop:16 }}>\r\n            {[{num:12,label:'Bài viết'},{num:48,label:'Bình luận'},{num:234,label:'Vote nhận'}].map((s,i) => (\r\n              <div key={i}>\r\n                <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:800, fontSize:22, color:'var(--pri)' }}>{s.num}</div>\r\n                <div style={{ fontSize:13, color:'var(--muted)' }}>{s.label}</div>\r\n              </div>\r\n            ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Tabs */}\r\n      <div style={{ display:'flex', borderBottom:'2px solid var(--border)', marginBottom:24 }}>\r\n        {TABS.map(t => (\r\n          <button key={t.key} onClick={() => setTab(t.key as any)}\r\n            style={{ padding:'10px 20px', fontSize:14, fontWeight:500, color:tab===t.key?'var(--pri)':'var(--muted)', cursor:'pointer', border:'none', background:'transparent', borderBottom:`2px solid ${tab===t.key?'var(--pri)':'transparent'}`, marginBottom:-2, fontFamily:'inherit', transition:'all .15s' }}>\r\n            {t.label}\r\n          </button>\r\n        ))}\r\n      </div>\r\n\r\n      {/* Tab: Posts */}\r\n      {tab==='posts' && (\r\n        <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n          <div style={{ textAlign:'center', padding:'40px 0', color:'var(--muted)' }}>\r\n            <div style={{ fontSize:40, marginBottom:12 }}>📝</div>\r\n            <p>Bạn chưa đăng bài viết nào</p>\r\n            <button onClick={() => history.push('/ask')} style={{ marginTop:14, padding:'10px 24px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>Đặt câu hỏi đầu tiên</button>\r\n          </div>\r\n        </div>\r\n      )}\r\n\r\n      {/* Tab: Saved */}\r\n      {tab==='saved' && (\r\n        <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }}>\r\n          <div style={{ textAlign:'center', padding:'40px 0', color:'var(--muted)' }}>\r\n            <div style={{ fontSize:40, marginBottom:12 }}>🔖</div>\r\n            <p>Chưa có bài viết nào được lưu</p>\r\n          </div>\r\n        </div>\r\n      )}\r\n\r\n      {/* Tab: Edit profile */}\r\n      {tab==='edit' && (\r\n        <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:28, maxWidth:560 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:18, marginBottom:24 }}>Thông tin cá nhân</div>\r\n          {[\r\n            { key:'username', label:'Tên đăng nhập', type:'text' },\r\n            { key:'email', label:'Email', type:'email' },\r\n          ].map(field => (\r\n            <div key={field.key} style={{ marginBottom:18 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{field.label}</label>\r\n              <input type={field.type} value={(form as any)[field.key]} onChange={e => setForm(p => ({ ...p, [field.key]: e.target.value }))} style={inp} onFocus={focus} onBlur={blur} />\r\n            </div>\r\n          ))}\r\n          <div style={{ marginBottom:24 }}>\r\n            <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Giới thiệu bản thân</label>\r\n            <textarea value={form.bio} onChange={e => setForm(p => ({ ...p, bio: e.target.value }))} placeholder=\"Mô tả ngắn về bản thân, chuyên ngành, sở thích...\"\r\n              style={{ width:'100%', minHeight:100, border:'1.5px solid var(--border)', borderRadius:8, padding:'10px 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, fontFamily:'inherit', resize:'vertical', outline:'none', lineHeight:1.7 }}\r\n              onFocus={focus} onBlur={blur} />\r\n          </div>\r\n          <button onClick={handleSaveProfile} disabled={saving} style={{ padding:'10px 28px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:saving?'not-allowed':'pointer', fontSize:14, fontWeight:600, fontFamily:'inherit', opacity:saving?.75:1 }}>\r\n            {saving ? 'Đang lưu...' : '💾 Lưu thay đổi'}\r\n          </button>\r\n        </div>\r\n      )}\r\n\r\n      {/* Tab: Password */}\r\n      {tab==='password' && (\r\n        <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:28, maxWidth:480 }}>\r\n          <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:18, marginBottom:24 }}>Đổi mật khẩu</div>\r\n          {[\r\n            { key:'current', label:'Mật khẩu hiện tại', placeholder:'Nhập mật khẩu hiện tại' },\r\n            { key:'newpw', label:'Mật khẩu mới', placeholder:'Ít nhất 6 ký tự' },\r\n            { key:'confirm', label:'Xác nhận mật khẩu mới', placeholder:'Nhập lại mật khẩu mới' },\r\n          ].map(field => (\r\n            <div key={field.key} style={{ marginBottom:18 }}>\r\n              <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{field.label}</label>\r\n              <input type=\"password\" value={(pwForm as any)[field.key]} onChange={e => setPwForm(p => ({ ...p, [field.key]: e.target.value }))} placeholder={field.placeholder} style={inp} onFocus={focus} onBlur={blur} />\r\n            </div>\r\n          ))}\r\n          <button onClick={handleChangePw} disabled={saving} style={{ padding:'10px 28px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:saving?'not-allowed':'pointer', fontSize:14, fontWeight:600, fontFamily:'inherit', opacity:saving?.75:1 }}>\r\n            {saving ? 'Đang lưu...' : '🔒 Đổi mật khẩu'}\r\n          </button>\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default ProfilePage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/profile.tsx"
+    },
+    "_layout": {
+      "path": "_layout",
+      "id": "_layout",
+      "file": "_layout.tsx",
+      "absPath": "/_layout",
+      "__content": "import React from 'react';\r\nimport Navbar from '@/components/layout/Navbar';\r\nimport ToastContainer from '@/components/common/ToastContainer';\r\nimport '@/styles/global.less';\r\n\r\nexport default ({ children }: { children?: React.ReactNode }) => {\r\n  return (\r\n    <>\r\n      <Navbar />\r\n      <main>{children}</main>\r\n      <ToastContainer />\r\n    </>\r\n  );\r\n};\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/_layout.tsx"
+    },
+    "index": {
+      "path": "/",
+      "id": "index",
+      "file": "index.tsx",
+      "absPath": "/",
+      "__content": "import React, { useEffect, useState } from 'react';\r\nimport { history } from 'umi';\r\nimport PostCard from '../components/forum/PostCard';\r\nimport TagBadge from '../components/common/TagBadge';\r\nimport LoadingSpinner from '../components/common/LoadingSpinner';\r\nimport EmptyState from '../components/common/EmptyState';\r\nimport { forumService } from '../services/forumService';\r\nimport { useAuth } from '../hooks/useAuth';\r\nimport type { Post, Tag, SortOption } from '../types';\r\n\r\nconst SORT_OPTIONS: { key: SortOption; label: string }[] = [\r\n  { key: 'newest', label: 'Mới nhất' },\r\n  { key: 'hot', label: '🔥 Nổi bật' },\r\n  { key: 'votes', label: '▲ Vote cao' },\r\n  { key: 'views', label: '👁 Xem nhiều' },\r\n];\r\n\r\nexport default function HomePage() {\r\n  const { user: currentUser } = useAuth();\r\n  const [posts, setPosts] = useState<Post[]>([]);\r\n  const [tags, setTags] = useState<Tag[]>([]);\r\n  const [loading, setLoading] = useState(true);\r\n  const [sort, setSort] = useState<SortOption>('newest');\r\n  const [activeTag, setActiveTag] = useState<string | null>(null);\r\n  const [page, setPage] = useState(1);\r\n  const [totalPages, setTotalPages] = useState(1);\r\n\r\n  useEffect(() => {\r\n    const load = async () => {\r\n      setLoading(true);\r\n      try {\r\n        const [postsRes, tagsRes] = await Promise.all([\r\n          forumService.getPosts({ page, sort, tag: activeTag ?? undefined, limit: 10 }),\r\n          forumService.getTopTags(12),\r\n        ]);\r\n        setPosts(postsRes.data);\r\n        setTotalPages(postsRes.pagination.totalPages);\r\n        setTags(tagsRes);\r\n      } catch { /* empty */ }\r\n      finally { setLoading(false); }\r\n    };\r\n    load();\r\n  }, [page, sort, activeTag]);\r\n\r\n  const card: React.CSSProperties = { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 18 };\r\n\r\n  return (\r\n    <div style={{ maxWidth: 1280, margin: '0 auto', padding: '32px 24px' }}>\r\n\r\n      {/* Hero */}\r\n      <div style={{ borderRadius: 20, background: 'linear-gradient(135deg,#1e3a5f 0%,#2d1b69 55%,#1a3a4f 100%)', padding: '52px 48px', marginBottom: 36, position: 'relative', overflow: 'hidden' }}>\r\n        {[{t:-60,r:-60,s:200,o:.05},{t:40,r:160,s:80,o:.07},{b:-40,l:-40,s:160,o:.04}].map((c:{t?:number;r?:number;b?:number;l?:number;s:number;o:number},i) => (\r\n          <div key={i} style={{ position:'absolute', width:c.s, height:c.s, borderRadius:'50%', background:'#fff', opacity:c.o, top:c.t, bottom:c.b, left:c.l, right:c.r }} />\r\n        ))}\r\n        <div style={{ position:'relative' }}>\r\n          <h1 style={{ fontFamily:\"'Syne',sans-serif\", fontSize:40, fontWeight:800, color:'#fff', lineHeight:1.15, marginBottom:12 }}>\r\n            📚 Diễn đàn Hỏi Đáp<br/>Sinh viên\r\n          </h1>\r\n          <p style={{ color:'rgba(255,255,255,.75)', fontSize:17, marginBottom:28 }}>Chia sẻ kiến thức · Giải đáp thắc mắc · Học hỏi cùng nhau</p>\r\n          <div style={{ display:'flex', gap:12, flexWrap:'wrap', marginBottom:36 }}>\r\n            {currentUser ? (\r\n              <button onClick={() => history.push('/ask')} style={{ display:'inline-flex',alignItems:'center',gap:8,padding:'0 28px',height:48,borderRadius:24,fontSize:16,fontWeight:600,cursor:'pointer',border:'none',background:'#fff',color:'#1e3a5f',fontFamily:'inherit' }}>✏️ Đặt câu hỏi ngay</button>\r\n            ) : (\r\n              <>\r\n                <button onClick={() => history.push('/auth/register')} style={{ display:'inline-flex',alignItems:'center',padding:'0 28px',height:48,borderRadius:24,fontSize:16,fontWeight:600,cursor:'pointer',border:'none',background:'#fff',color:'#1e3a5f',fontFamily:'inherit' }}>Tham gia ngay</button>\r\n                <button onClick={() => history.push('/auth/login')} style={{ display:'inline-flex',alignItems:'center',padding:'0 28px',height:48,borderRadius:24,fontSize:16,fontWeight:600,cursor:'pointer',border:'1.5px solid rgba(255,255,255,.35)',background:'rgba(255,255,255,.12)',color:'#fff',fontFamily:'inherit' }}>Đăng nhập</button>\r\n              </>\r\n            )}\r\n          </div>\r\n          <div style={{ display:'flex', gap:36, flexWrap:'wrap' }}>\r\n            {[{num:'2,341',label:'Bài viết'},{num:'1,234',label:'Thành viên'},{num:'8,567',label:'Bình luận'},{num:'48',label:'Chủ đề'}].map((s,i) => (\r\n              <div key={i}>\r\n                <div style={{ fontFamily:\"'Syne',sans-serif\",fontSize:28,fontWeight:800,color:'#fff' }}>{s.num}</div>\r\n                <div style={{ fontSize:13,color:'rgba(255,255,255,.6)' }}>{s.label}</div>\r\n              </div>\r\n            ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Grid */}\r\n      <div style={{ display:'grid', gridTemplateColumns:'1fr 300px', gap:32, alignItems:'start' }}>\r\n\r\n        {/* Posts col */}\r\n        <div>\r\n          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:20, flexWrap:'wrap', gap:12 }}>\r\n            <div style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:20 }}>\r\n              {activeTag ? `🏷️ #${activeTag}` : '🔥 Bài viết mới nhất'}\r\n            </div>\r\n            <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>\r\n              {SORT_OPTIONS.map(s => (\r\n                <button key={s.key} onClick={() => { setSort(s.key); setPage(1); }}\r\n                  style={{ padding:'6px 14px', borderRadius:20, fontSize:13, fontWeight:500, cursor:'pointer', fontFamily:'inherit',\r\n                    border:`1.5px solid ${sort===s.key?'var(--pri)':'var(--border)'}`,\r\n                    background: sort===s.key ? 'rgba(79,140,255,.08)' : 'transparent',\r\n                    color: sort===s.key ? 'var(--pri)' : 'var(--muted)', transition:'all .15s' }}>\r\n                  {s.label}\r\n                </button>\r\n              ))}\r\n              {activeTag && (\r\n                <button onClick={() => setActiveTag(null)} style={{ padding:'6px 12px', borderRadius:20, fontSize:13, cursor:'pointer', border:'1.5px solid var(--danger)', color:'var(--danger)', background:'rgba(239,68,68,.06)', fontFamily:'inherit' }}>\r\n                  ✕ {activeTag}\r\n                </button>\r\n              )}\r\n            </div>\r\n          </div>\r\n\r\n          {loading ? <LoadingSpinner text=\"Đang tải bài viết...\" /> : posts.length ? (\r\n            <>\r\n              <div style={{ display:'flex', flexDirection:'column', gap:14 }}>\r\n                {posts.map(p => <PostCard key={p.id} post={p} />)}\r\n              </div>\r\n              {totalPages > 1 && (\r\n                <div style={{ display:'flex', justifyContent:'center', gap:8, marginTop:32 }}>\r\n                  <button disabled={page===1} onClick={() => setPage(p=>p-1)} style={{ padding:'8px 18px', borderRadius:8, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:page===1?'not-allowed':'pointer', opacity:page===1?.4:1, fontFamily:'inherit', fontSize:14 }}>← Trước</button>\r\n                  {Array.from({length:Math.min(totalPages,5)},(_,i)=>i+1).map(p => (\r\n                    <button key={p} onClick={() => setPage(p)} style={{ width:38, height:38, borderRadius:8, border:`1.5px solid ${page===p?'var(--pri)':'var(--border)'}`, background:page===p?'rgba(79,140,255,.08)':'transparent', color:page===p?'var(--pri)':'var(--muted)', cursor:'pointer', fontWeight:page===p?600:400, fontFamily:'inherit', fontSize:14 }}>{p}</button>\r\n                  ))}\r\n                  <button disabled={page===totalPages} onClick={() => setPage(p=>p+1)} style={{ padding:'8px 18px', borderRadius:8, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:page===totalPages?'not-allowed':'pointer', opacity:page===totalPages?.4:1, fontFamily:'inherit', fontSize:14 }}>Sau →</button>\r\n                </div>\r\n              )}\r\n            </>\r\n          ) : (\r\n            <EmptyState icon=\"📭\" title=\"Chưa có bài viết nào\" description=\"Hãy là người đầu tiên đặt câu hỏi!\"\r\n              action={currentUser && <button onClick={() => navigate('/ask')} style={{ marginTop:16, padding:'10px 24px', borderRadius:20, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:500, fontFamily:'inherit' }}>✏️ Đặt câu hỏi</button>} />\r\n          )}\r\n        </div>\r\n\r\n        {/* Sidebar */}\r\n        <div style={{ display:'flex', flexDirection:'column', gap:20, position:'sticky', top:80 }}>\r\n          <div style={card}>\r\n            <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:12 }}>🏷️ Chủ đề</div>\r\n            <div style={{ display:'flex', flexWrap:'wrap', gap:4 }}>\r\n              {tags.map(t => (\r\n                <TagBadge key={t.id} tag={t} active={activeTag===t.name}\r\n                  onClick={() => { setActiveTag(activeTag===t.name?null:t.name); setPage(1); }} />\r\n              ))}\r\n            </div>\r\n          </div>\r\n          <div style={card}>\r\n            <div style={{ fontSize:12, fontWeight:700, letterSpacing:'.5px', color:'var(--muted)', textTransform:'uppercase', marginBottom:12 }}>🚀 Khám phá</div>\r\n            {[\r\n              {label:'📝 Tất cả bài viết', to:'/forum'},\r\n              ...(currentUser\r\n                ? [{label:'✏️ Đặt câu hỏi', to:'/ask'},{label:'👤 Hồ sơ', to:'/profile'}]\r\n                : [{label:'🔑 Đăng nhập', to:'/auth/login'},{label:'📋 Đăng ký', to:'/auth/register'}])\r\n            ].map((l:{label:string;to:string},i) => (\r\n              <button key={i} onClick={() => navigate(l.to)}\r\n                style={{ display:'block', width:'100%', padding:'9px 12px', fontSize:14, textAlign:'left', background:'transparent', border:'none', cursor:'pointer', color:'var(--text)', borderRadius:8, transition:'background .15s', fontFamily:'inherit', marginBottom:2 }}\r\n                onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')}\r\n                onMouseLeave={e => (e.currentTarget.style.background='transparent')}>\r\n                {l.label}\r\n              </button>\r\n            ))}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/index.tsx"
+    },
+    "test": {
+      "path": "test",
+      "id": "test",
+      "file": "test.tsx",
+      "absPath": "/test",
+      "__content": "export default function TestPage() {\r\n  return <div style={{ padding: '20px' }}>🧪 Test Page Content</div>;\r\n}\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/test.tsx"
+    },
+    "ask": {
+      "path": "ask",
+      "id": "ask",
+      "file": "ask.tsx",
+      "absPath": "/ask",
+      "__content": "import React, { useState, useEffect } from 'react';\r\nimport { useNavigate } from 'umi';\r\nimport TagBadge from '../components/common/TagBadge';\r\nimport { forumService } from '../services/forumService';\r\nimport { addToast } from '../utils/toast';\r\nimport type { Tag, User } from '../types';\r\n\r\ninterface Props { currentUser: User | null; }\r\n\r\nconst AskPage: React.FC<Props> = ({ currentUser }) => {\r\n  const navigate = useNavigate();\r\n  const [title, setTitle] = useState('');\r\n  const [content, setContent] = useState('');\r\n  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);\r\n  const [allTags, setAllTags] = useState<Tag[]>([]);\r\n  const [tagInput, setTagInput] = useState('');\r\n  const [suggestions, setSuggestions] = useState<Tag[]>([]);\r\n  const [submitting, setSubmitting] = useState(false);\r\n  const [errors, setErrors] = useState<Record<string,string>>({});\r\n\r\n  useEffect(() => {\r\n    if (!currentUser) { navigate('/auth/login'); return; }\r\n    forumService.getTags().then(setAllTags).catch(() => {});\r\n    // Restore draft\r\n    const draft = localStorage.getItem('forum_draft');\r\n    if (draft) { try { const d = JSON.parse(draft); setTitle(d.title||''); setContent(d.content||''); } catch {} }\r\n  }, [currentUser]);\r\n\r\n  // Auto-save draft\r\n  useEffect(() => {\r\n    const t = setTimeout(() => { localStorage.setItem('forum_draft', JSON.stringify({ title, content })); }, 1000);\r\n    return () => clearTimeout(t);\r\n  }, [title, content]);\r\n\r\n  const handleTagInput = (val: string) => {\r\n    setTagInput(val);\r\n    if (val.trim()) {\r\n      setSuggestions(allTags.filter(t => t.name.toLowerCase().includes(val.toLowerCase()) && !selectedTags.find(s => s.id === t.id)));\r\n    } else setSuggestions([]);\r\n  };\r\n\r\n  const addTag = (tag: Tag) => {\r\n    if (selectedTags.length >= 10) { addToast('Tối đa 10 tags', 'warning'); return; }\r\n    if (!selectedTags.find(t => t.id === tag.id)) setSelectedTags(p => [...p, tag]);\r\n    setTagInput(''); setSuggestions([]);\r\n  };\r\n\r\n  const validate = () => {\r\n    const e: Record<string,string> = {};\r\n    if (!title.trim()) e.title = 'Tiêu đề không được để trống';\r\n    else if (title.trim().length < 5) e.title = 'Tiêu đề phải có ít nhất 5 ký tự';\r\n    if (!content.trim()) e.content = 'Nội dung không được để trống';\r\n    else if (content.trim().length < 10) e.content = 'Nội dung phải có ít nhất 10 ký tự';\r\n    setErrors(e);\r\n    return Object.keys(e).length === 0;\r\n  };\r\n\r\n  const handleSubmit = async () => {\r\n    if (!validate()) return;\r\n    setSubmitting(true);\r\n    try {\r\n      const p = await forumService.createPost({ title: title.trim(), content: content.trim(), tags: selectedTags.map(t => t.name) });\r\n      localStorage.removeItem('forum_draft');\r\n      addToast('🎉 Bài viết đã được đăng thành công!', 'success');\r\n      history.push(`/forum/${p.id}`);\r\n    } catch { addToast('Không thể đăng bài. Vui lòng thử lại!', 'error'); }\r\n    finally { setSubmitting(false); }\r\n  };\r\n\r\n  const inp: React.CSSProperties = { width:'100%', height:44, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, outline:'none', fontFamily:'inherit', transition:'all .2s' };\r\n  const focusStyle = (e: any) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };\r\n  const blurStyle = (e: any) => { e.target.style.borderColor=errors[e.target.name]?'var(--danger)':'var(--border)'; e.target.style.boxShadow=''; };\r\n\r\n  return (\r\n    <div style={{ maxWidth:860, margin:'0 auto', padding:'32px 24px' }}>\r\n      <div style={{ display:'flex', alignItems:'center', gap:6, fontSize:14, color:'var(--muted)', marginBottom:20, cursor:'pointer' }} onClick={() => history.push('/forum')}>\r\n        ← Diễn đàn\r\n      </div>\r\n      <h1 style={{ fontFamily:\"'Syne',sans-serif\", fontWeight:700, fontSize:28, marginBottom:6 }}>✏️ Đặt câu hỏi mới</h1>\r\n      <p style={{ color:'var(--muted)', fontSize:15, marginBottom:28 }}>Càng chi tiết, bạn càng dễ nhận được câu trả lời chính xác!</p>\r\n\r\n      <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:32 }}>\r\n        {/* Title */}\r\n        <div style={{ marginBottom:22 }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Tiêu đề câu hỏi *</label>\r\n          <input name=\"title\" value={title} onChange={e => setTitle(e.target.value)} placeholder=\"VD: Làm thế nào để hiểu Recursion trong lập trình?\"\r\n            style={{ ...inp, borderColor: errors.title ? 'var(--danger)' : 'var(--border)' }}\r\n            onFocus={focusStyle} onBlur={blurStyle} maxLength={200} />\r\n          <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>\r\n            {errors.title ? <span style={{ fontSize:12, color:'var(--danger)' }}>⚠️ {errors.title}</span> : <span />}\r\n            <span style={{ fontSize:12, color:'var(--faint)' }}>{title.length}/200</span>\r\n          </div>\r\n          <div style={{ height:3, borderRadius:2, background:'var(--border)', marginTop:6, overflow:'hidden' }}>\r\n            <div style={{ height:'100%', width:`${(title.length/200)*100}%`, background:'linear-gradient(90deg,var(--pri),var(--sec))', borderRadius:2, transition:'width .3s' }} />\r\n          </div>\r\n        </div>\r\n\r\n        {/* Content */}\r\n        <div style={{ marginBottom:22 }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Nội dung chi tiết *</label>\r\n          <textarea name=\"content\" value={content} onChange={e => setContent(e.target.value)} placeholder=\"Mô tả chi tiết vấn đề bạn gặp phải. Bạn đã thử những cách nào? Code bạn đang viết là gì?...\"\r\n            style={{ width:'100%', minHeight:220, border:`1.5px solid ${errors.content?'var(--danger)':'var(--border)'}`, borderRadius:8, padding:'12px 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, fontFamily:'inherit', resize:'vertical', outline:'none', lineHeight:1.7, transition:'all .2s' }}\r\n            onFocus={focusStyle} onBlur={blurStyle} maxLength={5000} />\r\n          <div style={{ display:'flex', justifyContent:'space-between', marginTop:4 }}>\r\n            {errors.content ? <span style={{ fontSize:12, color:'var(--danger)' }}>⚠️ {errors.content}</span> : <span />}\r\n            <span style={{ fontSize:12, color:'var(--faint)' }}>{content.length}/5000</span>\r\n          </div>\r\n        </div>\r\n\r\n        {/* Tags */}\r\n        <div style={{ marginBottom:28, position:'relative' }}>\r\n          <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Tags (chủ đề liên quan)</label>\r\n          <div style={{ display:'flex', flexWrap:'wrap', gap:6, padding:'8px 12px', border:'1.5px solid var(--border)', borderRadius:8, background:'var(--bg)', minHeight:48, alignItems:'center', cursor:'text' }}>\r\n            {selectedTags.map(t => (\r\n              <TagBadge key={t.id} tag={t} onClick={() => setSelectedTags(p => p.filter(x => x.id !== t.id))} style={{ cursor:'pointer' }} />\r\n            ))}\r\n            <input value={tagInput} onChange={e => handleTagInput(e.target.value)}\r\n              onKeyDown={e => { if (e.key==='Enter' && tagInput.trim()) { const ex = allTags.find(t => t.name.toLowerCase()===tagInput.toLowerCase()); addTag(ex ?? { id: Date.now(), name: tagInput, color:'#7b61ff', usageCount:0 }); } }}\r\n              placeholder={selectedTags.length===0?'Nhập để tìm hoặc thêm tag...':''} style={{ border:'none', outline:'none', background:'transparent', fontSize:14, color:'var(--text)', flex:1, minWidth:140, fontFamily:'inherit', padding:'2px 0' }} />\r\n          </div>\r\n          {/* Suggestions */}\r\n          {suggestions.length > 0 && (\r\n            <div style={{ position:'absolute', top:'100%', left:0, right:0, background:'var(--surface)', border:'1px solid var(--border)', borderRadius:8, zIndex:50, boxShadow:'var(--shadow-lg)', maxHeight:200, overflowY:'auto' }}>\r\n              {suggestions.slice(0,8).map(t => (\r\n                <div key={t.id} onClick={() => addTag(t)} style={{ padding:'10px 14px', cursor:'pointer', display:'flex', alignItems:'center', gap:10, fontSize:14, transition:'background .15s' }}\r\n                  onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')}\r\n                  onMouseLeave={e => (e.currentTarget.style.background='transparent')}>\r\n                  <TagBadge tag={t} />\r\n                  <span style={{ color:'var(--faint)', fontSize:13 }}>{t.usageCount} bài viết</span>\r\n                </div>\r\n              ))}\r\n            </div>\r\n          )}\r\n          <div style={{ fontSize:12, color:'var(--faint)', marginTop:6 }}>Nhấn Enter để thêm. Tối đa 10 tags. ({selectedTags.length}/10)</div>\r\n        </div>\r\n\r\n        {/* Actions */}\r\n        <div style={{ display:'flex', gap:12, justifyContent:'flex-end', paddingTop:20, borderTop:'1px solid var(--border)' }}>\r\n          <button onClick={() => { localStorage.removeItem('forum_draft'); history.push('/forum'); }}\r\n            style={{ padding:'0 22px', height:42, borderRadius:21, border:'1.5px solid var(--border)', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>\r\n            Hủy bỏ\r\n          </button>\r\n          <button onClick={handleSubmit} disabled={submitting}\r\n            style={{ padding:'0 28px', height:42, borderRadius:21, border:'none', background:'linear-gradient(135deg,var(--pri),var(--sec))', color:'#fff', cursor:submitting?'not-allowed':'pointer', fontSize:14, fontWeight:600, fontFamily:'inherit', opacity:submitting?.75:1 }}>\r\n            {submitting ? 'Đang đăng...' : '📤 Đăng bài viết'}\r\n          </button>\r\n        </div>\r\n      </div>\r\n\r\n      {/* Tips */}\r\n      <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:20, marginTop:20 }}>\r\n        <div style={{ fontWeight:600, fontSize:14, marginBottom:12 }}>💡 Tips để nhận câu trả lời tốt hơn</div>\r\n        {['Mô tả vấn đề cụ thể, rõ ràng', 'Chia sẻ code hoặc ví dụ bạn đã thử', 'Nêu rõ lỗi hoặc kết quả mong muốn', 'Chọn đúng tags để tìm đúng người'].map((tip,i) => (\r\n          <div key={i} style={{ display:'flex', alignItems:'center', gap:8, fontSize:13, color:'var(--muted)', marginBottom:8 }}>\r\n            <span style={{ color:'var(--success)', fontSize:15 }}>✓</span> {tip}\r\n          </div>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AskPage;\r\n",
+      "__isJSFile": true,
+      "__absFile": "D:/dien-dan-hoi-dap/frontend/src/pages/ask.tsx"
+    }
+  },
+  "apiRoutes": {},
+  "hasSrcDir": true,
+  "npmClient": "npm",
+  "umi": {
+    "version": "4.6.57",
+    "name": "Umi Max",
+    "importSource": "@umijs/max",
+    "cliName": "max"
+  },
+  "bundleStatus": {
+    "done": false
+  },
+  "mfsuBundleStatus": {
+    "done": false
+  },
+  "react": {
+    "version": "18.3.1",
+    "path": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react"
+  },
+  "react-dom": {
+    "version": "18.3.1",
+    "path": "D:\\dien-dan-hoi-dap\\frontend\\node_modules\\react-dom"
+  },
+  "appJS": {
+    "path": "D:\\dien-dan-hoi-dap\\frontend\\src\\app.tsx",
+    "exports": []
+  },
+  "locale": "en-US",
+  "globalCSS": [],
+  "globalJS": [],
+  "overridesCSS": [],
+  "bundler": "webpack",
+  "git": {
+    "originUrl": "https://github.com/B24DCCC111-NguyenVanHiep/RIPT1307-Nhom5-KTHP.git"
+  },
+  "framework": "react",
+  "typescript": {
+    "tsVersion": "6.0.3",
+    "tslibVersion": "2.8.1"
+  },
+  "faviconFiles": []
+}

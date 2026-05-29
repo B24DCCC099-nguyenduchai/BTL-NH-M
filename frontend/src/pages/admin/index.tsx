@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'umi';
+import { useNavigate } from 'umi';
 import UserAvatar from '../../components/common/UserAvatar';
 import RoleBadge from '../../components/common/RoleBadge';
 import TagBadge from '../../components/common/TagBadge';
@@ -9,7 +9,7 @@ import { addToast } from '../../utils/toast';
 import { timeAgo } from '../../utils/helpers';
 import type { User, Post, Tag, AdminStats } from '../../types';
 
-interface Props { currentUser: any; }
+interface Props { currentUser: User; }
 
 type MenuKey = 'dashboard' | 'users' | 'posts' | 'tags';
 
@@ -21,7 +21,7 @@ const MENU: { key: MenuKey; icon: string; label: string }[] = [
 ];
 
 const AdminPage: React.FC<Props> = ({ currentUser }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [menu, setMenu] = useState<MenuKey>('dashboard');
   const [stats, setStats] = useState<AdminStats | null>(null);
   const [users, setUsers] = useState<User[]>([]);
@@ -31,52 +31,43 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
   const [editUser, setEditUser] = useState<User | null>(null);
   const [showAddUser, setShowAddUser] = useState(false);
   const [showAddTag, setShowAddTag] = useState(false);
-  const [newUser, setNewUser] = useState({ username:'', email:'', role:'student', password:'' });
+  const [newUser, setNewUser] = useState({ name:'', email:'', role:'student', password:'' });
   const [newTag, setNewTag] = useState({ name:'', color:'#4f8cff', description:'' });
 
-  if (!currentUser || currentUser.role !== 'admin') { history.push('/'); return null; }
+  if (currentUser.role !== 'admin') { navigate('/'); return null; }
 
   useEffect(() => {
     const load = async () => {
       setLoading(true);
       try {
-        const [st, us, ps, ts] = await Promise.all([
-          adminService.getStatistics(),
+        const [st, us, ps] = await Promise.all([
+          adminService.getStats(),
           adminService.getUsers(),
           adminService.getPosts(),
-          adminService.getUsers(), // reuse for tag count
         ]);
         setStats(st);
-        setUsers(us.data);
-        setPosts(ps.data);
+        setUsers(us);
+        setPosts(ps);
       } catch { /* use empty */ }
       finally { setLoading(false); }
     };
     load();
-    adminService.getUsers().then(r => setUsers(r.data)).catch(() => {});
-    adminService.getPosts().then(r => setPosts(r.data)).catch(() => {});
   }, []);
 
-  // Bar chart data
-  const barData = [
-    {l:'T2',v:18},{l:'T3',v:32},{l:'T4',v:24},{l:'T5',v:45},{l:'T6',v:38},{l:'T7',v:22},{l:'CN',v:15}
-  ];
-  const maxBar = Math.max(...barData.map(d => d.v));
-
-  const handleToggleLock = async (id: number) => {
-    try { await adminService.lockUser(id); setUsers(p => p.map(u => u.id===id?{...u,isActive:!u.isActive}:u)); addToast('Đã cập nhật trạng thái!','success'); }
+  const handleToggleLock = async (id: string) => {
+    try { await adminService.lockUser(id); setUsers(p => p.map(u => u.id===id?{...u,status: u.status === 'active' ? 'locked' : 'active'}:u)); addToast('Đã cập nhật trạng thái!','success'); }
     catch { addToast('Lỗi cập nhật','error'); }
   };
-  const handleResetPw = async (id: number) => {
-    try { const r = await adminService.resetPassword(id); addToast(`Mật khẩu tạm: ${r.tempPassword} (đã gửi email)`,'success'); }
+  const handleResetPw = async (id: string) => {
+    try { await adminService.resetPassword(id); addToast('Mật khẩu mới đã được gửi email','success'); }
     catch { addToast('Lỗi reset mật khẩu','error'); }
   };
-  const handleDeleteUser = async (id: number) => {
+  const handleDeleteUser = async (id: string) => {
     if (!window.confirm('Xóa người dùng này?')) return;
     try { await adminService.deleteUser(id); setUsers(p => p.filter(u => u.id!==id)); addToast('Đã xóa người dùng','success'); }
     catch { addToast('Lỗi xóa','error'); }
   };
-  const handleDeletePost = async (id: number) => {
+  const handleDeletePost = async (id: string) => {
     if (!window.confirm('Xóa bài viết này?')) return;
     try { await adminService.deletePost(id); setPosts(p => p.filter(x => x.id!==id)); addToast('Đã xóa bài viết','success'); }
     catch { addToast('Lỗi xóa','error'); }
@@ -87,19 +78,16 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
     catch { addToast('Lỗi cập nhật','error'); }
   };
   const handleAddUser = async () => {
-    if (!newUser.username||!newUser.email||!newUser.password) { addToast('Vui lòng nhập đủ thông tin','error'); return; }
+    if (!newUser.name||!newUser.email||!newUser.password) { addToast('Vui lòng nhập đủ thông tin','error'); return; }
     try {
       const u = await adminService.createUser(newUser as any);
-      setUsers(p => [...p, u]); setShowAddUser(false); setNewUser({username:'',email:'',role:'student',password:''}); addToast('Đã thêm người dùng!','success');
+      setUsers(p => [...p, u]); setShowAddUser(false); setNewUser({name:'',email:'',role:'student',password:''}); addToast('Đã thêm người dùng!','success');
     } catch { addToast('Lỗi thêm người dùng','error'); }
   };
 
   const inp: React.CSSProperties = { width:'100%', height:40, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 12px', background:'var(--bg)', color:'var(--text)', fontSize:14, outline:'none', fontFamily:'inherit', transition:'all .2s' };
-  const focusEvt = (e: any) => { e.target.style.borderColor='var(--pri)'; };
-  const blurEvt = (e: any) => { e.target.style.borderColor='var(--border)'; };
-
-  const roleBg: Record<string,string> = { admin:'rgba(239,68,68,.1)', lecturer:'rgba(123,97,255,.1)', student:'rgba(79,140,255,.1)' };
-  const roleClr: Record<string,string> = { admin:'var(--danger)', lecturer:'var(--sec)', student:'var(--pri)' };
+  const focusEvt = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => { e.target.style.borderColor='var(--pri)'; };
+  const blurEvt = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => { e.target.style.borderColor='var(--border)'; };
 
   const STAT_CARDS = [
     { label:'Tổng bài viết', num:(stats?.totalPosts??posts.length*47).toLocaleString(), icon:'📝', color:'var(--pri)' },
@@ -124,7 +112,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
           ))}
         </div>
         <div style={{ padding:10, borderTop:'1px solid var(--border)' }}>
-          <button onClick={() => history.push('/')} style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 12px', width:'100%', borderRadius:8, border:'none', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>
+          <button onClick={() => navigate('/')} style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 12px', width:'100%', borderRadius:8, border:'none', background:'transparent', color:'var(--muted)', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>
             ← Về diễn đàn
           </button>
         </div>
@@ -139,7 +127,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
           </div>
           <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:10 }}>
             <UserAvatar user={currentUser} size="sm" />
-            <span style={{ fontSize:14, fontWeight:500 }}>{currentUser.username}</span>
+            <span style={{ fontSize:14, fontWeight:500 }}>{currentUser.name}</span>
           </div>
         </div>
 
@@ -208,7 +196,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
                       <tr key={p.id} style={{ cursor:'pointer' }} onClick={() => history.push(`/forum/${p.id}`)}>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', maxWidth:260, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontSize:14, color:'var(--pri)', fontWeight:500 }}>{p.title}</td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14 }}>
-                          <div style={{ display:'flex', alignItems:'center', gap:8 }}><UserAvatar user={p.author} size="sm" />{p.author.username}</div>
+                          <div style={{ display:'flex', alignItems:'center', gap:8 }}><UserAvatar user={p.author} size="sm" />{p.author.name}</div>
                         </td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}><span style={{ background:'rgba(79,140,255,.1)', color:'var(--pri)', borderRadius:12, padding:'2px 10px', fontSize:13, fontWeight:600 }}>▲ {p.votes}</span></td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14, color:'var(--muted)' }}>{p.views}</td>
@@ -239,20 +227,20 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
                     {users.map(u => (
                       <tr key={u.id} onMouseEnter={e => (e.currentTarget.style.background='var(--bg)')} onMouseLeave={e => (e.currentTarget.style.background='transparent')}>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>
-                          <div style={{ display:'flex', alignItems:'center', gap:10 }}><UserAvatar user={u} size="sm" /><span style={{ fontWeight:500, fontSize:14 }}>{u.username}</span></div>
+                          <div style={{ display:'flex', alignItems:'center', gap:10 }}><UserAvatar user={u} size="sm" /><span style={{ fontWeight:500, fontSize:14 }}>{u.name}</span></div>
                         </td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)', fontSize:14, color:'var(--muted)' }}>{u.email}</td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}><RoleBadge role={u.role} /></td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>
-                          <span style={{ background:u.isActive?'rgba(34,197,94,.1)':'rgba(239,68,68,.1)', color:u.isActive?'var(--success)':'var(--danger)', borderRadius:12, padding:'3px 10px', fontSize:12, fontWeight:600 }}>
-                            {u.isActive ? '✓ Hoạt động' : '✗ Đã khóa'}
+                          <span style={{ background:u.status==='active'?'rgba(34,197,94,.1)':'rgba(239,68,68,.1)', color:u.status==='active'?'var(--success)':'var(--danger)', borderRadius:12, padding:'3px 10px', fontSize:12, fontWeight:600 }}>
+                            {u.status === 'active' ? '✓ Hoạt động' : '✗ Đã khóa'}
                           </span>
                         </td>
                         <td style={{ padding:'13px 14px', borderBottom:'1px solid var(--border)' }}>
                           <div style={{ display:'flex', gap:6 }}>
                             {[
                               { label:'Sửa', action:() => setEditUser(u), color:'var(--pri)' },
-                              { label:u.isActive?'🔒 Khóa':'🔓 Mở', action:() => handleToggleLock(u.id), color:'var(--warn)' },
+                              { label:u.status==='active'?'🔒 Khóa':'🔓 Mở', action:() => handleToggleLock(u.id), color:'var(--warn)' },
                               { label:'🔑 Reset', action:() => handleResetPw(u.id), color:'var(--muted)' },
                               ...(u.role!=='admin'?[{ label:'Xóa', action:() => handleDeleteUser(u.id), color:'var(--danger)' }]:[]),
                             ].map((btn,i) => (
@@ -285,7 +273,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
                         <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', maxWidth:220 }}>
                           <div style={{ overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', fontSize:14, fontWeight:500, color:'var(--pri)', cursor:'pointer' }} onClick={() => history.push(`/forum/${p.id}`)}>{p.title}</div>
                         </td>
-                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', fontSize:14 }}>{p.author.username}</td>
+                        <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', fontSize:14 }}>{p.author.name}</td>
                         <td style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)' }}>
                           <div style={{ display:'flex', gap:4, flexWrap:'wrap' }}>
                             {p.tags.slice(0,2).map(t => <TagBadge key={t.id} tag={t} />)}
@@ -354,7 +342,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
       {editUser && (
         <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,.5)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:24, backdropFilter:'blur(4px)' }} onClick={e => e.target===e.currentTarget&&setEditUser(null)}>
           <div style={{ background:'var(--surface)', borderRadius:20, padding:32, width:'100%', maxWidth:440, boxShadow:'var(--shadow-xl)' }}>
-            <div style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:20, marginBottom:24 }}>✏️ Sửa người dùng: {editUser.username}</div>
+            <div style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:20, marginBottom:24 }}>✏️ Sửa người dùng: {editUser.name}</div>
             <div style={{ marginBottom:16 }}>
               <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>Vai trò</label>
               <select value={editUser.role} onChange={e => setEditUser({...editUser,role:e.target.value as any})} style={{ ...inp, cursor:'pointer' }} onFocus={focusEvt} onBlur={blurEvt}>
@@ -364,7 +352,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
               </select>
             </div>
             <div style={{ marginBottom:20, display:'flex', alignItems:'center', gap:10 }}>
-              <input type="checkbox" checked={editUser.isActive} onChange={e => setEditUser({...editUser,isActive:e.target.checked})} style={{ width:18, height:18, accentColor:'var(--pri)', cursor:'pointer' }} />
+              <input type="checkbox" checked={editUser.status === 'active'} onChange={e => setEditUser({...editUser, status: e.target.checked ? 'active' : 'locked'})} style={{ width:18, height:18, accentColor:'var(--pri)', cursor:'pointer' }} />
               <span style={{ fontSize:14 }}>Tài khoản đang hoạt động</span>
             </div>
             <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
@@ -380,7 +368,7 @@ const AdminPage: React.FC<Props> = ({ currentUser }) => {
         <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,.5)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:24, backdropFilter:'blur(4px)' }} onClick={e => e.target===e.currentTarget&&setShowAddUser(false)}>
           <div style={{ background:'var(--surface)', borderRadius:20, padding:32, width:'100%', maxWidth:440, boxShadow:'var(--shadow-xl)' }}>
             <div style={{ fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:20, marginBottom:24 }}>➕ Thêm người dùng mới</div>
-            {[{key:'username',label:'Tên đăng nhập',type:'text',ph:'sv_tenminhban'},{key:'email',label:'Email',type:'email',ph:'email@student.edu.vn'},{key:'password',label:'Mật khẩu tạm',type:'password',ph:'Mật khẩu ban đầu'}].map(f => (
+            {[{key:'name',label:'Tên người dùng',type:'text',ph:'Tên đầy đủ'},{key:'email',label:'Email',type:'email',ph:'email@student.edu.vn'},{key:'password',label:'Mật khẩu tạm',type:'password',ph:'Mật khẩu ban đầu'}].map(f => (
               <div key={f.key} style={{ marginBottom:16 }}>
                 <label style={{ display:'block', fontWeight:600, fontSize:14, marginBottom:6 }}>{f.label}</label>
                 <input type={f.type} value={(newUser as any)[f.key]} onChange={e => setNewUser(p => ({...p,[f.key]:e.target.value}))} placeholder={f.ph} style={inp} onFocus={focusEvt} onBlur={blurEvt} />

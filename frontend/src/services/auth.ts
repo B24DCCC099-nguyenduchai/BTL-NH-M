@@ -2,10 +2,9 @@ import api from './api';
 import type { User, LoginResponse } from '../types';
 
 export interface RegisterPayload {
-  username: string;
+  name: string;
   email: string;
   password: string;
-  role: 'student' | 'lecturer';
 }
 
 export const authService = {
@@ -20,10 +19,4 @@ export const authService = {
 
   logout: () =>
     api.post('/auth/logout').catch(() => {}),
-
-  changePassword: (currentPassword: string, newPassword: string) =>
-    api.post('/auth/change-password', { currentPassword, newPassword }).then((r) => r.data),
-
-  forgotPassword: (email: string) =>
-    api.post('/auth/forgot-password', { email }).then((r) => r.data),
 };

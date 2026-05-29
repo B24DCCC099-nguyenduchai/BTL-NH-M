@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'umi';
+import { useNavigate } from 'umi';
 import TagBadge from '../components/common/TagBadge';
 import { forumService } from '../services/forumService';
 import { addToast } from '../utils/toast';
@@ -8,7 +8,7 @@ import type { Tag, User } from '../types';
 interface Props { currentUser: User | null; }
 
 const AskPage: React.FC<Props> = ({ currentUser }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
@@ -19,7 +19,7 @@ const AskPage: React.FC<Props> = ({ currentUser }) => {
   const [errors, setErrors] = useState<Record<string,string>>({});
 
   useEffect(() => {
-    if (!currentUser) { history.push('/auth/login'); return; }
+    if (!currentUser) { navigate('/auth/login'); return; }
     forumService.getTags().then(setAllTags).catch(() => {});
     // Restore draft
     const draft = localStorage.getItem('forum_draft');

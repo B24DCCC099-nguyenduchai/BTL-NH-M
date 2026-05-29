@@ -1,71 +1,58 @@
 import api from './api';
-import type { Post, PostsResponse, Comment, Tag } from '../types';
+import type { Post, Comment, Tag } from '../types';
 
 export interface GetPostsParams {
   page?: number;
   limit?: number;
-  sort?: 'newest' | 'hot' | 'votes' | 'views';
-  tag?: string;
-  keyword?: string;
+  q?: string;
 }
 
 export interface CreatePostPayload {
   title: string;
   content: string;
-  tags: string[];
+  tags?: string[];
+}
+
+export interface CreateCommentPayload {
+  content: string;
+  parentCommentId?: string;
 }
 
 export const forumService = {
   // Posts
   getPosts: (params: GetPostsParams = {}) =>
-    api.get<PostsResponse>('/forum/posts', { params }).then((r) => r.data),
+    api.get<Post[]>('/forum/posts', { params }).then((r) => r.data),
 
-  getPost: (id: number) =>
+  getPost: (id: string) =>
     api.get<Post>(`/forum/posts/${id}`).then((r) => r.data),
 
   createPost: (data: CreatePostPayload) =>
     api.post<Post>('/forum/posts', data).then((r) => r.data),
 
-  updatePost: (id: number, data: Partial<CreatePostPayload>) =>
-    api.put<Post>(`/forum/posts/${id}`, data).then((r) => r.data),
-
-  deletePost: (id: number) =>
+  deletePost: (id: string) =>
     api.delete(`/forum/posts/${id}`).then((r) => r.data),
 
-  votePost: (id: number, voteType: 1 | -1) =>
-    api.post<{ votes: number; userVote: number | null }>(
-      `/forum/posts/${id}/vote`,
-      { voteType }
-    ).then((r) => r.data),
-
-  savePost: (id: number) =>
-    api.post<{ saved: boolean }>(`/forum/posts/${id}/save`).then((r) => r.data),
-
-  getSavedPosts: () =>
-    api.get<Post[]>('/forum/saved-posts').then((r) => r.data),
+  votePost: (id: string, direction: 'up' | 'down') =>
+    api.post(`/forum/posts/${id}/vote`, { direction }).then((r) => r.data),
 
   // Comments
-  getComments: (postId: number) =>
+  getComments: (postId: string) =>
     api.get<Comment[]>(`/forum/posts/${postId}/comments`).then((r) => r.data),
 
-  createComment: (postId: number, content: string) =>
-    api.post<Comment>(`/forum/posts/${postId}/comments`, { content }).then((r) => r.data),
+  createComment: (postId: string, payload: CreateCommentPayload) =>
+    api.post<Comment>(`/forum/posts/${postId}/comments`, payload).then((r) => r.data),
 
-  replyComment: (postId: number, parentCommentId: number, content: string) =>
-    api
-      .post<Comment>(
-        `/forum/posts/${postId}/comments/${parentCommentId}/reply`,
-        { content }
-      )
-      .then((r) => r.data),
-
-  deleteComment: (id: number) =>
+  deleteComment: (id: string) =>
     api.delete(`/forum/comments/${id}`).then((r) => r.data),
 
-  voteComment: (id: number, voteType: 1 | -1) =>
-    api.post(`/forum/comments/${id}/vote`, { voteType }).then((r) => r.data),
+  voteComment: (id: string, direction: 'up' | 'down') =>
+    api.post(`/forum/comments/${id}/vote`, { direction }).then((r) => r.data),
 
   // Tags
   getTags: () =>
     api.get<Tag[]>('/forum/tags').then((r) => r.data),
+
+  // Search
+  searchPosts: (q: string = '', page: number = 1, limit: number = 10) =>
+    api.get<any>('/forum/search', { params: { q, page, limit } }).then((r) => r.data),
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'umi';
+import { useNavigate } from 'umi';
 import UserAvatar from '../components/common/UserAvatar';
 import RoleBadge from '../components/common/RoleBadge';
 import { userService } from '../services/userService';
@@ -10,17 +10,17 @@ import type { User } from '../types';
 interface Props { currentUser: User | null; onUpdateUser: (u: Partial<User>) => void; }
 
 const ProfilePage: React.FC<Props> = ({ currentUser, onUpdateUser }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [tab, setTab] = useState<'posts'|'saved'|'edit'|'password'>('posts');
   const [form, setForm] = useState({ username: currentUser?.username||'', bio: currentUser?.bio||'', email: currentUser?.email||'' });
   const [pwForm, setPwForm] = useState({ current:'', newpw:'', confirm:'' });
   const [saving, setSaving] = useState(false);
 
-  if (!currentUser) { history.push('/auth/login'); return null; }
+  if (!currentUser) { navigate('/auth/login'); return null; }
 
   const inp: React.CSSProperties = { width:'100%', height:44, border:'1.5px solid var(--border)', borderRadius:8, padding:'0 14px', background:'var(--bg)', color:'var(--text)', fontSize:14, outline:'none', fontFamily:'inherit', transition:'all .2s' };
-  const focus = (e: any) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };
-  const blur = (e: any) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };
+  const focus = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--pri)'; e.target.style.boxShadow='0 0 0 3px rgba(79,140,255,.1)'; };
+  const blur = (e: React.FocusEvent<HTMLInputElement>) => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow=''; };
 
   const handleSaveProfile = async () => {
     setSaving(true);
