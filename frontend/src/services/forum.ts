@@ -18,6 +18,16 @@ export interface CreateCommentPayload {
   parentCommentId?: string;
 }
 
+export interface SearchResult {
+  data: Post[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
+
 export const forumService = {
   // Posts
   getPosts: (params: GetPostsParams = {}) =>
@@ -54,5 +64,5 @@ export const forumService = {
 
   // Search
   searchPosts: (q: string = '', page: number = 1, limit: number = 10) =>
-    api.get<any>('/forum/search', { params: { q, page, limit } }).then((r) => r.data),
+    api.get<SearchResult>('/forum/search', { params: { q, page, limit } }).then((r) => r.data),
 };

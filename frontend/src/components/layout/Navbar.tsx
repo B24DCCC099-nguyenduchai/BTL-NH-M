@@ -1,13 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { history } from 'umi';
-import UserAvatar from '../common/UserAvatar';
-import type { User } from '../../types';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useNavigate } from 'umi';
+import { Avatar } from '@/components/forum';
+import type { User } from '@/types';
 
 interface Props {
   user: User | null;
   dark: boolean;
   onToggleDark: () => void;
   onLogout: () => void;
+  onSearch?: (query: string) => void;
 }
 
 const Navbar: React.FC<Props> = ({
@@ -15,166 +16,61 @@ const Navbar: React.FC<Props> = ({
   dark,
   onToggleDark,
   onLogout,
+  onSearch,
 }) => {
+  const navigate = useNavigate();
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fn = (e: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(e.target as Node)
-      ) {
-        setMenuOpen(false);
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setUserMenuOpen(false);
       }
     };
-
     document.addEventListener('mousedown', fn);
-
-    return () => {
-      document.removeEventListener('mousedown', fn);
-    };
+    return () => document.removeEventListener('mousedown', fn);
   }, []);
 
-  const btnGhost: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 6,
-    padding: '0 18px',
-    height: 38,
-    borderRadius: 19,
-    fontSize: 14,
-    fontWeight: 500,
-    cursor: 'pointer',
-    border: '1.5px solid var(--border)',
-    background: 'transparent',
-    color: 'var(--muted)',
-    whiteSpace: 'nowrap',
-    transition: 'all .2s',
-    fontFamily: 'inherit',
-  };
+  const handleSearch = useCallback(() => {
+    if (onSearch) {
+      onSearch(search);
+    }
+    setSearch('');
+  }, [search, onSearch]);
 
-  const btnPrimary: React.CSSProperties = {
-    ...btnGhost,
-    border: 'none',
-    background:
-      'linear-gradient(135deg, var(--pri), var(--sec))',
-    color: '#fff',
-  };
+  const handleLogout = useCallback(() => {
+    setUserMenuOpen(false);
+    localStorage.removeItem('forum_token');
+    if (onLogout) {
+      onLogout();
+    }
+    navigate('/auth');
+  }, [navigate, onLogout]);
 
   return (
-    <nav
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        background: 'var(--surface)',
-        borderBottom: '1px solid var(--border)',
-        backdropFilter: 'blur(12px)',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: '0 auto',
-          padding: '0 24px',
-          height: 64,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 16,
-        }}
-      >
-        {/* Logo */}
-        <div
-          onClick={() => history.push('/')}
-          style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 800,
-            fontSize: 20,
-            background:
-              'linear-gradient(135deg, var(--pri), var(--sec))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >
-          📚 Diễn Đàn SV
+    <nav className="nav">
+      <div className="nav-inner">
+        <div className="logo" onClick={() => navigate('/forum')} style={{ cursor: 'pointer' }}>
+          📚 Diễn đàn SV
         </div>
 
-        {/* Search */}
-        <div
-          style={{
-            flex: 1,
-            maxWidth: 480,
-            position: 'relative',
-          }}
-        >
-          <span
-            style={{
-              position: 'absolute',
-              left: 13,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: 'var(--faint)',
-              fontSize: 15,
-              pointerEvents: 'none',
-            }}
-          >
-            🔍
-          </span>
-
+        <div className="search-wrap">
+          <span className="search-icon">🔍</span>
           <input
+            className="search-input"
+            placeholder="Tìm kiếm..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && search.trim()) {
-                history.push(
-                  `/forum?keyword=${encodeURIComponent(
-                    search.trim(),
-                  )}`,
-                );
-              }
-            }}
-            placeholder="Tìm kiếm bài viết..."
-            style={{
-              width: '100%',
-              height: 40,
-              border: '1.5px solid var(--border)',
-              borderRadius: 20,
-              padding: '0 16px 0 40px',
-              background: 'var(--bg)',
-              color: 'var(--text)',
-              fontSize: 14,
-              outline: 'none',
-              fontFamily: 'inherit',
-              transition: 'all .2s',
-            }}
-            onFocus={(e) => {
-              e.target.style.borderColor = 'var(--pri)';
-              e.target.style.boxShadow =
-                '0 0 0 3px rgba(79,140,255,.12)';
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = 'var(--border)';
-              e.target.style.boxShadow = '';
-            }}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
           />
         </div>
 
-        {/* Right actions */}
-        <div
-          style={{
-            marginLeft: 'auto',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-          }}
-        >
+        <div className="nav-right">
+          {/* Dark mode toggle */}
           <button
+            className="btn-icon"
             onClick={onToggleDark}
             title="Đổi chủ đề"
             style={{
@@ -183,11 +79,12 @@ const Navbar: React.FC<Props> = ({
               borderRadius: '50%',
               border: '1.5px solid var(--border)',
               background: 'transparent',
+              color: 'var(--text)',
               cursor: 'pointer',
-              fontSize: 16,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              fontSize: 18,
               transition: 'all .2s',
             }}
           >
@@ -196,11 +93,10 @@ const Navbar: React.FC<Props> = ({
 
           {user ? (
             <>
-              {(user.role === 'student' ||
-                user.role === 'lecturer') && (
+              {(user.role === 'student' || user.role === 'lecturer') && (
                 <button
-                  onClick={() => history.push('/ask')}
-                  style={btnPrimary}
+                  className="btn btn-primary btn-sm"
+                  onClick={() => navigate('/forum/ask')}
                 >
                   ✏️ Đặt câu hỏi
                 </button>
@@ -208,38 +104,29 @@ const Navbar: React.FC<Props> = ({
 
               {user.role === 'admin' && (
                 <button
-                  onClick={() => history.push('/admin')}
-                  style={btnGhost}
+                  className="btn btn-ghost btn-sm"
+                  onClick={() => navigate('/admin')}
                 >
                   ⚙️ Admin
                 </button>
               )}
 
-              {/* User dropdown */}
-              <div
-                style={{ position: 'relative' }}
-                ref={menuRef}
-              >
+              <div style={{ position: 'relative' }} ref={ref}>
                 <div
-                  onClick={() =>
-                    setMenuOpen((o) => !o)
-                  }
                   style={{ cursor: 'pointer' }}
+                  onClick={() => setUserMenuOpen((o) => !o)}
                 >
-                  <UserAvatar user={user} size="sm" />
+                  <Avatar username={user.name} />
                 </div>
-
-                {menuOpen && (
+                {userMenuOpen && (
                   <div
-                    className="scale-in"
                     style={{
                       position: 'absolute',
                       right: 0,
-                      top: 'calc(100% + 10px)',
+                      top: 'calc(100% + 8px)',
                       background: 'var(--surface)',
-                      border:
-                        '1px solid var(--border)',
-                      borderRadius: 12,
+                      border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius-sm)',
                       boxShadow: 'var(--shadow-lg)',
                       zIndex: 200,
                       minWidth: 200,
@@ -249,111 +136,65 @@ const Navbar: React.FC<Props> = ({
                     <div
                       style={{
                         padding: '12px 16px',
-                        borderBottom:
-                          '1px solid var(--border)',
+                        borderBottom: '1px solid var(--border)',
                       }}
                     >
-                      <div
-                        style={{
-                          fontWeight: 600,
-                          fontSize: 14,
-                        }}
-                      >
-                        {user.username}
+                      <div style={{ fontWeight: 600, fontSize: 14 }}>
+                        {user.name}
                       </div>
-
-                      <div
-                        style={{
-                          fontSize: 12,
-                          color: 'var(--muted)',
-                          marginTop: 2,
-                        }}
-                      >
+                      <div style={{ fontSize: 12, color: 'var(--muted)' }}>
                         {user.email}
                       </div>
                     </div>
-
                     {[
                       {
                         label: '🏠 Trang chủ',
-                        to: '/',
+                        action: () => navigate('/forum'),
                       },
                       {
-                        label: '👤 Hồ sơ',
-                        to: '/profile',
+                        label: '👤 Hồ sơ của tôi',
+                        action: () => navigate('/user/profile'),
                       },
-                      ...(user.role === 'admin'
-                        ? [
-                            {
-                              label: '⚙️ Quản trị',
-                              to: '/admin',
-                            },
-                          ]
-                        : []),
-                    ].map((m, i) => (
-                      <button
-                        key={i}
-                        onClick={() => {
-                          history.push(m.to);
-                          setMenuOpen(false);
-                        }}
-                        style={{
-                          display: 'block',
-                          width: '100%',
-                          padding: '10px 16px',
-                          fontSize: 14,
-                          textAlign: 'left',
-                          background: 'transparent',
-                          border: 'none',
-                          cursor: 'pointer',
-                          color: 'var(--text)',
-                          transition: 'background .15s',
-                          fontFamily: 'inherit',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background =
-                            'var(--bg)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background =
-                            'transparent';
-                        }}
-                      >
-                        {m.label}
-                      </button>
-                    ))}
-
-                    <button
-                      onClick={() => {
-                        onLogout();
-                        setMenuOpen(false);
-                      }}
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '10px 16px',
-                        fontSize: 14,
-                        textAlign: 'left',
-                        background: 'transparent',
-                        border: 'none',
-                        borderTop:
-                          '1px solid var(--border)',
-                        cursor: 'pointer',
-                        color: 'var(--danger)',
-                        fontFamily: 'inherit',
-                        transition: 'background .15s',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background =
-                          'var(--bg)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background =
-                          'transparent';
-                      }}
-                    >
-                      🚪 Đăng xuất
-                    </button>
+                      user.role === 'admin' && {
+                        label: '⚙️ Quản trị',
+                        action: () => navigate('/admin'),
+                      },
+                      {
+                        label: '🚪 Đăng xuất',
+                        action: handleLogout,
+                        danger: true,
+                      },
+                    ]
+                      .filter(Boolean)
+                      .map((item: any, i) => (
+                        <button
+                          key={i}
+                          style={{
+                            display: 'block',
+                            width: '100%',
+                            padding: '10px 16px',
+                            fontSize: 14,
+                            textAlign: 'left',
+                            background: 'transparent',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: item.danger ? 'var(--danger)' : 'var(--text)',
+                            transition: 'background .15s',
+                          }}
+                          onMouseEnter={(e) =>
+                            (e.currentTarget.style.background = 'var(--bg)')
+                          }
+                          onMouseLeave={(e) =>
+                            (e.currentTarget.style.background = 'transparent')
+                          }
+                          onClick={() => {
+                            item.action();
+                            setUserMenuOpen(false);
+                          }}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
                   </div>
                 )}
               </div>
@@ -361,19 +202,14 @@ const Navbar: React.FC<Props> = ({
           ) : (
             <>
               <button
-                onClick={() =>
-                  history.push('/auth/login')
-                }
-                style={btnGhost}
+                className="btn btn-ghost btn-sm"
+                onClick={() => navigate('/auth')}
               >
                 Đăng nhập
               </button>
-
               <button
-                onClick={() =>
-                  history.push('/auth/register')
-                }
-                style={btnPrimary}
+                className="btn btn-primary btn-sm"
+                onClick={() => navigate('/auth')}
               >
                 Đăng ký
               </button>

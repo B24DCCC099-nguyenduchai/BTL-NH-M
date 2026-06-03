@@ -324,7 +324,17 @@ interface IConfigTypes {
     compact?: (boolean | undefined);
     import?: (boolean | undefined);
     style?: ("less" | "css" | undefined);
-    configProvider?: ({ [x: string]: any } | undefined);
+    theme?: ({
+    components: { [x: string]: { [x: string]: any } };
+} | { [x: string]: any } | undefined);
+    appConfig?: ({ [x: string]: any } | undefined);
+    momentPicker?: (boolean | undefined);
+    styleProvider?: ({ [x: string]: any } | undefined);
+    configProvider?: ({
+    theme: {
+    components: { [x: string]: { [x: string]: any } };
+} | { [x: string]: any };
+} | { [x: string]: any } | undefined);
 };
     dva: {
     extraModels?: (Array<string> | undefined);

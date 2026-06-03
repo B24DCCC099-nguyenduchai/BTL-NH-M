@@ -19,17 +19,22 @@ if (process.env.NODE_ENV === 'development') {
 import React from 'react';
 
 export async function getRoutes() {
-  const routes = {"auth/register":{"path":"auth/register","id":"auth/register"},"admin/index":{"path":"admin","id":"admin/index"},"forum/index":{"path":"forum","id":"forum/index"},"auth/login":{"path":"auth/login","id":"auth/login"},"forum/[id]":{"path":"forum/[id]","id":"forum/[id]"},"profile":{"path":"profile","id":"profile"},"_layout":{"path":"_layout","id":"_layout"},"index":{"path":"/","id":"index"},"test":{"path":"test","id":"test"},"ask":{"path":"ask","id":"ask"}} as const;
+  const routes = {"auth/register":{"path":"auth/register","id":"auth/register"},"landing-demo":{"path":"landing-demo","id":"landing-demo"},"user/profile":{"path":"user/profile","id":"user/profile"},"admin/index":{"path":"admin","id":"admin/index"},"forum/index":{"path":"forum","id":"forum/index"},"auth/index":{"path":"auth","id":"auth/index"},"auth/login":{"path":"auth/login","id":"auth/login"},"forum/[id]":{"path":"forum/[id]","id":"forum/[id]"},"forum/$id":{"path":"forum/:id","id":"forum/$id"},"forum/ask":{"path":"forum/ask","id":"forum/ask"},"profile":{"path":"profile","id":"profile"},"layout":{"path":"layout","id":"layout"},"index":{"path":"/","id":"index"},"test":{"path":"test","id":"test"},"ask":{"path":"ask","id":"ask"}} as const;
   return {
     routes,
     routeComponents: {
 'auth/register': React.lazy(() => import(/* webpackChunkName: "src__pages__auth__register" */'../../../src/pages/auth/register.tsx')),
+'landing-demo': React.lazy(() => import(/* webpackChunkName: "src__pages__landing-demo" */'../../../src/pages/landing-demo.tsx')),
+'user/profile': React.lazy(() => import(/* webpackChunkName: "src__pages__user__profile" */'../../../src/pages/user/profile.tsx')),
 'admin/index': React.lazy(() => import(/* webpackChunkName: "src__pages__admin__index" */'../../../src/pages/admin/index.tsx')),
 'forum/index': React.lazy(() => import(/* webpackChunkName: "src__pages__forum__index" */'../../../src/pages/forum/index.tsx')),
+'auth/index': React.lazy(() => import(/* webpackChunkName: "src__pages__auth__index" */'../../../src/pages/auth/index.tsx')),
 'auth/login': React.lazy(() => import(/* webpackChunkName: "src__pages__auth__login" */'../../../src/pages/auth/login.tsx')),
 'forum/[id]': React.lazy(() => import(/* webpackChunkName: "src__pages__forum__id" */'../../../src/pages/forum/[id].tsx')),
+'forum/$id': React.lazy(() => import(/* webpackChunkName: "src__pages__forum__$id" */'../../../src/pages/forum/$id.tsx')),
+'forum/ask': React.lazy(() => import(/* webpackChunkName: "src__pages__forum__ask" */'../../../src/pages/forum/ask.tsx')),
 'profile': React.lazy(() => import(/* webpackChunkName: "src__pages__profile" */'../../../src/pages/profile.tsx')),
-'_layout': React.lazy(() => import(/* webpackChunkName: "src__pages___layout" */'../../../src/pages/_layout.tsx')),
+'layout': React.lazy(() => import(/* webpackChunkName: "src__pages__layout" */'../../../src/pages/layout.tsx')),
 'index': React.lazy(() => import(/* webpackChunkName: "src__pages__index" */'../../../src/pages/index.tsx')),
 'test': React.lazy(() => import(/* webpackChunkName: "src__pages__test" */'../../../src/pages/test.tsx')),
 'ask': React.lazy(() => import(/* webpackChunkName: "src__pages__ask" */'../../../src/pages/ask.tsx')),

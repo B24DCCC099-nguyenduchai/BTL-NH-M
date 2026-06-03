@@ -10,7 +10,7 @@ const Notification = require('./notification');
 const PostTag = require('./postTag');
 const PostVote = require('./postVote');
 const CommentVote = require('./commentVote');
-const SavedPost = require('./savedPost');
+const SavedPost = require('./SavedPost');
 
 // ======================================================
 // USER - POST

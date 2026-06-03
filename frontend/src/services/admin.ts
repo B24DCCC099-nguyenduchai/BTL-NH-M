@@ -1,5 +1,5 @@
 import api from './api';
-import type { User, Post, AdminStats } from '../types';
+import type { User, Post, Tag, AdminStats } from '../types';
 
 export interface CreateUserPayload {
   name: string;
@@ -7,6 +7,12 @@ export interface CreateUserPayload {
   password?: string;
   role: 'student' | 'lecturer' | 'admin';
   status?: 'active' | 'locked';
+}
+
+export interface CreateTagPayload {
+  name: string;
+  color?: string;
+  description?: string;
 }
 
 export const adminService = {
@@ -39,18 +45,17 @@ export const adminService = {
   deletePost: (id: string) =>
     api.delete(`/admin/posts/${id}`).then((r) => r.data),
 
-  // Stats
-  getStats: () =>
-    api.get<AdminStats>('/admin/stats').then((r) => r.data),
-};
+  // Tags
+  getTags: () =>
+    api.get<Tag[]>('/admin/tags').then((r) => r.data),
 
-  updateTag: (id: number, data: Partial<Tag>) =>
-    api.put<Tag>(`/admin/tags/${id}`, data).then((r) => r.data),
+  createTag: (data: CreateTagPayload) =>
+    api.post<Tag>('/admin/tags', data).then((r) => r.data),
 
-  deleteTag: (id: number) =>
+  deleteTag: (id: string) =>
     api.delete(`/admin/tags/${id}`).then((r) => r.data),
 
   // Stats
-  getStatistics: () =>
-    api.get<AdminStats>('/admin/statistics').then((r) => r.data),
+  getStats: () =>
+    api.get<AdminStats>('/admin/stats').then((r) => r.data),
 };

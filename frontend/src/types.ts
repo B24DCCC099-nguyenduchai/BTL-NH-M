@@ -22,6 +22,26 @@ export interface RegisterPayload {
   name: string;
   email: string;
   password: string;
+  role?: UserRole;
+}
+
+export interface CreateUserPayload {
+  name: string;
+  email: string;
+  password: string;
+  role: UserRole;
+  status?: 'active' | 'locked';
+}
+
+export interface CreatePostPayload {
+  title: string;
+  content: string;
+  tags?: string[];
+}
+
+export interface CreateCommentPayload {
+  content: string;
+  parentCommentId?: string | null;
 }
 
 export interface LoginResponse {

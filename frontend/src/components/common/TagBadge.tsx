@@ -1,36 +1,40 @@
 import React from 'react';
-import type { Tag } from '../../types';
+import { Tag } from 'antd';
+import type { Tag as TagModel } from '../../types';
 
-interface Props {
-  tag: Partial<Tag>;
+interface TagBadgeProps {
+  tag?: TagModel;
+  label?: string;
   active?: boolean;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
   style?: React.CSSProperties;
+  className?: string;
 }
 
-const TagBadge: React.FC<Props> = ({ tag, active, onClick, style }) => {
-  const color = tag.color ?? '#4f8cff';
+const TagBadge: React.FC<TagBadgeProps> = ({ tag, label, active, onClick, style, className }) => {
+  const content = tag?.name ?? label ?? '';
+  const background = active ? '#eef2ff' : '#f7f8fc';
+  const borderColor = active ? '#c7d2fe' : '#e5e7eb';
+
   return (
-    <span
-      onClick={onClick}
+    <Tag
+      color={background}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        padding: '3px 10px',
-        borderRadius: 20,
-        fontSize: 12,
-        fontWeight: 500,
         cursor: onClick ? 'pointer' : 'default',
-        background: active ? color : color + '20',
-        color: active ? '#fff' : color,
-        border: `1px solid ${color}40`,
-        transition: 'all .15s',
-        margin: '2px',
+        borderRadius: 16,
+        padding: '0 12px',
+        fontWeight: 500,
+        color: '#1f2937',
+        border: `1px solid ${borderColor}`,
+        opacity: 1,
+        transition: 'all .2s',
         ...style,
       }}
+      onClick={onClick}
+      className={className}
     >
-      {tag.name}
-    </span>
+      {content}
+    </Tag>
   );
 };
 

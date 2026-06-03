@@ -1,98 +1,51 @@
-import React from 'react';
-import { useNavigate } from 'umi';
-import UserAvatar from '../common/UserAvatar';
-import RoleBadge from '../common/RoleBadge';
-import TagBadge from '../common/TagBadge';
-import { timeAgo } from '../../utils/helpers';
-import type { Post } from '../../types';
+﻿import React from 'react';
+import { Avatar } from './Avatar';
+import { TagBadge } from './TagBadge';
+import { RoleBadge } from './RoleBadge';
+import { timeAgo } from '@/utils/forum';
+import type { Post } from '@/types';
 
 interface Props {
   post: Post;
+  onClick?: (post: Post) => void;
 }
 
-const PostCard: React.FC<Props> = ({ post }) => {
-  const navigate = useNavigate();
+const PostCard: React.FC<Props> = ({ post, onClick }) => {
+  const authorName = String('username' in post.author ? post.author.username : post.author.name);
+
   return (
-    <div
-      onClick={() => navigate(`/forum/${post.id}`)}
-      style={{
-        background: 'var(--surface)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius)',
-        padding: '20px 24px',
-        cursor: 'pointer',
-        transition: 'all .25s',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 8,
-          marginBottom: 12,
-        }}
-      >
-        <UserAvatar user={post.author} size="sm" />
-
-        <span style={{ fontWeight: 600, fontSize: 14 }}>
-          {post.author.username}
-        </span>
-
-        <RoleBadge role={post.author.role} />
-
-        <span
-          style={{
-            marginLeft: 'auto',
-            fontSize: 13,
-            color: 'var(--faint)',
-          }}
-        >
+    <div className="post-card" onClick={() => onClick?.(post)}>
+      <div className="flex items-center gap-2 mb-4" style={{ marginBottom: 10 }}>
+        <Avatar 
+          username={authorName}
+          avatar={'avatar' in post.author ? post.author.avatar : undefined}
+        />
+        <div>
+          <span className="author-name">{authorName}</span>
+          <RoleBadge role={post.author.role} />
+        </div>
+        <span className="text-muted text-sm" style={{ marginLeft: 'auto' }}>
           {timeAgo(post.createdAt)}
         </span>
       </div>
 
-      <div
-        style={{
-          fontWeight: 700,
-          fontSize: 18,
-          marginBottom: 10,
-        }}
-      >
-        {post.title}
-      </div>
+      <div className="post-title">{post.title}</div>
+      <div className="post-preview">{post.content}</div>
 
-      <div
-        style={{
-          color: 'var(--muted)',
-          marginBottom: 12,
-        }}
-      >
-        {post.content}
-      </div>
-
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 6,
-          marginBottom: 12,
-        }}
-      >
+      <div className="tags-wrap">
         {post.tags.map((t) => (
-          <TagBadge
-            key={t.id}
+          <TagBadge 
+            key={t.id} 
             tag={t}
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-              e.stopPropagation();
-            }}
+            onClick={(e: any) => e?.stopPropagation?.()}
           />
         ))}
       </div>
 
-      <div style={{ display: 'flex', gap: 16 }}>
-        <span>▲ {post.votes}</span>
-        <span>💬 {post.commentCount}</span>
-        <span>👁 {post.views}</span>
+      <div className="post-stats">
+        <span className="stat-pill">▲ {post.votes} vote</span>
+        <span className="stat-pill">💬 {post.commentCount} bình luận</span>
+        <span className="stat-pill">👁 {post.views} lượt xem</span>
       </div>
     </div>
   );

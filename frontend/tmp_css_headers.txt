@@ -1,0 +1,18 @@
+﻿
+Key                              Value                        
+---                              -----                        
+Vary                             Origin, Accept-Encoding      
+Access-Control-Allow-Credentials true                         
+Connection                       keep-alive                   
+Keep-Alive                       timeout=5                    
+Accept-Ranges                    bytes                        
+Content-Length                   0                            
+Cache-Control                    public, max-age=0            
+Content-Type                     text/css; charset=UTF-8      
+Date                             Sun, 31 May 2026 10:48:31 GMT
+ETag                             W/"0-19e70cade4b"            
+Last-Modified                    Thu, 28 May 2026 22:53:23 GMT
+X-Powered-By                     Express                      
+
+
+

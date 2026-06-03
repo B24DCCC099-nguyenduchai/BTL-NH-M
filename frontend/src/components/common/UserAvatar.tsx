@@ -14,7 +14,8 @@ const fontSizes = { sm: 12, md: 14, lg: 22, xl: 36 };
 const UserAvatar: React.FC<Props> = ({ user, size = 'md', style }) => {
   const px = sizes[size];
   const fs = fontSizes[size];
-  const bg = getAvatarBg(user?.username ?? '');
+  const displayName = user?.name ?? (user as any)?.username ?? '';
+  const bg = getAvatarBg(displayName);
 
   return (
     <div
@@ -35,9 +36,9 @@ const UserAvatar: React.FC<Props> = ({ user, size = 'md', style }) => {
       }}
     >
       {user?.avatar ? (
-        <img src={user.avatar} alt={user.username} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={user.avatar} alt={displayName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
-        getInitial(user?.username ?? '?')
+        getInitial(displayName || '?')
       )}
     </div>
   );

@@ -12,7 +12,7 @@ export const forumService = {
     return res.data;
   },
 
-  getPost: async (id: number): Promise<Post> => {
+  getPost: async (id: string): Promise<Post> => {
     const res = await api.get<Post>(`/forum/posts/${id}`);
     return res.data;
   },
@@ -22,21 +22,21 @@ export const forumService = {
     return res.data;
   },
 
-  updatePost: async (id: number, payload: Partial<CreatePostPayload>): Promise<Post> => {
+  updatePost: async (id: string, payload: Partial<CreatePostPayload>): Promise<Post> => {
     const res = await api.put<Post>(`/forum/posts/${id}`, payload);
     return res.data;
   },
 
-  deletePost: async (id: number): Promise<void> => {
+  deletePost: async (id: string): Promise<void> => {
     await api.delete(`/forum/posts/${id}`);
   },
 
-  votePost: async (id: number, voteType: 1 | -1): Promise<{ votes: number }> => {
-    const res = await api.post<{ votes: number }>(`/forum/posts/${id}/vote`, { voteType });
+  votePost: async (id: string, direction: 'up' | 'down'): Promise<{ votes: number }> => {
+    const res = await api.post<{ votes: number }>(`/forum/posts/${id}/vote`, { direction });
     return res.data;
   },
 
-  savePost: async (id: number): Promise<{ saved: boolean }> => {
+  savePost: async (id: string): Promise<{ saved: boolean }> => {
     const res = await api.post<{ saved: boolean }>(`/forum/posts/${id}/save`);
     return res.data;
   },
@@ -47,27 +47,27 @@ export const forumService = {
   },
 
   // ── Comments ───────────────────────────────────────────────────────────────
-  getComments: async (postId: number): Promise<Comment[]> => {
+  getComments: async (postId: string): Promise<Comment[]> => {
     const res = await api.get<Comment[]>(`/forum/posts/${postId}/comments`);
     return res.data;
   },
 
-  createComment: async (postId: number, payload: CreateCommentPayload): Promise<Comment> => {
+  createComment: async (postId: string, payload: CreateCommentPayload): Promise<Comment> => {
     const res = await api.post<Comment>(`/forum/posts/${postId}/comments`, payload);
     return res.data;
   },
 
-  replyComment: async (postId: number, parentCommentId: number, payload: CreateCommentPayload): Promise<Comment> => {
+  replyComment: async (postId: string, parentCommentId: string, payload: CreateCommentPayload): Promise<Comment> => {
     const res = await api.post<Comment>(`/forum/posts/${postId}/comments/${parentCommentId}/reply`, payload);
     return res.data;
   },
 
-  deleteComment: async (id: number): Promise<void> => {
+  deleteComment: async (id: string): Promise<void> => {
     await api.delete(`/forum/comments/${id}`);
   },
 
-  voteComment: async (id: number, voteType: 1 | -1): Promise<{ votes: number }> => {
-    const res = await api.post<{ votes: number }>(`/forum/comments/${id}/vote`, { voteType });
+  voteComment: async (id: string, direction: 'up' | 'down'): Promise<{ votes: number }> => {
+    const res = await api.post<{ votes: number }>(`/forum/comments/${id}/vote`, { direction });
     return res.data;
   },
 
